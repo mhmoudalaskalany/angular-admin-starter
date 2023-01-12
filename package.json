@@ -8,9 +8,7 @@
     "start-secure": "ng serve --port=4300 --ssl --ssl-key ./certificate/localhost.key --ssl-cert ./certificate/localhost.crt -o",
     "build": "ng build --configuration production --base-href /pos/",
     "watch": "ng build --watch --configuration development",
-    "test": "ng test",
-    "setup": "npm i ng-apexcharts apexcharts moment ngx-moment ngx-toastr boxicons primeng @ng-select/ng-select @ngx-translate/core @ngx-translate/http-loader @angular/material-moment-adapter",
-    "bootstrap": "ng add @ng-bootstrap/ng-bootstrap"
+    "test": "ng test"
   },
   "private": true,
   "dependencies": {
