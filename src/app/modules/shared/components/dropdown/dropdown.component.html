@@ -1,0 +1,77 @@
+<div [formGroup]="formGroup" class="d-flex flex-column position-relative dropdown {{ customClass }}" setRtl [ngClass]="{'single': !isMulti}">
+    <ng-select #ngdropdown [items]="options" [multiple]="isMulti" [clearable]="true" (change)="onChange($event)" (search)="onSearch($event)" (add)="onAdd($event)"
+               (remove)="onRemove($event)" (scroll)="onScroll($event)" [formControlName]="controlName" [disabled]="isDisabled" [placeholder]="placeholder"
+               [searchable]="searchable" [bindValue]="bindValue" [notFoundText]="notFoundText ? notFoundText : ('EMPTY.NO_ITEMS' | translate)"
+               [groupBy]="isMulti && selectableGroup ? 'type' : ''" [closeOnSelect]="!isMulti" [selectableGroupAsModel]="false"
+               [selectableGroup]="isMulti ? selectableGroup : false" [searchFn]="customSearchFn">
+
+        <!-- selected option in single dropdown -->
+        <ng-template ng-label-tmp let-item="item" *ngIf="!isMulti">
+            <div class="d-flex align-items-center w-100">
+                <div class="d-flex align-items-baseline w-100">
+                    <p class="m-0 text-truncate text-capitalize font-14">{{ item[getBindLabel] | translate }}</p>
+                </div>
+            </div>
+        </ng-template>
+
+        <!-- dropdown options -->
+        <ng-template ng-option-tmp let-item="item" let-item$="item$">
+            <div class="d-flex align-items-center option w-100">
+                <div class="checkbox-wrapper d-flex align-items-center" *ngIf="withCheckbox">
+                    <mat-checkbox (click)="$event.stopPropagation()" [checked]="item$.selected" color="bg-error-light"></mat-checkbox>
+                </div>
+
+                <div class="d-flex align-items-center w-100" [ngClass]="{'mx-2': withCheckbox}">
+                    <div class="d-flex align-items-center w-100">
+                        <div class="d-flex align-items-baseline w-100">
+                            <p class="m-0 text-truncate text-capitalize font-14">{{ item[getBindLabel] | translate }}</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </ng-template>
+
+        <!-- group select -->
+        <ng-template ng-optgroup-tmp let-item$="item$" *ngIf="isMulti && selectableGroup">
+            <div class="ng-option ng-option-child cursor-pointer">
+                <div class="d-flex align-items-center">
+                    <div class="checkbox-wrapper d-flex align-items-center" *ngIf="withCheckbox">
+                        <mat-checkbox (click)="$event.stopPropagation()" [checked]="item$.selected" color="bg-error-light"></mat-checkbox>
+                    </div>
+
+                    <p class="m-0 select-all text-capitalize font-16" [ngClass]="{'mx-2': withCheckbox}">{{ 'ACTIONS.SELECT_ALL' | translate }}</p>
+                </div>
+            </div>
+        </ng-template>
+    </ng-select>
+
+    <mat-error *ngIf="formGroup.get(controlName)?.errors && formGroup.get(controlName)?.touched">
+        <span class="font-12">{{ formGroup.get(controlName)?.errors | validationHandler: pipeCustomError }}</span>
+    </mat-error>
+
+    <!-- selected values -->
+    <div class="ng-select-values employee-values">
+        <ng-container *ngIf="selectedOptions.length && isMulti">
+            <div class="d-flex align-items-center flex-wrap gap-3">
+                <div class="value d-flex align-items-center" *ngFor="let option of selectedOptions; let i = index">
+                    <span class="value-label d-flex align-items-center bg-secondary text-primary px-2 py-1">{{ option[getBindLabel] | translate }}</span>
+
+                    <span class="value-icon d-flex align-items-center justify-content-center cursor-pointer m-inline-start-2 bg-error-light text-error"
+                          (click)="removeFromList(option)">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                        </svg>
+                    </span>
+                </div>
+            </div>
+        </ng-container>
+    </div>
+</div>
+
+<!-- 
+    Usage
+
+    <app-dropdown [formGroup]="formGroup" [options]="options" [isMulti]="true" controlName="controlName" [bindValue]="'bindValue'"
+                    [bindLabel]="'bindLabel'" [placeholder]="'PLACEHOLDER' | translate" (selected)="getSelectedOptions($event)">
+    </app-dropdown>
+-->

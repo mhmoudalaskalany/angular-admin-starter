@@ -1,0 +1,21 @@
+<div class="page-wrapper d-flex flex-column h-100" (isEnglish)="isEnglish = $event">
+    <div class="d-flex align-items-center justify-content-between">
+        <h3 class="m-0 font-28">{{ title | translate }}</h3>
+
+        <a [routerLink]="[ 'add' ]" *ngIf="pageType === 'list'">
+            <button class="main-btn align-self-center font-14 main border-radius-2 py-1 px-2 mt-2 mt-sm-0" type="button" mat-flat-button>
+                <div class="d-flex align-items-center">
+                    <i class="bx bx-plus m-inline-end-1 font-18"></i>
+    
+                    <span class="p-inline-end-1">{{ 'ACTIONS.ADD' | translate }}</span>
+                </div>
+            </button>
+        </a>
+    </div>
+
+    <div class="products mt-4 h-100" *ngIf="tableOptions">
+        <app-table [tableOptions]="tableOptions"></app-table>
+    </div>
+</div>
+
+<router-outlet></router-outlet>

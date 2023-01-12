@@ -1,0 +1,14 @@
+<aside class="sidebar-wrapper bg-primary d-flex flex-column h-100" [ngClass]="{'opened': isSidebarOpened}">
+    <div class="sidebar-logo d-flex align-items-center p-inline-start-2 p-inline-end-3">
+        <img class="m-inline-start-1" width="48" src="assets/images/logo/logo-white.svg" />
+        <h3 class="m-0 regular font-22 text-middle m-inline-start-3 sidebar-title" [ngClass]="{'show': isSidebarOpened}">{{ 'Title' | translate }}</h3>
+    </div>
+
+    <div class="sidebar-content overflow-auto w-100 h-100">
+        <mat-list class="d-flex flex-column p-0" role="list">
+            <mat-list-item role="listitem" *ngFor="let sidebarItem of sidebarItems">
+                <app-sidebar-list-item [sidebarItem]="sidebarItem" [user]="user"></app-sidebar-list-item>
+            </mat-list-item>
+        </mat-list>
+    </div>
+</aside>

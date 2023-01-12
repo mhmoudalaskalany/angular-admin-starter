@@ -1,0 +1,10 @@
+main {
+    height: 100vh;
+    overflow: hidden;
+    background: whitesmoke;
+
+    .main-page {
+        overflow-y: scroll;
+        overflow-x: hidden;
+    }
+}

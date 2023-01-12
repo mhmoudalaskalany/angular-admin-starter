@@ -1,0 +1,109 @@
+/* Source Fonts */
+@font-face {
+  font-family: "Source Light";
+  font-display: swap;
+  src: url("/assets/fonts/Cairo-Regular-Light.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: "Source Regular";
+  font-display: swap;
+  src: url("/assets/fonts/Cairo-Regular-Regular.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: "Source Bold";
+  font-display: swap;
+  src: url("/assets/fonts/Cairo-Regular-Bold.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: Cairo-Regular;
+  src: url("../../fonts/Cairo-Regular.ttf");
+}
+
+/* Project Fonts */
+$font-light: "Cairo-Regular", sans-serif;
+$font-regular: "Cairo-Regular", sans-serif;
+$font-bold: "Cairo-Regular", sans-serif;
+
+body {
+  font-family: $font-regular;
+  @extend .font-16;
+  
+  * {
+    font-family: $font-regular;
+  }
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  &:not(.regular) {
+    font-family: $font-bold;
+  }
+
+  &.regular {
+    font-family: $font-regular;
+  }
+}
+
+.font-10 {
+  font-size: .675rem !important;
+}
+
+.font-12 {
+  font-size: .75rem !important;
+}
+
+.font-14 {
+  font-size: clamp(.8rem, 1vw, .9rem) !important;
+}
+
+.font-15 {
+  font-size: 15px !important;
+}
+
+.font-16 {
+  font-size: clamp(.85rem, 1vw, 1.2rem) !important
+}
+
+.font-18 {
+  font-size: clamp(1rem, 1.2vw, 1.4rem) !important;
+}
+
+.font-20 {
+  font-size: clamp(1.15rem, 1.4vw, 1.6rem) !important;
+}
+
+.font-22 {
+  font-size: clamp(1.30rem, 1.6vw, 1.8rem) !important;
+}
+
+.font-24 {
+  font-size: clamp(1.45rem, 1.8vw, 2rem) !important
+}
+
+.font-26 {
+  font-size: clamp(1.6rem, 2vw, 2.2rem) !important;
+}
+
+.font-28 {
+  font-size: clamp(1.75rem, 2.2vw, 2.4rem) !important;
+}
+
+.font-30 {
+  font-size: clamp(1.9rem, 2.4vw, 2.6rem) !important;
+}
+
+.font-60 {
+  font-size: clamp(1.75rem, 3vw, 4rem) !important;
+}
+
+
+*[class*="font-"] {
+  line-height: 1.5;
+}

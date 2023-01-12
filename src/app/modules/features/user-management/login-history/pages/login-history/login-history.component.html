@@ -1,0 +1,11 @@
+<div class="page-wrapper d-flex flex-column h-100" (isEnglish)="isEnglish = $event">
+    <div class="d-flex align-items-center justify-content-between">
+        <h3 class="m-0 font-28">{{ title | translate }}</h3>
+    </div>
+
+    <div class="products mt-4 h-100" *ngIf="tableOptions">
+        <app-table [tableOptions]="tableOptions"></app-table>
+    </div>
+</div>
+
+<router-outlet></router-outlet>

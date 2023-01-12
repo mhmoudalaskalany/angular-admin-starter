@@ -1,0 +1,17 @@
+<div class="modal-container d-flex flex-column">
+  <div class="modal-header bg-header" mat-dialog-header>
+    <h1 class="m-0 font-18 regular text-dark" mat-dialog-title>{{ 'Validation.DeleteConfirmation' | translate }}</h1>
+  </div>
+
+  <div class="px-4 py-3 m-0" mat-dialog-content>
+    <p class="m-0 font-16 text-danger">{{ 'Validation.DeleteMessage' | translate }}</p>
+  </div>
+
+  <div class="modal-footer w-100 d-flex justify-content-end" mat-dialog-actions>
+    <button mat-flat-button type="submit" class="main-btn font-14 text-white px-4 main" (click)="dialogRef.close(true)">
+      {{ 'ACTIONS.CONFIRM' | translate }}
+    </button>
+
+    <button mat-flat-button mat-dialog-close type="button" class="main-btn font-14 px-4" color="warn">{{ 'ACTIONS.CANCEL' | translate }}</button>
+  </div>
+</div>

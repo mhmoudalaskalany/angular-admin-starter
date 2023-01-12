@@ -1,0 +1,33 @@
+# Node.js
+# Build a general Node.js project with npm.
+# Add steps that analyze code, save build artifacts, deploy, and more:
+# https://docs.microsoft.com/azure/devops/pipelines/languages/javascript
+# Mahmoud Alaskalany
+trigger:
+  batch: true
+  branches:
+   include:
+     - dev
+
+pool:
+  name: "Databoat Pool"
+
+stages:
+  - stage: build
+    jobs:
+      - job:
+        steps:
+          - task: NodeTool@0
+            inputs:
+              versionSpec: "16.x"
+          - script: npm install --legacy-peer-deps
+          - script: npm run build   --prod
+          - task: CopyFiles@2
+            inputs:
+                SourceFolder: './dist'
+                Contents: '**'
+                TargetFolder: '$(build.artifactstagingdirectory)'
+          - task: PublishBuildArtifacts@1
+            displayName: 'Publish Artifact: drop'
+            inputs:
+              PathtoPublish: '$(build.artifactstagingdirectory)'

@@ -1,0 +1,36 @@
+$primary: #343a40;
+$primary-light: #aecbc6;
+$secondary: #e7cfb4;
+$secondary-light: rgba($secondary, 0.25);
+$danger: #EF4444;
+$warning: #F59E0B;
+$light: #F4F4F5;
+$green: #10B981;
+$blue-light: #0099cb;
+$page-bg: #f9f5e9;
+$purple: #747cf3;
+$white: white;
+$black: black;
+$dark: #1F2937;
+$dark-blue: #2A2A49;
+$text-light: #d9d9d9;
+$text-dark: #212a36;
+$middle: #9CA3AF;
+$success: #10B981;
+$success-light: rgba($success, 0.11);
+$error: #EF4444;
+$error-light: rgba($error, 0.11);
+$pending: #F59E0B;
+$pending-light: rgba($pending, 0.11);
+
+$theme-gradient-colors: (
+    primary: linear-gradient(to right, $primary-light, $primary),
+    secondary: linear-gradient(to right, $secondary-light, $secondary),
+    success: linear-gradient(to right, $success-light, $success),
+    info: linear-gradient(to right, $blue-light, #047edf 99%),
+    warning: linear-gradient(to right, $pending-light, $pending),
+    danger: linear-gradient(to right, $error-light, $error),
+    light: linear-gradient(to bottom, #f4f4f4, $light),
+    dark: linear-gradient(89deg, $middle, $dark),
+    red: linear-gradient(to right, $error-light, $error)
+);

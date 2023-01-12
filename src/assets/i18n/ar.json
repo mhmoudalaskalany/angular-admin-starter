@@ -1,0 +1,289 @@
+{
+  "Title": "نظام POS",
+  "ACCOUNT": {
+    "LOGOUT": "تسجيل الخروج",
+    "SIGNIN": "تسجيل الدخول",
+    "SIGNIN_SUBTITLE": "إبدأ جلستك",
+    "SIGNUP": "حساب جديد"
+  },
+  "DASHBOARD": {
+    "TITLE": "البيانات الرئيسية"
+  },
+  "PAYMENTS": {
+    "TITLE": "المدفوعات",
+    "TRANSACTION_STATUS": "حالة عملية الدفع",
+    "TOTAL_SOLD_PRODUCTS": "إجمالي المنتجات المُباعة",
+    "TOTAL_TRANSACTIONS": "إجمالي عمليات الدفع",
+    "EDIT": "تعديل الدفع",
+    "BILL": "تقرير الفاتورة",
+    "DEFERRED_SHOPPERS": "المتسوقون المؤجلون",
+    "SHOPPERS": "المتسوقون"
+  },
+  "ITEM_ANALYSIS": {
+    "TITLE": "بيانات المنتجات",
+    "LIST_OF_ITEMS": "قائمة المنتجات",
+    "OUT_OF_STOCK": "المنتهي من المخزن",
+    "LOW_IN_STOCK": "المنخفض في المخزن",
+    "DAMAGED_ITEMS": "المنتجات التالفة",
+    "ITEMS_HISTORY": "تاريخ المنتجات",
+    "ITEMS_BARCODES": "باركود المنتجات",
+    "ARCHIVE_INVOICES": "أرشفة الفواتير"
+  },
+  "ARCHIVE_INVOICES": {
+    "ADD_INVOICE": "إضافة فاتورة",
+    "EDIT_INVOICE": "تعديل فاتورة"
+  },
+  "SETTINGS": {
+    "TITLE": "الإعدادات",
+    "CATEGORIES": {
+      "TITLE": "الفئات",
+      "ADD": "إضافة فئة",
+      "EDIT": "تعديل فئة"
+    },
+    "CURRENCIES": {
+      "TITLE": "العملات",
+      "ADD": "إضافة عملة",
+      "EDIT": "تعديل عملة",
+      "CURRENCY": "العملة"
+    },
+    "PAYMENTTYPES": {
+      "TITLE": "طرق الدفع",
+      "ADD": "إضافة طريقة الدفع",
+      "EDIT": "تعديل طريقة الدفع",
+      "PAYMENT_TYPE": "طريقة الدفع"
+    },
+    "SUPPLIERS": {
+      "TITLE": "الموردين",
+      "ADD": "إضافة مورد",
+      "EDIT": "تعديل مورد"
+    },
+    "UNITOFMEASURES": {
+      "TITLE": "وحدات القياس",
+      "ADD": "إضافة وحدة قياس",
+      "EDIT": "تعديل وحدة قياس"
+    },
+    "WAREHOUSES": {
+      "TITLE": "المخازن",
+      "ADD": "إضافة مخزن",
+      "EDIT": "تعديل مخزن"
+    },
+    "SHOPS": {
+      "TITLE": "المتاجر",
+      "ADD": "إضافة متجر",
+      "EDIT": "تعديل متجر"
+    },
+    "CUSTOMERS": {
+      "TITLE": "العملاء",
+      "ADD": "إضافة عميل",
+      "EDIT": "تعديل عميل",
+      "CUSTOMER": "العميل"
+    }
+  },
+  "USER_MANAGEMENT": {
+    "TITLE": "إدارة المستخدمين",
+    "USERS": {
+      "TITLE": "المستخدمين",
+      "ADD": "إضافة مستخدم",
+      "EDIT": "تعديل مستخدم"
+    },
+    "ROLES": {
+      "TITLE": "الوظائف",
+      "ADD": "إضافة وظيفة",
+      "EDIT": "تعديل وظيفة"
+    },
+    "PERMISSIONS": {
+      "TITLE": "الأذونات",
+      "ADD": "إضافة إذن",
+      "EDIT": "تعديل إذن",
+      "ASSIGN_PERMISSION": "تعيين إذن لوظيفة"
+    },
+    "LOGINHISTORY": {
+      "TITLE": "تاريخ تسجيل الدخول"
+    }
+  },
+  "REPORTS": {
+    "TITLE": "بيانات التقارير",
+    "HIGHEST_EARNING": "أعلى ربحاً",
+    "LOWEST_EARNING": "أقل ربحاً",
+    "HIGH_IN_DEMAND": "الأكثر طلباً",
+    "LOW_IN_DEMAND": "الأقل طلباً",
+    "TRANSACTIONS_BY_YEAR": "تقرير المدفوعات سنوياً",
+    "TRANSACTIONS_BY_MONTH": "تقرير المدفوعات شهرياً",
+    "TRANSACTIONS_BY_DAY": "تقرير المدفوعات يومياً"
+  },
+  "TABLE": {},
+  "FIELDS": {
+    "EMAIL": "البريد الإلكترونى",
+    "MOBILE": "رقم الجوال",
+    "NAME": "الإسم",
+    "EN": " (بالإنجليزية)",
+    "AR": " (بالعربية)",
+    "FULL_NAME": "الإسم بالكامل",
+    "COMPANY_NAME": "إسم الشركة",
+    "COMPANY_EMAIL": "البريد الإلكترونى للشركة",
+    "COMPANY_ADDRESS": "عنوان الشركة",
+    "USERNAME": "اسم المستخدم",
+    "PASSWORD": "كلمة المرور",
+    "CONFIRM_PASSWORD": "تأكيد كلمة المرور",
+    "MESSAGE": "الرسالة",
+    "UNIT_PRICE": "سعر الوحدة",
+    "SELL_PRICE": "سعر البيع",
+    "QUANTITY": "الكمية",
+    "DAMAGE_REASON": "سبب التلف",
+    "TOTAL_DAMAGED_PRODUCTS": "إجمالي المنتجات التالفة",
+    "TOTAL_STOCK": "إجمالي المخزون",
+    "PRODUCT": "إسم المنتج",
+    "CATEGORY": "التصنيف",
+    "SUPPLIER": "المورد",
+    "WAREHOUSE": "المخزن",
+    "WAREHOUSE_VALUE": "عدد المنتجات في المخزن",
+    "SHOP": "المتجر",
+    "MEASURE": "المعيار",
+    "MEASURE_VALUE": "مقدار المعيار",
+    "SKU": "SKU",
+    "MANUFATURE_DATE": "تاريخ التصنيع",
+    "CREATED_DATE": "تاريخ الإنشاء",
+    "MODIFIED_DATE": "تاريخ التعديل",
+    "EXPIRATION_DATE": "تاريخ إنتهاء الصلاحية",
+    "CODE": "الرمز",
+    "NOTE": "ملاحظات",
+    "PHOTO": "الصورة",
+    "DESCRIPTION": "الوصف",
+    "COUNTRY": "البلد",
+    "SYMBOL": "الرمز",
+    "CONTACTPERSONS": "مناديب التواصل",
+    "CONTACT_PERSON_NAME": "إسم مندوب التواصل",
+    "CONTACT_PERSON_POSITION": "منصب مندوب التواصل",
+    "CONTACT_PERSON_PHONE_NUMBER": "رقم جوال مندوب التواصل",
+    "CONTACT_PERSON_VISIT_TIMES": "مواعيد زيارة مندوب التواصل",
+    "PHONE": "الهاتف",
+    "ADDRESS": "العنوان",
+    "BILLINGADDRESS": "عنوان الدفع",
+    "BARCODE": "الباركود",
+    "PLATFORM": "المنصة",
+    "IPADDRESS": "العنوان الالكترونى",
+    "LOGINSTATUS": "حالة الدخول",
+    "REASON": "السبب",
+    "LOGINDATE": "تاريخ الدخول",
+    "AUTHENTICATIONTYPE": "نوع الدخول",
+    "CONFIRMPASSWORD": "تأكيد كلمة المرور",
+    "ROLE": "الوظيفة",
+    "AMOUNT": "المبلغ",
+    "TOTAL_AMOUNT": "إجمالي المبلغ",
+    "NET_AMOUNT": "إجمالي صافي المبلغ",
+    "REFERENCE_NO": "رقم المرجع",
+    "TOTAL": "المجموع",
+    "COMMON_CHARGE": "مبالغ إضافية",
+    "DISCOUNT": "نسبة الخصم (%)",
+    "DISCOUNT_AMOUNT": "قيمة الخصم",
+    "TAX": "نسبة الضرائب (%)",
+    "TAX_AMOUNT": "قيمة الضرائب",
+    "VAT": "نسبة القيمة المضافة (%)",
+    "VAT_AMOUNT": "قيمة القيمة المضافة",
+    "DELIVERY": "إجمالي تكلفة التوصيل",
+    "LOADING_AND_UNLOADING":"إجمالي تكلفة التحميل والتفريغ",
+    "PROFIT_RATIO_PERCENTAGE": "مقدار نسبة الربح (%)",
+    "DELIVERY_AMOUNT": "سعر التوصيل",
+    "INVOICE_NUMBER": "رقم الفاتورة",
+    "INVOICE_IMAGE": "صورة الفاتورة"
+  },
+  "ACTIONS": {
+    "TITLE": "الإجراءات",
+    "LOGIN": "تسجيل الدخول",
+    "REGISTER": "إنشاء حساب",
+    "RESEND": "إعادة الإرسال",
+    "SUBMIT": "إرسال",
+    "SAVE": "حفظ",
+    "CANCEL": "إلغاء",
+    "EDIT": "تعديل",
+    "VIEW": "عرض",
+    "DELETE": "حذف",
+    "CONFIRM": "تأكيد",
+    "ASSIGN": "تعيين",
+    "ADD": "إضافة",
+    "CLOSE": "إغلاق",
+    "NEXT": "التالي",
+    "BACK": "عودة",
+    "EXPORT_PDF": "تصدير PDF",
+    "EXPORT_EXCEL": "تصدير Excel",
+    "SEARCH": "بحث",
+    "PRINT": "طباعة",
+    "DOWNLOAD": "تحميل",
+    "GENERATE": "إنشاء"
+  },
+  "ERROR": {
+    "404": "الصفحة غير موجودة",
+    "401": "غير مصرح لك بالدخول"
+  },
+  "EMPTY": {
+    "NO_ITEMS": "لا يوجد خيارات"
+  },
+  "TITLES": {
+    "HOLD_PAYMENT": "يجب إختيار زبون أولاً."
+  },
+  "ALERT": {
+    "POINTS_DISCOUNT": "أريد تطبيق مبلغ الخصم على هذه الدفعة. "
+  },
+  "Validation": {
+    "InvalidEnglishName": "يجب ان تكون الاحرف انجليزية فقط واكثر من 3 واقل من 100",
+    "InvalidArabicName": "يجب ان تكون الاحرف العربية فقط واكثر من 3 واقل من 100",
+    "UserNameTaken": "اسم المستخدم هذا مستخدم بالفعل",
+    "EmailTaken": "البريد الالكترونى مستخدم بالفعل",
+    "DeleteConfirmation": "تأكيد الحذف",
+    "DeleteMessage": "هل أنت متأكد أنك تريد حذفه؟",
+    "DeleteSuccess": "تم الحذف بنجاح",
+    "DeleteError": "خطأ فى الحذف",
+    "AddSuccess": "تمت الإضافة بنجاح",
+    "AddError": "خطأ فى الإضافة",
+    "UpdateSuccess": "تم التحديث بنجاح",
+    "UpdateError": "خطأ فى التحديث",
+    "LoginSuccess": "تم تسجيل الدخول بنجاح",
+    "GetError": "خطأ فى جلب البيانات من الخادم",
+    "InternalServerError": "خطأ ف الخادم",
+    "PasswordMessage": "يجب ان تتكون كلمة المرور من 8 رموز على الاقل وتشتمل على رقم وحرف كبير وحرف صغير ",
+    "PasswordMismatchMessage": "كلمة السر الجديدة غير متطابقة",
+    "PasswordChangedSuccess": "تم تغيير كلمة المرور بنجاح",
+    "UpdatingUserErrorAfterChangePassword": "خطا ف تحديث البيانات بعد تغيير كلمة المرور",
+    "CurrentPasswordIncorrect": "Old Password Is Incorrect",
+    "ServerError": "Server Error",
+    "SuccessUploadingImage": "تم تحديث الصورة بنجاح",
+    "ErrorUploadingImage": "خطا ف تحديث الصورة",
+    "WrongUserOrPass": "اسم المستخدم او كلمة المرور غير صحيحة",
+    "InvalidOtp": "الرقم المتغير غير صحيح او منتهى",
+    "PhoneNumberOrEmailAlreadyExist": "رقم الهاتف او البريد الالكترونى مسجل من قبل",
+    "EmailAlreadyExist": "البريد الالكترونى موجود من قبل",
+    "PhoneNumberAlreadyExist": "رقم الهاتف موجود من قبل",
+    "ACTION_MESSAGE": "هل أنت متأكد أنك تريد القيام بهذا الإجراء؟",
+    "APPROVE_PRICE_CONFIRMATION": "تأكيد الموافقة على التسعيير"
+  },
+  "Attachment": {
+    "Attachment": "المرفق",
+    "Attachments": "المرفقات",
+    "AttachmentName": "اسم المرفق",
+    "Browse": "اضافة مرفق",
+    "AttachmentSize": "حجم المرفق",
+    "AttachmentValidation": {
+      "MaximumFiles": "الحد الأقصى للملفات هو ",
+      "MaximumFile": "الحد الأقصى للملفات هو ",
+      "MaximumSize": "الحجم الأقصى للملف هو ",
+      "FileSelected": "لقد قمت بالفعل بتحميل هذا الملف من قبل",
+      "Required": "مطلوب ارفاق هذا الملف",
+      "AllowedTypes": "الأنواع المسموح بها هي ",
+      "AllowedType": "الأنواع المسموح بها هي",
+      "Mb": "ميجا بايت"
+    },
+    "Failed": "فشل تحميل المرفق",
+    "Msg": "اسحب ملفك هنا، أو",
+    "SubMsg": "يدعم::",
+    "MaxFilesMsg": "العدد الأقصى للملفات المسموح برفعها: "
+  },
+  "required_validation": "هذا الحقل إجباري.",
+  "min_validation": "أقل قيمة ",
+  "max_validation": "أكبر قيمة ",
+  "minlength_validation": "الحد الأدنى ",
+  "maxlength_validation": "الحد الأقصى ",
+  "email_validation": "البريد الإلكترونى غير صحيح.",
+  "arabicWord_validation": "من فضلك إدخل حروف عربي.",
+  "englishWord_validation": "من فضلك إدخل حروف انجليزي.",
+  "confirmPassword_validation": "الرجاء إدخال نفس كلمة المرور."
+}

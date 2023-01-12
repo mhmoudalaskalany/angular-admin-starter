@@ -1,0 +1,87 @@
+@import "style";
+
+::ng-deep app-sidebar-list-item {
+    width: 100%;
+
+    .mat-list {
+        .mat-list-item {
+            height: max-content !important;
+
+            .mat-list-item-content {
+                padding: 0 !important;
+            }
+        }
+    }
+
+    .each {
+        border-inline-start: 5px solid transparent;
+        padding-inline: calc(1rem + 1.5px);
+        overflow: hidden;
+        transform: translate(-100%, 0);
+
+        // &.rtl {
+        //     transform: translate(100%, 0);
+        // }
+
+        &:not(.h-max) {
+            height: 45px;
+            max-height: 45px;
+        }
+
+        @include small-screen {
+            transform: translate(0, 0);
+        }
+
+        svg {
+            min-width: 20px;
+            transform: rotate(0deg);
+
+            &.animate {
+                transform: rotate(180deg);
+            }
+
+            // path {
+            //     opacity: .6;
+            // }
+        }
+
+        .text-secondary {
+            transition: all .25s ease;
+            transform: scale(0.9);
+        }
+
+        &.active,
+        &:hover {
+            background-color: rgba(0, 0, 0, 0.2);
+            border-inline-start: 5px solid $secondary;
+        }
+
+        &.active {
+            svg {
+                transform: scale(1.12);
+
+                &.animate {
+                    transform: scale(1.12) rotate(180deg);
+                }
+
+                path {
+                    opacity: 1;
+                }
+            }
+
+            .text-secondary {
+                transform: scale(1.05);
+            }
+        }
+    }
+
+    .nested-items {
+        height: 0;
+        overflow: hidden;
+        transition: all 0.5s ease;
+
+        &.showContent {
+            margin: .5rem 0;
+        }
+    }
+}

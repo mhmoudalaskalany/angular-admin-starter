@@ -1,0 +1,32 @@
+<div class="modal-container d-flex flex-column" (isEnglish)="isEnglish = $event">
+    <div class="modal-header bg-header" mat-dialog-header>
+        <h1 class="m-0 font-22 regular text-primary d-flex align-items-center" mat-dialog-title>
+            {{ 'USER_MANAGEMENT.PERMISSIONS.ASSIGN_PERMISSION' | translate }}
+            <span class="d-flex align-items-center" *ngIf="role">
+                <span class="mx-1">-</span>
+                {{ isEnglish ? role.nameEn: role.nameAr }}
+            </span>
+        </h1>
+    </div>
+
+    <div class="px-4 pt-2 pb-4 m-0 bg-light" mat-dialog-content style="min-height: 30vh; height: max-content;">
+        <form method="post" class="row justify-content-center mt-3" [formGroup]="assignPermissionFormGroup" *ngIf="assignPermissionFormGroup">
+            <div class="col-lg-6">
+                <app-dropdown [formGroup]="assignPermissionFormGroup" [options]="permissions" controlName="permissionsIds" [isMulti]="true"
+                              [placeholder]="'USER_MANAGEMENT.PERMISSIONS.TITLE' | translate">
+                </app-dropdown>
+            </div>
+        </form>
+    </div>
+
+    <div class="modal-footer w-100 d-flex justify-content-end" mat-dialog-actions>
+        <button class="main-btn font-14 text-error px-4" type="button" mat-flat-button mat-dialog-close>
+            {{ 'ACTIONS.CANCEL' | translate }}
+        </button>
+
+        <button class="main-btn main font-14 text-white px-4 m-inline-start-3" type="submit" (click)="submit()" [disabled]="assignPermissionFormGroup?.invalid"
+                mat-flat-button>
+            {{ 'ACTIONS.SAVE' | translate }}
+        </button>
+    </div>
+</div>

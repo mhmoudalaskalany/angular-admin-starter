@@ -1,0 +1,320 @@
+{
+  "Title": "POS System",
+  "ACCOUNT": {
+    "LOGOUT": "Sign Out",
+    "SIGNIN": "Sign-in",
+    "SIGNIN_SUBTITLE": "Start your session",
+    "SIGNUP": "Sign-up your account"
+  },
+  "DASHBOARD": {
+    "TITLE": "Dashboard"
+  },
+  "SHOPPING": {
+    "TITLE": "Item Shopping",
+    "ITEMS": "Items",
+    "ADD": "Add Product",
+    "EDIT": "Edit Product",
+    "PRICING": "Product Pricing",
+    "PRODUCT_PRICE": "Product Price",
+    "DELIVERY": "Delivery Serive",
+    "LOADING_AND_UNLOADING": "Loading And Unloading Service",
+    "SERVICES_AMOUNT": "Product Services Amount",
+    "TOTAL_UNIT_PRICE": "Total Unit Price",
+    "PROFIT_RATIO": "Profit Ratio",
+    "PROFIT_RATIO_PER_UNIT": "Profit Ratio Per Unit",
+    "NET_AMOUNT":"Unit Price After Profit Ratio",
+    "FINAL_PRODUCT_PRICE": "Final Product Price",
+    "POS": "POS System",
+    "TOTAL_QUANTITY_PRICE": "Total Quantity Price",
+    "CART": "Shopping Cart",
+    "PRODUCTS": "Products",
+    "PAID_AMOUNT": "Paid Amount",
+    "SUB_TOTAL": "Sub Total",
+    "GRAND_TOTAL": "Grand Total",
+    "DUE_AMOUNT": "Due Amount",
+    "ADD_DAMAGED_PRODUCT": "Add Damaged Product",
+    "EDIT_DAMAGED_PRODUCT": "Edit Damaged Product"
+  },
+  "PAYMENTS": {
+    "TITLE": "Payments",
+    "TRANSACTION_STATUS": "Transaction Status",
+    "TOTAL_SOLD_PRODUCTS": "Total Sold Products",
+    "TOTAL_TRANSACTIONS": "Total Transactions",
+    "EDIT": "Edit Payment",
+    "BILL": "Bill Report",
+    "DEFERRED_SHOPPERS": "Deferred Shoppers",
+    "SHOPPERS": "Shoppers"
+  },
+  "ITEM_ANALYSIS": {
+    "TITLE": "Item Analysis",
+    "LIST_OF_ITEMS": "List of Items",
+    "OUT_OF_STOCK": "Out of Stock",
+    "LOW_IN_STOCK": "Low in Stock",
+    "DAMAGED_ITEMS": "Damaged Items",
+    "ITEMS_HISTORY": "Items History",
+    "ITEMS_BARCODES": "Items Barcodes",
+    "ARCHIVE_INVOICES": "Archive Invoices"
+  },
+  "ARCHIVE_INVOICES": {
+    "ADD_INVOICE": "Add Invoice",
+    "EDIT_INVOICE": "Edit Invoice"
+  },
+  "SETTINGS": {
+    "TITLE": "Settings",
+    "CATEGORIES": {
+      "TITLE": "Categories",
+      "ADD": "Add Category",
+      "EDIT": "Edit Category"
+    },
+    "CURRENCIES": {
+      "TITLE": "Currencies",
+      "ADD": "Add Currency",
+      "EDIT": "Edit Currency",
+      "CURRENCY": "Currency"
+    },
+    "PAYMENTTYPES": {
+      "TITLE": "Payment Types",
+      "ADD": "Add Payment Type",
+      "EDIT": "Edit Payment Type",
+      "PAYMENT_TYPE": "Payment Type"
+    },
+    "SUPPLIERS": {
+      "TITLE": "Suppliers",
+      "ADD": "Add Supplier",
+      "EDIT": "Edit Supplier"
+    },
+    "UNITOFMEASURES": {
+      "TITLE": "Unit Of Measures",
+      "ADD": "Add Unit Of Measures",
+      "EDIT": "Edit Unit Of Measures"
+    },
+    "WAREHOUSES": {
+      "TITLE": "Warehouses",
+      "ADD": "Add Warehouse",
+      "EDIT": "Edit Warehouse"
+    },
+    "SHOPS": {
+      "TITLE": "Shops",
+      "ADD": "Add Shop",
+      "EDIT": "Edit Shop"
+    },
+    "CUSTOMERS": {
+      "TITLE": "Customers",
+      "ADD": "Add Customer",
+      "EDIT": "Edit Customer",
+      "CUSTOMER": "Customer"
+    }
+  },
+  "USER_MANAGEMENT": {
+    "TITLE": "User Management",
+    "USERS": {
+      "TITLE": "Users",
+      "ADD": "Add User",
+      "EDIT": "Edit User"
+    },
+    "ROLES": {
+      "TITLE": "Roles",
+      "ADD": "Add Role",
+      "EDIT": "Edit Role"
+    },
+    "PERMISSIONS": {
+      "TITLE": "Permissions",
+      "ADD": "Add Permission",
+      "EDIT": "Edit Permission",
+      "ASSIGN_PERMISSION": "Assign permission to a role"
+    },
+    "LOGINHISTORY": {
+      "TITLE": "Login History"
+    }
+  },
+  "REPORTS": {
+    "TITLE": "Report Analysis",
+    "HIGHEST_EARNING": "Highest Earning",
+    "LOWEST_EARNING": "Lowest Earning",
+    "HIGH_IN_DEMAND": "High In Demand",
+    "LOW_IN_DEMAND": "Low In Demand",
+    "TRANSACTIONS_BY_YEAR": "Transactions By Year",
+    "TRANSACTIONS_BY_MONTH": "Transactions By Month",
+    "TRANSACTIONS_BY_DAY": "Transactions By Day"
+  },
+  "TABLE": {},
+  "FIELDS": {
+    "EMAIL": "Email",
+    "MOBILE": "Mobile Number",
+    "NAME": "Name",
+    "EN": " (EN)",
+    "AR": " (AR)",
+    "FULL_NAME": "Full Name",
+    "COMPANY_NAME": "Company Name",
+    "COMPANY_EMAIL": "Company Email",
+    "COMPANY_ADDRESS": "Company Address",
+    "USERNAME": "Username",
+    "PASSWORD": "Password",
+    "CONFIRM_PASSWORD": "Confirm Password",
+    "MESSAGE": "Message",
+    "UNIT_PRICE": "Unit Price",
+    "SELL_PRICE": "Sell Price",
+    "QUANTITY": "Quantity",
+    "DAMAGE_REASON": "Damage Reason",
+    "TOTAL_DAMAGED_PRODUCTS": "Total Damaged Products",
+    "TOTAL_STOCK": "Total Stock",
+    "PRODUCT": "Product Name",
+    "CATEGORY": "Category",
+    "SUPPLIER": "Supplier",
+    "WAREHOUSE": "Warehouse",
+    "WAREHOUSE_VALUE": "Products Count in the Warehouse",
+    "SHOP": "Shop",
+    "MEASURE": "Measure",
+    "MEASURE_VALUE": "Measure Value",
+    "SKU": "SKU",
+    "MANUFATURE_DATE": "Manufature Date",
+    "CREATED_DATE": "Created Date",
+    "MODIFIED_DATE": "Modified Date",
+    "EXPIRATION_DATE": "Expiration Date",
+    "CODE": "Code",
+    "NOTE": "Note",
+    "PHOTO": "Photo",
+    "DESCRIPTION": "Description",
+    "COUNTRY": "Country",
+    "SYMBOL": "Symbol",
+    "CONTACTPERSONS": "Contact Persons",
+    "CONTACT_PERSON_NAME": "Contact Person Name",
+    "CONTACT_PERSON_POSITION": "Contact Person Position",
+    "CONTACT_PERSON_PHONE_NUMBER": "Contact Person Phone Number",
+    "CONTACT_PERSON_VISIT_TIMES": "Contact Person Visit Times",
+    "PHONE": "Phone",
+    "ADDRESS": "Address",
+    "BILLINGADDRESS": "Billing Address",
+    "BARCODE": "Barcode",
+    "PLATFORM": "Platform",
+    "IPADDRESS": "IP Address",
+    "LOGINSTATUS": "Login Status",
+    "REASON": "Reason",
+    "LOGINDATE": "Login Date",
+    "AUTHENTICATIONTYPE": "Authentication Type",
+    "CONFIRMPASSWORD": "Confirm Password",
+    "ROLE": "Role",
+    "AMOUNT": "Amount",
+    "TOTAL_AMOUNT": "Total Amount",
+    "NET_AMOUNT": "Net Amount",
+    "REFERENCE_NO": "Reference No",
+    "TOTAL": "Total",
+    "COMMON_CHARGE": "Common Charge",
+    "DISCOUNT": "Discount (%)",
+    "DISCOUNT_AMOUNT": "Discount Amount",
+    "TAX": "Tax (%)",
+    "TAX_AMOUNT": "Tax Amount",
+    "VAT": "Vat (%)",
+    "VAT_AMOUNT": "Vat Amount",
+    "DELIVERY": "Total Delivery Cost",
+    "LOADING_AND_UNLOADING":"Total Loading And Unloading Cost",
+    "PROFIT_RATIO_PERCENTAGE": "Profit Ratio Percentage (%)",
+    "DELIVERY_AMOUNT": "Delivery Amount",
+    "INVOICE_NUMBER": "Invoice Number",
+    "INVOICE_IMAGE": "Invoice Image"
+  },
+  "ACTIONS": {
+    "TITLE": "Actions",
+    "LOGIN": "Login",
+    "REGISTER": "Register",
+    "RESEND": "Resend",
+    "SUBMIT": "Submit",
+    "SAVE": "Save",
+    "CANCEL": "Cancel",
+    "EDIT": "Edit",
+    "VIEW": "View",
+    "DELETE": "Delete",
+    "CONFIRM": "Confirm",
+    "ASSIGN": "Assign",
+    "ADD": "Add",
+    "CLOSE": "Close",
+    "NEXT": "Next",
+    "BACK": "Back",
+    "EXPORT_PDF": "Export PDF",
+    "EXPORT_EXCEL": "Export Excel",
+    "SEARCH": "Search",
+    "PRINT": "Print",
+    "CHECKOUT": "Checkout",
+    "ADD_TO_CART": "Add to Cart",
+    "DOWNLOAD": "Download",
+    "GENERATE": "Generate",
+    "PRODUCT_PRICING": "Product Pricing",
+    "HOLD_PAYMENT": "Hold Payment",
+    "APPROVE_PRICE": "Approve Price"
+  },
+  "ERROR": {
+    "404": "PAGE NOT FOUND",
+    "401": "UNAUTHORIZED"
+  },
+  "EMPTY": {
+    "NO_ITEMS": "There's no options"
+  },
+  "TITLES": {
+    "HOLD_PAYMENT": "You must choose a customer first."
+  },
+  "ALERT": {
+    "POINTS_DISCOUNT": "I want to apply the discount amount on this payment. "
+  },
+  "Validation": {
+    "InvalidEnglishName": "Name Should Be English Characters Only And More Than 3 And Less Than 100",
+    "InvalidArabicName": "Name Should Be Arabic Characters Only And More Than 3 And Less Than 100",
+    "UserNameTaken": "User Name Already Taken",
+    "EmailTaken": "Email Already Taken",
+    "DeleteConfirmation": "Delete Confirmation",
+    "DeleteMessage": "Are you sure that you want to delete it?",
+    "DeleteSuccess": "Deleted Successfully",
+    "DeleteError": "Error In Deleting",
+    "AddSuccess": "Added Successfully",
+    "AddError": "Error In Adding",
+    "UpdateSuccess": "Updated Successfully",
+    "UpdateError": "Error In Updating",
+    "LoginSuccess": "Login Successfully",
+    "GetError": "Error getting Data From Server",
+    "InternalServerError": "Internal Server Error",
+    "PasswordMessage": "Password should have minimum 8 characters, at least 1 uppercase letter, 1 lowercase letter and 1 number",
+    "PasswordMismatchMessage": "New Password Value Is Not Matched",
+    "PasswordChangedSuccess": "Password Changed Successfully",
+    "UpdatingUserErrorAfterChangePassword": "Error Updating Info After Changing Password",
+    "CurrentPasswordIncorrect": "Old Password Is Incorrect",
+    "ServerError": "Server Error",
+    "SuccessUploadingImage": "Image Updated Successfully",
+    "ErrorUploadingImage": "Error Updating Image",
+    "WrongUserOrPass": "Wrong Username Or Password",
+    "InvalidOtp": "Invalid Or Expired Otp",
+    "PhoneNumberOrEmailAlreadyExist": "Phone Number Or Email Already Exist",
+    "EmailAlreadyExist": "Email Already Exist",
+    "PhoneNumberAlreadyExist": "Phone Number Already Exist",
+    "ACTION_MESSAGE": "Are you sure that you want to this action?",
+    "APPROVE_PRICE_CONFIRMATION": "Approve Price Confirmation"
+  },
+  "Attachment": {
+    "Attachment": "Attachment",
+    "Attachments": "Attachments",
+    "AttachmentName": "Attachment Name",
+    "Browse": "Add",
+    "AttachmentSize": "Attachment Size",
+    "AttachmentValidation": {
+      "MaximumFiles": "The maximum files are ",
+      "MaximumFile": "The maximum files is ",
+      "MaximumSize": "The maximum size of file is",
+      "FileSelected": "You already uploaded this file before",
+      "Required": "Attachment file is required",
+      "AllowedTypes": "The allowed types are ",
+      "AllowedType": "The allowed types is ",
+      "Mb": "MB"
+    },
+    "Failed": "Failed to upload the attachment",
+    "Msg": "Drag your file here, or",
+    "SubMsg": "Supports:",
+    "MaxFilesMsg": "Max number of files: "
+  },
+  "required_validation": "This field is required.",
+  "min_validation": "Min Value ",
+  "max_validation": "Max Value ",
+  "minlength_validation": "Min Length ",
+  "maxlength_validation": "Max Length ",
+  "email_validation": "Email isn't valid.",
+  "arabicWord_validation": "Please enter arabic characters.",
+  "englishWord_validation": "Please enter english characters.",
+  "confirmPassword_validation": "Please enter the same password."
+}

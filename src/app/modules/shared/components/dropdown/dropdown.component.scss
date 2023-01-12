@@ -1,0 +1,202 @@
+@import "style";
+
+.space {
+    margin-right: 16px;
+
+    &.rtl {
+        margin-left: 16px;
+        margin-right: unset;
+    }
+}
+
+::ng-deep app-dropdown {
+    width: 100%;
+
+    .dropdown {
+        &.rtl {
+            .ng-select {
+                .ng-select-container {
+                    .ng-arrow-wrapper {
+                        margin-inline-start: 1rem;
+
+                        .ng-arrow {
+                            right: unset;
+                            left: 10px;
+                        }
+                    }
+                }
+            }
+        }
+
+        .ng-select {
+            padding-bottom: 0.4em;
+
+            &.ng-select-multiple {
+                .ng-select-container {
+                    &.ng-has-value {
+                        align-items: center;
+
+                        .ng-value-container {
+                            padding: .4375em 0;
+
+                            .ng-placeholder {
+                                transform: none;
+                            }
+
+                            .ng-value {
+                                display: none;
+                            }
+                        }
+                    }
+                }
+            }
+
+            &.ng-select-opened {
+                .ng-select-container {
+                    align-items: center;
+                }
+            }
+
+            .ng-select-container {
+                min-height: 35px;
+                overflow: visible;
+
+                &.ng-has-value {
+                    align-items: flex-end;
+
+                    .ng-value-container {
+                        height: 25px;
+
+                        .ng-value {
+                            .icon {
+                                width: 32px;
+                                height: 32px;
+
+                                &.img-rounded {
+                                    border-radius: 50%;
+                                }
+                            }
+                        }
+                    }
+                }
+
+                .ng-value-container {
+                    padding: 0;
+                    border-top: none;
+
+                    .ng-placeholder {
+                        font-size: clamp(0.8rem, 1vw, 1.75rem);
+                    }
+                }
+
+                .ng-clear-wrapper {
+                    width: 20px;
+                    height: 20px;
+                    border-top: none !important;
+                    align-self: flex-end;
+                    bottom: 12px;
+
+                    .ng-clear {
+                        font-size: 28px;
+                        width: 20px;
+                        height: 20px;
+                        display: flex;
+                        justify-content: center;
+                        align-items: center;
+                    }
+                }
+
+                .ng-arrow-wrapper {
+                    display: flex;
+                    align-items: center;
+                    justify-content: flex-end;
+                    align-self: flex-end;
+                    border-top: none !important;
+                    bottom: 10px;
+                    margin-inline-start: .25rem;
+
+                    .ng-arrow {
+                        width: 19px;
+                        height: 19px;
+                        border-left: none;
+                        border-right: none;
+                        border-top: none;
+                        margin: 0;
+                        cursor: pointer;
+                        background-image: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHhtbG5zOnhsaW5rPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5L3hsaW5rIiB3aWR0aD0iMjAiIHZpZXdCb3g9IjAgMCAyNCAyNCI+CiAgPGRlZnM+CiAgICA8cGF0aCBpZD0iYSIgZD0iTTE1LjQxNiA0Yy40MDcgMCAuNzk4LjE2MSAxLjExLjQ2Ny42MS42MjguNjEgMS42NTggMCAyLjI4NmwtNC43NCA0Ljg5NSA0Ljc1NiA0Ljg5NWMuNjEuNjI4LjYxIDEuNjU4IDAgMi4yODYtLjYxLjYyOC0xLjYxMS42MjgtMi4yMjEgMGwtNS44NjctNi4wMzhDOC4xNTYgMTIuNDg1IDggMTIuMDgzIDggMTEuNjQ4YzAtLjQzNS4xNzItLjgzNy40NTQtMS4xNDNsNS44NTEtNi4wMzhjLjMxMy0uMzA2LjcyLS40NjcgMS4xMS0uNDY3eiIvPgogIDwvZGVmcz4KICA8dXNlIGZpbGw9IiM3ODM1MEYiIGZpbGwtcnVsZT0ibm9uemVybyIgdHJhbnNmb3JtPSJtYXRyaXgoMCAtMSAtMSAwIDI0LjE1IDI0LjE1KSIgeGxpbms6aHJlZj0iI2EiLz4KPC9zdmc+");
+                    }
+                }
+            }
+
+            .ng-dropdown-panel {
+                top: 100%;
+
+                .ng-dropdown-panel-items {
+                    >div {
+                        background: $white;
+
+                        .ng-optgroup {
+                            background: unset;
+                            color: $primary;
+
+                            &:hover {
+                                background-color: $primary !important;
+                                color: $white;
+                            }
+                        }
+
+                        .ng-option {
+                            display: flex;
+                            line-height: 2em;
+                            color: #1d252d;
+                            background-color: #fff !important;
+
+                            * {
+                                transition: all 0s ease !important;
+                            }
+
+                            &:not(&.ng-option-disabled) {
+
+                                &:hover,
+                                &.ng-option-selected {
+                                    background-color: $primary !important;
+                                    color: $white;
+                                }
+                            }
+
+                            &.ng-option-child {
+                                padding: 0 16px;
+                            }
+
+                            &.ng-option-disabled {
+                                color: rgba(0, 0, 0, 0.38) !important;
+                            }
+
+                            .option {
+                                align-items: center;
+
+                                .icon {
+                                    width: 20px;
+                                    height: 14px;
+
+                                    &.img-rounded {
+                                        border-radius: 50%;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+        .value-icon {
+            width: 28px;
+            height: 28px;
+        }
+
+        .value-label {
+            height: 28px;
+        }
+    }
+}

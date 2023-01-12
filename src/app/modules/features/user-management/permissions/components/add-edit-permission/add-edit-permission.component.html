@@ -1,0 +1,36 @@
+<div class="modal-container d-flex flex-column">
+    <div class="modal-header bg-header" mat-dialog-header>
+        <h1 class="m-0 font-24 regular text-primary" mat-dialog-title>{{ pageTitle | translate }}</h1>
+    </div>
+
+    <div class="px-4 pt-2 pb-4 m-0 bg-light" mat-dialog-content>
+        <form method="post" class="row" [formGroup]="lookupFormGroup" *ngIf="lookupFormGroup">
+            <div class="col-lg-6">
+                <app-input-text [formGroup]="lookupFormGroup" controlName="nameEn" validatorLanguageType="en"
+                                [label]="('FIELDS.NAME' | translate) + ('FIELDS.EN' | translate)">
+                </app-input-text>
+            </div>
+
+            <div class="col-lg-6">
+                <app-input-text [formGroup]="lookupFormGroup" controlName="nameAr" validatorLanguageType="ar"
+                                [label]="('FIELDS.NAME' | translate) + ('FIELDS.AR' | translate)">
+                </app-input-text>
+            </div>
+
+            <div class="col-lg-6">
+                <app-input-text [formGroup]="lookupFormGroup" controlName="code" [label]="'FIELDS.CODE' | translate"></app-input-text>
+            </div>
+        </form>
+    </div>
+
+    <div class="modal-footer w-100 d-flex justify-content-end" mat-dialog-actions>
+        <button class="main-btn font-14 text-error px-4" type="button" mat-flat-button mat-dialog-close>
+            {{ 'ACTIONS.CANCEL' | translate }}
+        </button>
+
+        <button class="main-btn main font-14 text-white px-4 m-inline-start-3" type="submit" (click)="submit()" [disabled]="lookupFormGroup?.invalid"
+                mat-flat-button>
+            {{ (pageType === 'add' ? 'ACTIONS.SUBMIT' : 'ACTIONS.SAVE') | translate }}
+        </button>
+    </div>
+</div>

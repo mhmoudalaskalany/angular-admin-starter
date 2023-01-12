@@ -1,0 +1,20 @@
+@import "style";
+
+:host ::ng-deep.mat-checkbox {
+    .mat-checkbox-layout {
+        margin: 0;
+    }
+
+    .mat-ripple-element {
+        background-color: $primary;
+    }
+
+    &.mat-checkbox-checked,
+    &.mat-checkbox-indeterminate {
+        &.mat-bg-primary {
+            .mat-checkbox-background {
+                background-color: $primary;
+            }
+        }
+    }
+}

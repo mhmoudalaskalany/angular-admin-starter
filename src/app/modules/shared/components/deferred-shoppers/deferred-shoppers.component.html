@@ -1,0 +1,9 @@
+<div class="deferred-shoppers mt-4" *ngIf="deferredShoppers.length">
+    <h3 class="m-0 regular font-18 text-middle">{{ 'PAYMENTS.DEFERRED_SHOPPERS' | translate }}</h3>
+
+    <div class="shoppers bg-light mt-1 px-2 pt-3 pb-2">
+        <app-dropdown [formGroup]="deferredShoppersFormGroup" [options]="deferredShoppers" controlName="shopperId"
+                      [placeholder]="'PAYMENTS.SHOPPERS' | translate" (selected)="getSelectedDeferredShopper($event)">
+        </app-dropdown>
+    </div>
+</div>

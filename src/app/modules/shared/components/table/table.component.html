@@ -1,0 +1,81 @@
+<p-table #table [columns]="cols" [value]="data" [sortField]="'id'" [sortOrder]="1" [lazy]="true" [showCurrentPageReport]="false" [paginator]="true"
+         [rowsPerPageOptions]="[5,10,15,20]" [rows]="bodyOptions?.pageSize || data.length" [pageLinks]="3" [totalRecords]="totalCount" [autoLayout]="true"
+         (onLazyLoad)="loadLazyLoadedData($event)" styleClass="p-datatable-generic" (window:resize)="initializeInputs()">
+    <ng-template pTemplate="header" let-columns>
+        <!-- Table Headers-->
+        <tr class="table-header">
+            <th *ngFor="let col of columns" [pSortableColumn]="col.sortCol || col.field">
+                {{ col.header | translate }}
+                <p-sortIcon [field]="col.field" *ngIf="col.sort"></p-sortIcon>
+            </th>
+
+            <!-- Show Action In Header Row-->
+            <th class="actions" *ngIf="actions?.length"> {{ 'ACTIONS.TITLE' | translate}}</th>
+        </tr>
+
+        <!-- Filter Controls-->
+        <tr class="table-search-controls" *ngIf="isFilterEnabled">
+            <th class="control" *ngFor="let col of columns" [ngSwitch]="col.filter">
+                <ng-container *ngSwitchCase="true">
+                    <div class="form-group has-search" style="max-width: 140px;" *ngIf="col.filterMode === 'text'">
+                        <input class="form-control search-box" type="text" (input)="filter($event.target, col.field, col.filterColumnName, col.dataType)"
+                               placeholder="{{  col.header | translate }}">
+                    </div>
+                </ng-container>
+            </th>
+
+            <th class="actions" *ngIf="actions?.length"></th>
+        </tr>
+    </ng-template>
+
+    <ng-template pTemplate="body" let-row let-columns="columns">
+        <!-- Table Rows-->
+        <tr class="table-body" [ngClass]="{'tr-body-background': getCellData(row , 'isLate'), 'specificExpression': getCustomClass(row) }">
+            <!-- Display Data-->
+            <td *ngFor="let col of columns">
+                <ng-container [ngSwitch]="col.filterMode">
+                    <span *ngSwitchCase="'text'">{{ getCellData(row, col.field) }}</span>
+                    <span *ngSwitchCase="'date'" style="direction: ltr !important;">
+                        {{ getCellData(row, col.field) | date: col.dateFormat ? col.dateFormat : 'dd/MM/YYYY hh:mm a' }}
+                    </span>
+                    <span *ngSwitchCase="'none'">{{ getCellData(row, col.field) }}</span>
+                    <span *ngSwitchCase="'image'" style="padding: 5px;">
+                        <img [src]="getCellData(row, col.field)" alt="" style="width: 50px; height: 50px; border-radius: 25px;"
+                            onerror="this.src = ''">
+                    </span>
+                </ng-container>
+            </td>
+
+            <td class="actions" *ngIf="actions?.length">
+                <span [ngClass]="{'m-inline-start-2': actionIndex > 0, 'd-none': !action.isEdit && !action.isDelete && !action.isView && action.displayBasedOn && row[action.displayBasedOn]}"
+                      *ngFor="let action of actions; let actionIndex = index">
+                    <!-- && permissions.indexOf('Permission.'+ componentName+ '.Edit') > -1 -->
+                    <span *ngIf="action.isEdit">
+                        <a [routerLink]="getFinalRoute(action.route, row.id)">
+                            <i class="{{ action.icon }} icon {{ action.color }}" [title]="'ACTIONS.' + action.name | translate"></i>
+                        </a>
+                    </span>
+
+                    <!-- && permissions.indexOf('Permission.'+ componentName + '.Delete') > -1 -->
+                    <span *ngIf="action.isDelete">
+                        <i class="{{ action.icon }} icon {{ action.color }}" (click)="openDeleteModal(row.id)" [title]="'ACTIONS.' + action.name | translate"></i>
+                    </span>
+
+                    <span *ngIf="action.isView">
+                        <a [routerLink]="getFinalRoute(action.route, (row.id || row.taskId))">
+                            <i class="{{ action.icon }} icon {{ action.color }}" [title]="'ACTIONS.' + action.name | translate"></i>
+                        </a>
+                    </span>
+
+                    <span *ngIf="action.displayBasedOn && !row[action.displayBasedOn]">
+                        <i class="{{ action.icon }} icon {{ action.color }}" (click)="action?.call(row)" [title]="'ACTIONS.' + action.name | translate"></i>
+                    </span>
+
+                    <span *ngIf="!action.isEdit && !action.isDelete && !action.isView && !action.displayBasedOn">
+                        <i class="{{ action.icon }} icon {{ action.color }}" (click)="action?.call(row)" [title]="'ACTIONS.' + action.name | translate"></i>
+                    </span>
+                </span>
+            </td>
+        </tr>
+    </ng-template>
+</p-table>

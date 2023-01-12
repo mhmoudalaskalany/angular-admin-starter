@@ -1,0 +1,17 @@
+{
+  "name": "angular-admin-starter",
+  "short_name": "angular-admin-starter",
+  "theme_color": "#343a40",
+  "background_color": "#f9f5e9",
+  "display": "standalone",
+  "scope": "./",
+  "start_url": "./",
+  "icons": [
+    {
+      "src": "assets/icons/icon-72x72.png",
+      "sizes": "72x72",
+      "type": "image/png",
+      "purpose": "maskable any"
+    }
+  ]
+}

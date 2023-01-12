@@ -1,0 +1,3 @@
+<div class="checkbox-wrapper">
+    <mat-checkbox [checked]="checked" [color]="color" (change)="whenChecked($event)" (click)="$event.stopPropagation()">{{ label }}</mat-checkbox>
+</div>

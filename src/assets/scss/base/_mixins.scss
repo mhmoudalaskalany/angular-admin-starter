@@ -1,0 +1,177 @@
+/* How to use */
+/*
+.some-div{
+  @include small-screen{
+    width: 100%;
+  }
+}
+*/
+
+/* Screen Sizes */
+
+// only small screen 
+@mixin only-small-screen {
+  @media only screen and (max-width: 640px) {
+    @content;
+  }
+}
+
+// Small Screens
+@mixin small-screen {
+  @media only screen and (min-width: 640px) {
+    @content;
+  }
+}
+
+// Medium Screens
+@mixin medium-screen {
+  @media only screen and (min-width: 768px) {
+    @content;
+  }
+}
+
+// Normal Screens
+@mixin normal-screen {
+  @media only screen and (min-width: 1024px) {
+    @content;
+  }
+}
+
+// Large Screens
+@mixin large-screen {
+  @media only screen and (min-width: 1280px) {
+    @content;
+  }
+}
+
+// xLarge Screens
+@mixin xlarge-screen {
+  @media only screen and (min-width: 1400px) {
+    @content;
+  }
+}
+
+// xxLarge Screens
+@mixin xxlarge-screen {
+  @media only screen and (min-width: 1636px) {
+    @content;
+  }
+}
+
+// xxxLarge Screens
+@mixin xxxlarge-screen {
+  @media only screen and (min-width: 2200px) {
+    @content;
+  }
+}
+
+@mixin gradient-background($degree, $first-color, $second-color) {
+  background-image: linear-gradient($degree, $first-color, $second-color);
+}
+
+// border-radius mixin
+/*
+  ex : @include bRadius(1rem);
+*/
+@mixin bRadius($r) {
+  border-radius: $r;
+  -webkit-border-radius: $r;
+  -moz-border-radius: $r;
+  -o-border-radius: $r;
+}
+
+// vendor prefixes mixin
+/*
+  ex :  @include prefixer(background-size,cover,webkit moz o);
+*/
+@mixin prefixer($property, $value, $prefixes: ()) {
+  @each $prefix in $prefixes {
+    #{'-'+ $prefix + '-' + $property}: $value;
+  }
+
+  #{$property}: $value;
+}
+
+/**
+* Media Breakpoints.
+*
+* Ex:
+*   @include bp-max-width($bp-mobile-max-tablet-min) {
+*     SCSS Rules .....
+*   }
+*/
+
+@mixin bp-max-width() {
+  @media only screen and (max-width: 640px) {
+    @content;
+  }
+}
+
+@mixin bp-md-width {
+  @media only screen and (width: 768px) {
+    @content;
+  }
+}
+
+@mixin xlarge {
+  @media only screen and (min-width: 1400px) {
+    @content;
+  }
+}
+
+@mixin IncludeRtl() {
+  body.rtl {
+    @content;
+  }
+}
+
+// Transition
+@mixin transition($args) {
+  -webkit-transition: $args;
+  -moz-transition: $args;
+  -ms-transition: $args;
+  -o-transition: $args;
+  transition: $args;
+}
+
+// coloring
+@mixin block-colors($back-color, $fore-color, $border: 0 solid transparent) {
+  background-color: $back-color;
+  color: $fore-color;
+  border: $border;
+}
+
+// box shadows
+@mixin shadow() {
+  -webkit-box-shadow: 0 0 8px 2px $shadow-black;
+  -moz-box-shadow: 0 0 8px 2px $shadow-black;
+  box-shadow: 0 0 8px 2px $shadow-black;
+}
+
+/* Gradient Color*/
+@mixin button-gradient-variant($value) {
+  background: $value;
+  border: 0;
+
+  &:not([disabled]):not(.disabled):active,
+  &:not([disabled]):not(.disabled).active,
+  .show>&.dropdown-toggle {
+    background: $value;
+  }
+
+  &:hover {
+    opacity: 0.8;
+  }
+
+  &:not(.btn-gradient-light) {
+    color: $white;
+
+    &:hover,
+    &:focus,
+    &:active {
+      color: $white;
+    }
+  }
+
+  transition: all 0.3s ease;
+}
