@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { MatDialog } from '@angular/material/dialog';
+import { MatLegacyDialog as MatDialog } from '@angular/material/legacy-dialog';
 import { Router, ActivatedRoute, Data } from '@angular/router';
 import { Subject } from 'rxjs';
 import { first, takeUntil } from 'rxjs/operators';

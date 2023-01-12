@@ -1,6 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { UntypedFormGroup } from '@angular/forms';
-import { MatFormFieldAppearance } from '@angular/material/form-field';
+import { MatLegacyFormFieldAppearance as MatFormFieldAppearance } from '@angular/material/legacy-form-field';
 
 @Component({
   selector: 'app-input-text',

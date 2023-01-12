@@ -8,7 +8,7 @@ import {
 } from '@angular/common/http';
 import { catchError, Observable, throwError } from 'rxjs';
 import { Router } from '@angular/router';
-import { MatDialog } from '@angular/material/dialog';
+import { MatLegacyDialog as MatDialog } from '@angular/material/legacy-dialog';
 import { TranslateService } from '@ngx-translate/core';
 import { AlertService } from '../../services/alert/alert.service';
 
