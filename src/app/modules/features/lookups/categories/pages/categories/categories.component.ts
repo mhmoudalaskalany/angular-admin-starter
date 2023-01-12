@@ -19,11 +19,9 @@ export class CategoriesComponent implements OnInit {
   private destroy$: Subject<boolean> = new Subject<boolean>();
 
   constructor(private activatedRoute: ActivatedRoute, private translation: TranslationService) { 
-    debugger;
   }
 
   ngOnInit(): void {
-    debugger;
     this.title = this.activatedRoute.snapshot.data['title'];
     this.translation.currentLanguage$.pipe(takeUntil(this.destroy$)).subscribe(() => this.initializeTableOptions());
   }
