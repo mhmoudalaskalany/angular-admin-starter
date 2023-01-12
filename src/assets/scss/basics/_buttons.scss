@@ -3,15 +3,18 @@ button {
     box-shadow: none !important;
     outline: none !important;
   }
+
   /* TODO(mdc-migration): The following rule targets internal classes of button that may no longer apply for the MDC version.*/
   .mat-mdc-button-focus-overlay {
-    background: $white;
+    background: $white !important;
   }
 }
 
 .btn-disabled {
   background-color: transparent !important;
 }
+
+
 
 .main-btn {
   border-radius: 0 !important;
@@ -33,27 +36,34 @@ button {
   }
 
   &.white {
-    background-color: $white;
+    background-color: $white !important;
     color: $primary;
+
+
   }
 
   &.main {
-    background-color: $primary;
-    color: $white;
+    background-color: $primary !important;
+    color: $white !important;
+
+    &:disabled {
+      color: $white !important;
+      background-color: #e3e5ee !important;
+    }
   }
 
   &.light {
-    background-color: $primary-light;
-    color: $white;
+    background-color: $primary-light !important;
+    color: $white !important;
   }
 
   &.secondary {
-    background-color: $secondary;
+    background-color: $secondary !important;
     color: $white;
 
     &:disabled {
-      background-color: #e3e5ee;
-      color: #ccc;
+      background-color: #e3e5ee !important;
+      color: #ccc !important;
     }
   }
 
@@ -62,34 +72,34 @@ button {
   }
 
   &.dark {
-    background-color: $dark;
-    color: $white;
+    background-color: $dark !important;
+    color: $white !important;
   }
 
   &.flat {
-    border: none;
-    color: $primary;
+    border: none !important;
+    color: $primary !important;
   }
 
   &.strock {
-    border: 1.5px solid $dark;
-    color: $black;
-    background-color: transparent;
+    border: 1.5px solid $dark !important;
+    color: $black !important;
+    background-color: transparent !important;
 
     &.active {
-      background-color: $primary;
-      color: $white;
+      background-color: $primary !important;
+      color: $white !important;
     }
   }
 
   &.strock-bg {
-    background-color: $white;
+    background-color: $white !important;
     border-color: $primary !important;
-    color: $primary;
+    color: $primary !important;
 
     &.active {
-      background-color: $primary;
-      color: $white;
+      background-color: $primary !important;
+      color: $white !important;
     }
 
     &.danger {
@@ -110,6 +120,7 @@ button {
   &.bg-transparent {
     border: 1.5px solid transparent !important;
   }
+
   /* TODO(mdc-migration): The following rule targets internal classes of button that may no longer apply for the MDC version.*/
   .mat-mdc-button-wrapper {
     display: flex;
