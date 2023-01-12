@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { environment } from 'environments/environment';
 import { Observable, map } from 'rxjs';
+import { environment } from '../../../../../environments/environment';
 import { API_Response } from '../../interfaces/response/response';
 import { AlertService } from '../alert/alert.service';
 

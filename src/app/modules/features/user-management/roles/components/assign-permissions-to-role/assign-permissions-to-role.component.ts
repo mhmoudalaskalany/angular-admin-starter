@@ -1,11 +1,11 @@
 import { Component, Inject, OnInit, Optional } from '@angular/core';
-import { UntypedFormBuilder, UntypedFormGroup, Validators } from '@angular/forms';
-import { MatLegacyDialogRef as MatDialogRef, MAT_LEGACY_DIALOG_DATA as MAT_DIALOG_DATA } from '@angular/material/legacy-dialog';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { ActivatedRoute } from '@angular/router';
-import { Permission, Role } from 'app/modules/shared/interfaces/lookups/lookups';
-import { PermissionsService } from 'app/modules/shared/services/user-management/permissions/permissions.service';
-import { RolesService } from 'app/modules/shared/services/user-management/roles/roles.service';
 import { combineLatest } from 'rxjs';
+import { Role, Permission } from 'shared/interfaces/lookups/lookups';
+import { PermissionsService } from 'shared/services/user-management/permissions/permissions.service';
+import { RolesService } from 'shared/services/user-management/roles/roles.service';
 
 @Component({
   selector: 'app-assign-permissions-to-role',
@@ -18,10 +18,10 @@ export class AssignPermissionsToRoleComponent implements OnInit {
   role!: Role;
   roleId!: string;
   permissions: Permission[] = [];
-  assignPermissionFormGroup!: UntypedFormGroup;
+  assignPermissionFormGroup!: FormGroup;
 
   constructor(private dialogRef: MatDialogRef<AssignPermissionsToRoleComponent>, @Optional() @Inject(MAT_DIALOG_DATA) public data: { activatedRoute: ActivatedRoute; },
-    private fb: UntypedFormBuilder, private permissionsService: PermissionsService, private roleService: RolesService) { }
+    private fb: FormBuilder, private permissionsService: PermissionsService, private roleService: RolesService) { }
 
   ngOnInit(): void {
     this.roleId = this.data.activatedRoute.snapshot.firstChild?.paramMap.get('roleId') as string;
@@ -35,7 +35,7 @@ export class AssignPermissionsToRoleComponent implements OnInit {
   }
 
   getRolePermissions() {
-    combineLatest(this.permissionsService.permissions, this.permissionsService.getRolePermissions(this.roleId)).subscribe((permissions) => {
+    combineLatest(this.permissionsService.permissions, this.permissionsService.getRolePermissions(this.roleId)).subscribe((permissions:any) => {
       this.permissions = permissions[0];
       const rolePermission = permissions[1];
       this.initForm(rolePermission);

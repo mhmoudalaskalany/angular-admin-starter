@@ -14,6 +14,7 @@ export class AuthGuard implements CanActivate {
   canActivate(route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
     /* if user is not logged in return false and redirect to login */
+    debugger;
     if (state.url.includes('account')) {
       if (localStorage.getItem('token')) {
         this.router.navigate(['/dashboard']);
@@ -23,11 +24,11 @@ export class AuthGuard implements CanActivate {
       }
     } else {
       if (localStorage.getItem('token')) {
-        if (localStorage.getItem('userId')) {
-          return this.authService.userPermissions$.pipe(map(permissions => {
-            return true;
-          }));
-        }
+        // if (localStorage.getItem('userId')) {
+        //   return this.authService.userPermissions$.pipe(map(permissions => {
+        //     return true;
+        //   }));
+        // }
 
         return true;
       } else {

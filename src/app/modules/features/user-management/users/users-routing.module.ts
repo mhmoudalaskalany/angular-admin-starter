@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { DialogComponent } from 'app/modules/shared/components/dialog/dialog.components';
+import { DialogComponent } from 'shared/components/dialog/dialog.components';
 import { AddEditUserComponent } from './components/add-edit-user/add-edit-user.component';
 import { UsersComponent } from './pages/users/users.component';
 

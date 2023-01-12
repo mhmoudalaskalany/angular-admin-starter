@@ -1,11 +1,12 @@
 import { Component, Inject, OnInit, Optional } from '@angular/core';
-import { UntypedFormBuilder, UntypedFormGroup, Validators } from '@angular/forms';
-import { MatLegacyDialogRef as MatDialogRef, MAT_LEGACY_DIALOG_DATA as MAT_DIALOG_DATA } from '@angular/material/legacy-dialog';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { ActivatedRoute } from '@angular/router';
-import { Category, Shop } from 'app/modules/shared/interfaces/lookups/lookups';
-import { CategoriesService } from 'app/modules/shared/services/categories/categories.service';
-import { ShopsService } from 'app/modules/shared/services/shops/shops.service';
+
 import { combineLatest } from 'rxjs';
+import { Category, Shop } from 'shared/interfaces/lookups/lookups';
+import { CategoriesService } from 'shared/services/categories/categories.service';
+import { ShopsService } from 'shared/services/shops/shops.service';
 
 @Component({
   selector: 'app-add-edit-category',
@@ -17,12 +18,12 @@ export class AddEditCategoryComponent implements OnInit {
   pageTitle = '';
   pageType = '';
   lookupId = '';
-  lookupFormGroup!: UntypedFormGroup;
+  lookupFormGroup!: FormGroup;
   categories: Category[] = [];
   shops: Shop[] = [];
 
   constructor(private dialogRef: MatDialogRef<AddEditCategoryComponent>, @Optional() @Inject(MAT_DIALOG_DATA) public data: { activatedRoute: ActivatedRoute; },
-    private fb: UntypedFormBuilder, private categoriesService: CategoriesService, private shopsService: ShopsService) { }
+    private fb: FormBuilder, private categoriesService: CategoriesService, private shopsService: ShopsService) { }
 
   ngOnInit(): void {
     this.pageTitle = this.data.activatedRoute.snapshot.firstChild?.data['pageTitle'];
@@ -49,14 +50,14 @@ export class AddEditCategoryComponent implements OnInit {
   }
 
   getLookups() {
-    combineLatest(this.categoriesService.categories, this.shopsService.shops).subscribe(lookups => {
-      this.categories = lookups[0].filter(category => this.lookupId ? ![category.id, category.parentId].includes(this.lookupId) : category);
+    combineLatest(this.categoriesService.categories, this.shopsService.shops).subscribe((lookups:any) => {
+      this.categories = lookups[0].filter((category:any) => this.lookupId ? ![category.id, category.parentId].includes(this.lookupId) : category);
       this.shops = lookups[1];
     });
   }
 
   getLookup() {
-    this.categoriesService.getCategory(this.lookupId).subscribe(category => this.lookupFormGroup.patchValue(category));
+    this.categoriesService.getCategory(this.lookupId).subscribe((category:any) => this.lookupFormGroup.patchValue(category));
   }
 
   submit() {

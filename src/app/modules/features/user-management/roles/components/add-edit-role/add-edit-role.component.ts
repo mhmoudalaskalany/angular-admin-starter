@@ -1,8 +1,8 @@
 import { Component, Inject, OnInit, Optional } from '@angular/core';
-import { UntypedFormBuilder, UntypedFormGroup, Validators } from '@angular/forms';
-import { MatLegacyDialogRef as MatDialogRef, MAT_LEGACY_DIALOG_DATA as MAT_DIALOG_DATA } from '@angular/material/legacy-dialog';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { ActivatedRoute } from '@angular/router';
-import { RolesService } from 'app/modules/shared/services/user-management/roles/roles.service';
+import { RolesService } from 'shared/services/user-management/roles/roles.service';
 
 @Component({
   selector: 'app-add-edit-role',
@@ -14,10 +14,10 @@ export class AddEditRoleComponent implements OnInit {
   pageTitle = '';
   pageType = '';
   lookupId = '';
-  lookupFormGroup!: UntypedFormGroup;
+  lookupFormGroup!: FormGroup;
 
   constructor(private dialogRef: MatDialogRef<AddEditRoleComponent>, @Optional() @Inject(MAT_DIALOG_DATA) public data: { activatedRoute: ActivatedRoute; },
-    private fb: UntypedFormBuilder, private roleService: RolesService) { }
+    private fb: FormBuilder, private roleService: RolesService) { }
 
   ngOnInit(): void {
     this.pageTitle = this.data.activatedRoute.snapshot.firstChild?.data['pageTitle'];

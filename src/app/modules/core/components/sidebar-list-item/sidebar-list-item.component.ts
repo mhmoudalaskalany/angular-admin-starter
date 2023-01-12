@@ -22,7 +22,7 @@ export class SidebarListItemComponent implements OnInit {
 
   roleCode = '';
   permissions: string[] = [];
-  showConetnt = false;
+  showContent = false;
   isSidebarOpened = false;
 
   @Input() sidebarItem!: SidebarItem;
@@ -34,14 +34,14 @@ export class SidebarListItemComponent implements OnInit {
     this.sidebarService.isSidebarOpened$.subscribe(isSidebarOpened => this.isSidebarOpened = isSidebarOpened);
     // if (this.user) {
     //   this.roleCode = this.user.RoleCode;
-    //   if (this.roleCode !== 'CUSTOMER') this.showConetnt = true, this.showCollapsed();
+    //   if (this.roleCode !== 'CUSTOMER') this.showContent = true, this.showCollapsed();
     // }
 
     this.permissions = this.sidebarItem.permissions as string[];
   }
 
   collapse(children: SidebarItem['children']) {
-    if (children) this.showConetnt = !this.showConetnt, this.showCollapsed();
+    if (children) this.showContent = !this.showContent, this.showCollapsed();
   }
 
   showCollapsed() {

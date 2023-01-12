@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { UntypedFormGroup } from '@angular/forms';
+import { FormGroup } from '@angular/forms';
 import { MomentDateAdapter, MAT_MOMENT_DATE_FORMATS } from '@angular/material-moment-adapter';
 import { DateAdapter, MAT_DATE_LOCALE, MAT_DATE_FORMATS } from '@angular/material/core';
 import { MatDatepickerInputEvent } from '@angular/material/datepicker';
@@ -19,7 +19,7 @@ export class DatepickerComponent implements OnInit {
   moment = moment;
   today = moment(new Date());
 
-  @Input() formGroup: UntypedFormGroup | any;
+  @Input() formGroup: FormGroup | any;
   @Input() controlName = '';
 
   @Input() minDate = '';

@@ -1,23 +1,23 @@
 .table-wrapper {
   &.cursor-pointer {
-    .mat-table {
-      .mat-row {
+    .mat-mdc-table {
+      .mat-mdc-row {
         cursor: pointer;
       }
     }
   }
 
-  .mat-table {
+  .mat-mdc-table {
     box-shadow: none;
 
     @include small-screen {
       width: 100% !important;
     }
 
-    .mat-header-row {
+    .mat-mdc-header-row {
       background-color: rgba($color: #fff, $alpha: .37);
 
-      .mat-header-cell {
+      .mat-mdc-header-cell {
         flex: 0 0 90px;
 
         @include small-screen {
@@ -45,7 +45,7 @@
       }
     }
 
-    .mat-row {
+    .mat-mdc-row {
       background: #fff;
       border-bottom-color: transparent;
 
@@ -53,7 +53,7 @@
         background-color: rgba(221, 224, 226, 0.59);
       }
 
-      .mat-cell {
+      .mat-mdc-cell {
         flex: 0 0 90px;
 
         @include small-screen {
@@ -104,10 +104,10 @@
     }
   }
 }
-.table-wrapper .mat-table .mat-header-row .mat-header-cell {
+.table-wrapper .mat-mdc-table .mat-mdc-header-row .mat-mdc-header-cell {
   font-weight: bold;
 }
-.table-wrapper .mat-table .mat-row:hover {
+.table-wrapper .mat-mdc-table .mat-mdc-row:hover {
   background-color: $light;
   cursor: pointer;
 }

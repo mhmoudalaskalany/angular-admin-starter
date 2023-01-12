@@ -1,6 +1,5 @@
 import { Component, ElementRef, EventEmitter, Input, OnInit, Output, ViewChild } from '@angular/core';
-import { UntypedFormGroup } from '@angular/forms';
-import { API_Response } from 'app/modules/core/interfaces/response/response';
+import { FormGroup } from '@angular/forms';
 import { Observable } from 'rxjs';
 import { Attachment } from '../../interfaces/attachment/attachment';
 import { AttachmentService } from '../../services/attachment/attachment.service';
@@ -43,7 +42,7 @@ export class AttachmentComponent implements OnInit {
   /**
    * Inputs
    */
-  @Input() formGroup!: UntypedFormGroup;
+  @Input() formGroup!: FormGroup;
   @Input() controlName!: string;
   @Input() isMultiple = false;
   @Input() allowedTypes!: { type: string; maxSize: number; }[];

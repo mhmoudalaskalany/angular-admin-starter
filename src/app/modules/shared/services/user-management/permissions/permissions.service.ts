@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
-import { HttpService } from 'app/modules/core/services/http/http.service';
-import { Permission } from 'app/modules/shared/interfaces/lookups/lookups';
+import { HttpService } from 'core/services/http/http.service';
+import { Permission } from 'shared/interfaces/lookups/lookups';
 
 @Injectable({
   providedIn: 'root'

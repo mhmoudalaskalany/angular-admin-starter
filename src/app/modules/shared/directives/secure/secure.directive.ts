@@ -1,5 +1,5 @@
 import { Directive, ElementRef, Input } from '@angular/core';
-import { AuthService } from 'app/modules/core/services/auth/auth.service';
+import { AuthService } from 'core/services/auth/auth.service';
 import { Subscription } from 'rxjs';
 
 @Directive({
@@ -14,14 +14,14 @@ export class SecureDirective {
   constructor(public authService: AuthService, private eltRef: ElementRef) { }
 
   ngOnInit() {
-    this.permissionsSubscription = this.authService.userPermissions$.subscribe(userPermissions => {
-      const permissionsCodes = userPermissions.map(permission => permission.code);
+    this.permissionsSubscription = this.authService.userPermissions$.subscribe((userPermissions: any) => {
+      const permissionsCodes = userPermissions.map((permission: any) => permission.code);
 
       if (userPermissions?.length) {
         const allow = this.permissions ? this.permissions.some(x => permissionsCodes.includes(x)) : false;
-        this.applyPermissions(allow);
+        //this.applyPermissions(allow);
       } else {
-        this.applyPermissions(false);
+        //this.applyPermissions(false);
       }
     });
   }

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { UntypedFormGroup, UntypedFormBuilder } from '@angular/forms';
+import { FormGroup, FormBuilder } from '@angular/forms';
 import { Router, ActivatedRoute, NavigationEnd } from '@angular/router';
 import { Subject, filter, takeUntil } from 'rxjs';
 
@@ -15,9 +15,9 @@ export class DeferredShoppersComponent implements OnInit {
   get deferredPayments() { return JSON.parse(localStorage.getItem('paymentBody') as string) as any[] || []; }
 
   deferredShoppers = this.deferredPayments.map(each => each.customer);
-  deferredShoppersFormGroup!: UntypedFormGroup;
+  deferredShoppersFormGroup!: FormGroup;
 
-  constructor(private fb: UntypedFormBuilder, private router: Router, private activatedRoute: ActivatedRoute) { }
+  constructor(private fb: FormBuilder, private router: Router, private activatedRoute: ActivatedRoute) { }
 
   ngOnInit(): void {
     this.router.events.pipe(filter((event) => event instanceof NavigationEnd), takeUntil(this.destroy$)).subscribe((e: any) => {

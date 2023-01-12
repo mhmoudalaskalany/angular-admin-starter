@@ -1,6 +1,6 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { UntypedFormGroup } from '@angular/forms';
-import { MatLegacyCheckboxChange as MatCheckboxChange } from '@angular/material/legacy-checkbox';
+import { FormGroup } from '@angular/forms';
+import { MatCheckboxChange } from '@angular/material/checkbox';
 
 @Component({
   selector: 'app-checkbox',
@@ -12,7 +12,7 @@ export class CheckboxComponent implements OnInit {
   @Input() label = '';
   @Input() color = 'bg-primary';
   @Input() checked = false;
-  @Input() formGroup!: UntypedFormGroup;
+  @Input() formGroup!: FormGroup;
   @Input() controlName = '';
 
   @Output() isChecked: EventEmitter<boolean> = new EventEmitter();

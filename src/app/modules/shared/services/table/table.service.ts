@@ -1,10 +1,10 @@
+import { environment } from './../../../../../environments/environment.prod';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { API_Response } from 'app/modules/core/interfaces/response/response';
-import { AlertService } from 'app/modules/core/services/alert/alert.service';
-import { environment } from 'environments/environment';
+import { AlertService } from 'core/services/alert/alert.service';
 import { BehaviorSubject, map, Observable } from 'rxjs';
 import { TableOptions } from '../../interfaces/table/table';
+import { API_Response } from 'core/interfaces/response/response';
 
 @Injectable({
   providedIn: 'root'

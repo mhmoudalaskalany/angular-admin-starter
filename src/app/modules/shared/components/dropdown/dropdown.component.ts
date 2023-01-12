@@ -1,7 +1,7 @@
 import { Component, EventEmitter, Input, OnInit, Output, ViewChild } from '@angular/core';
-import { UntypedFormGroup } from '@angular/forms';
+import { FormGroup } from '@angular/forms';
 import { NgSelectComponent } from '@ng-select/ng-select';
-import { TranslationService } from 'app/modules/core/services/translation/translation.service';
+import { TranslationService } from 'core/services/translation/translation.service';
 import { Subscription, of, delay, Subject, takeUntil } from 'rxjs';
 
 interface dropdown {
@@ -32,7 +32,7 @@ export class DropdownComponent implements OnInit {
   private destroy$: Subject<boolean> = new Subject<boolean>();
 
   // Inputs
-  @Input() formGroup!: UntypedFormGroup;
+  @Input() formGroup!: FormGroup;
   @Input() controlName = '';
   @Input() options: dropdown[] = [];
   @Input() bindValue = 'id';

@@ -1,5 +1,5 @@
 import { Directive, EventEmitter, Output } from '@angular/core';
-import { TranslationService } from 'app/modules/core/services/translation/translation.service';
+import { TranslationService } from 'core/services/translation/translation.service';
 import { Subject, takeUntil } from 'rxjs';
 
 @Directive({

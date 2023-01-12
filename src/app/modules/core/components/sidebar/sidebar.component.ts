@@ -32,8 +32,6 @@ export class SidebarComponent implements OnInit {
       label: 'SETTINGS.TITLE',
       icon: 'bx bx-cog',
       routerLinkName: '/lookups',
-      permissions: ['SETTINGS', 'LOOKUPS_CATEGORIES', 'LOOKUPS_CURRENCIES', 'LOOKUPS_PAYMENTTYPES', 'LOOKUPS_SUPPLIERS',
-        'LOOKUPS_UNITOFMEASURES', 'LOOKUPS_WAREHOUSES', 'LOOKUPS_CUSTOMERS', 'LOOKUPS_SHOPS'],
       children: [
         {
           label: 'SETTINGS.CATEGORIES.TITLE',
@@ -46,7 +44,6 @@ export class SidebarComponent implements OnInit {
       label: 'USER_MANAGEMENT.TITLE',
       icon: 'bx bxs-user-account',
       routerLinkName: '/user-management',
-      permissions: ['USER_MANAGEMENT'],
       children: [
         {
           label: 'USER_MANAGEMENT.USERS.TITLE',

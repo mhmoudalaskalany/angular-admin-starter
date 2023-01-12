@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { TranslationService } from 'app/modules/core/services/translation/translation.service';
-import { TableOptions } from 'app/modules/shared/interfaces/table/table';
+import { TranslationService } from 'core/services/translation/translation.service';
 import { Subject, takeUntil } from 'rxjs';
+import { TableOptions } from 'shared/interfaces/table/table';
 
 @Component({
   selector: 'app-categories',
@@ -18,9 +18,12 @@ export class CategoriesComponent implements OnInit {
   /* subscriber to unsubscribe when leaving the component */
   private destroy$: Subject<boolean> = new Subject<boolean>();
 
-  constructor(private activatedRoute: ActivatedRoute, private translation: TranslationService) { }
+  constructor(private activatedRoute: ActivatedRoute, private translation: TranslationService) { 
+    debugger;
+  }
 
   ngOnInit(): void {
+    debugger;
     this.title = this.activatedRoute.snapshot.data['title'];
     this.translation.currentLanguage$.pipe(takeUntil(this.destroy$)).subscribe(() => this.initializeTableOptions());
   }

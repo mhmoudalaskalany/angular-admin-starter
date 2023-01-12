@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 
 import { ErrorRoutingModule } from './error-routing.module';
 import { ErrorComponent } from './pages/error/error.component';
-import { BaseSharedModule } from 'app/modules/shared/sub-modules/base-shared/base-shared.module';
+import { BaseSharedModule } from 'shared/sub-modules/base-shared/base-shared.module';
 
 
 @NgModule({

@@ -1,9 +1,9 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
-import { API_Response } from 'app/modules/core/interfaces/response/response';
-import { AlertService } from 'app/modules/core/services/alert/alert.service';
-import { HttpService } from 'app/modules/core/services/http/http.service';
+import { API_Response } from 'core/interfaces/response/response';
+import { AlertService } from 'core/services/alert/alert.service';
+import { HttpService } from 'core/services/http/http.service';
 import { map, Observable } from 'rxjs';
 
 @Injectable({

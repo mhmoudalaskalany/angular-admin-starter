@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { DialogComponent } from 'app/modules/shared/components/dialog/dialog.components';
+import { DialogComponent } from 'shared/components/dialog/dialog.components';
 import { AddEditCategoryComponent } from './components/add-edit-category/add-edit-category.component';
 import { CategoriesComponent } from './pages/categories/categories.component';
 

@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { DialogComponent } from 'app/modules/shared/components/dialog/dialog.components';
+import { DialogComponent } from 'shared/components/dialog/dialog.components';
 import { AddEditRoleComponent } from './components/add-edit-role/add-edit-role.component';
 import { AssignPermissionsToRoleComponent } from './components/assign-permissions-to-role/assign-permissions-to-role.component';
 import { RolesComponent } from './pages/roles/roles.component';

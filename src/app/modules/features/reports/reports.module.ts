@@ -3,9 +3,9 @@ import { CommonModule } from '@angular/common';
 
 import { ReportsRoutingModule } from './reports-routing.module';
 import { ReportsComponent } from './pages/reports/reports.component';
-import { SharedModule } from 'app/modules/shared/shared.module';
-import { BaseSharedModule } from 'app/modules/shared/sub-modules/base-shared/base-shared.module';
+import { SharedModule } from 'shared/shared.module';
 import { TransactionsReportsComponent } from './pages/transactions-reports/transactions-reports.component';
+import { BaseSharedModule } from 'shared/sub-modules/base-shared/base-shared.module';
 
 @NgModule({
   declarations: [

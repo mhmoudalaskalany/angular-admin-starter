@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { UntypedFormBuilder, UntypedFormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
-import { TranslationService } from 'app/modules/core/services/translation/translation.service';
+import { TranslationService } from 'core/services/translation/translation.service';
 import { AccountService } from '../../services/account/account.service';
 
 @Component({
@@ -13,9 +13,9 @@ export class AccountComponent implements OnInit {
 
   pageType = '';
   isEnglish = true;
-  form!: UntypedFormGroup;
+  form!: FormGroup;
 
-  constructor(private translateService: TranslationService, private router: Router, private activatedRoute: ActivatedRoute, private fb: UntypedFormBuilder,
+  constructor(private translateService: TranslationService, private router: Router, private activatedRoute: ActivatedRoute, private fb: FormBuilder,
     private account: AccountService) { }
 
   ngOnInit(): void {
@@ -69,7 +69,7 @@ export class AccountComponent implements OnInit {
   }
 
   mustMatch(controlName: string, matchingControlName: string) {
-    return (formGroup: UntypedFormGroup) => {
+    return (formGroup: FormGroup) => {
       const control = formGroup.controls[controlName];
       const matchingControl = formGroup.controls[matchingControlName];
 

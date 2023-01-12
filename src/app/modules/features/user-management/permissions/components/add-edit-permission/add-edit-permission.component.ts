@@ -1,8 +1,8 @@
 import { Component, Inject, OnInit, Optional } from '@angular/core';
-import { UntypedFormGroup, UntypedFormBuilder, Validators } from '@angular/forms';
-import { MatLegacyDialogRef as MatDialogRef, MAT_LEGACY_DIALOG_DATA as MAT_DIALOG_DATA } from '@angular/material/legacy-dialog';
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { ActivatedRoute } from '@angular/router';
-import { PermissionsService } from 'app/modules/shared/services/user-management/permissions/permissions.service';
+import { PermissionsService } from 'shared/services/user-management/permissions/permissions.service';
 
 @Component({
   selector: 'app-add-edit-permission',
@@ -14,10 +14,10 @@ export class AddEditPermissionComponent implements OnInit {
   pageTitle = '';
   pageType = '';
   lookupId = '';
-  lookupFormGroup!: UntypedFormGroup;
+  lookupFormGroup!: FormGroup;
 
   constructor(private dialogRef: MatDialogRef<AddEditPermissionComponent>, @Optional() @Inject(MAT_DIALOG_DATA) public data: { activatedRoute: ActivatedRoute; },
-    private fb: UntypedFormBuilder, private permissionsService: PermissionsService) { }
+    private fb: FormBuilder, private permissionsService: PermissionsService) { }
 
   ngOnInit(): void {
     this.pageTitle = this.data.activatedRoute.snapshot.firstChild?.data['pageTitle'];
@@ -40,7 +40,7 @@ export class AddEditPermissionComponent implements OnInit {
   }
 
   getLookup() {
-    this.permissionsService.getPermission(this.lookupId).subscribe(permission => this.lookupFormGroup.patchValue(permission));
+    this.permissionsService.getPermission(this.lookupId).subscribe((permission:any) => this.lookupFormGroup.patchValue(permission));
   }
 
   submit() {

@@ -1,12 +1,12 @@
 import { Component, Inject, OnInit, Optional } from '@angular/core';
-import { UntypedFormBuilder, UntypedFormGroup, Validators } from '@angular/forms';
-import { MatLegacyDialogRef as MatDialogRef, MAT_LEGACY_DIALOG_DATA as MAT_DIALOG_DATA } from '@angular/material/legacy-dialog';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { ActivatedRoute } from '@angular/router';
-import { Role, Shop, User } from 'app/modules/shared/interfaces/lookups/lookups';
-import { ShopsService } from 'app/modules/shared/services/shops/shops.service';
-import { RolesService } from 'app/modules/shared/services/user-management/roles/roles.service';
-import { UsersService } from 'app/modules/shared/services/user-management/users/users.service';
 import { combineLatest } from 'rxjs';
+import { Role, Shop, User } from 'shared/interfaces/lookups/lookups';
+import { ShopsService } from 'shared/services/shops/shops.service';
+import { RolesService } from 'shared/services/user-management/roles/roles.service';
+import { UsersService } from 'shared/services/user-management/users/users.service';
 
 @Component({
   selector: 'app-add-edit-user',
@@ -33,12 +33,12 @@ export class AddEditUserComponent implements OnInit {
       maxSize: 5
     }
   ];
-  userFormGroup!: UntypedFormGroup;
+  userFormGroup!: FormGroup;
   roles: Role[] = [];
   shops: Shop[] = [];
 
   constructor(private dialogRef: MatDialogRef<AddEditUserComponent>, @Optional() @Inject(MAT_DIALOG_DATA) public data: { activatedRoute: ActivatedRoute; },
-    private fb: UntypedFormBuilder, private usersService: UsersService, private roleService: RolesService, private shopsService: ShopsService) { }
+    private fb: FormBuilder, private usersService: UsersService, private roleService: RolesService, private shopsService: ShopsService) { }
 
   ngOnInit(): void {
     this.pageTitle = this.data.activatedRoute.snapshot.firstChild?.data['pageTitle'];
@@ -72,9 +72,9 @@ export class AddEditUserComponent implements OnInit {
   }
 
   getUserData() {
-    combineLatest(this.usersService.getUser(this.userId), this.usersService.getUserRoles(this.userId)).subscribe(data => {
+    combineLatest(this.usersService.getUser(this.userId), this.usersService.getUserRoles(this.userId)).subscribe((data: any) => {
       const user = data[0];
-      user.roleIds = data[1].map(role => role.id) as string[];
+      user.roleIds = data[1].map((role: any) => role.id) as string[];
       user.userImage = [{ ...user.userImage, url: user.imageUrl }];
 
       this.userFormGroup.patchValue(user);
@@ -86,7 +86,7 @@ export class AddEditUserComponent implements OnInit {
   }
 
   getLookups() {
-    this.roleService.roles.subscribe((roles) => this.roles = roles);
+    this.roleService.roles.subscribe((roles: any) => this.roles = roles);
     this.shopsService.shops.subscribe((shops) => this.shops = shops);
   }
 

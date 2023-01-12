@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpService } from 'app/modules/core/services/http/http.service';
+import { HttpService } from 'core/services/http/http.service';
 import { Attachment } from '../../interfaces/attachment/attachment';
 
 @Injectable({

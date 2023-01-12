@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { TranslationService } from 'app/modules/core/services/translation/translation.service';
-import { TableOptions } from 'app/modules/shared/interfaces/table/table';
+import { TranslationService } from 'core/services/translation/translation.service';
 import { Subject, takeUntil } from 'rxjs';
+import { TableOptions } from 'shared/interfaces/table/table';
 
 @Component({
   selector: 'app-users',

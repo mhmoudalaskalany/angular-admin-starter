@@ -18,7 +18,6 @@ import { DirectivesModule } from '../../directives/directives.module';
 
 const MODULES = [
   DirectivesModule,
-
   MaterialModule,
   FormsModule,
   RouterModule,

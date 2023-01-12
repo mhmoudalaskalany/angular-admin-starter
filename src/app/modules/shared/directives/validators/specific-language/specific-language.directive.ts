@@ -1,5 +1,5 @@
 import { Directive, Input } from '@angular/core';
-import { UntypedFormControl, AbstractControl, NG_VALIDATORS } from '@angular/forms';
+import { FormControl, AbstractControl, NG_VALIDATORS } from '@angular/forms';
 
 @Directive({
   selector: '[specificLanguage]',
@@ -13,7 +13,7 @@ export class SpecificLanguageDirective {
 
   constructor() { }
 
-  validate(control: UntypedFormControl) {
+  validate(control: FormControl) {
     if (!control.value) { return null; }
     return this.validateLanguageFactory(control);
   }

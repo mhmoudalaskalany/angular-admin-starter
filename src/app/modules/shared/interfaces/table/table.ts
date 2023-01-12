@@ -1,4 +1,5 @@
-import { GetPagedBody } from "app/modules/core/interfaces/get-paged/get-paged";
+import { GetPagedBody } from "core/interfaces/get-paged/get-paged";
+
 
 export interface TableOptions {
     inputUrl: URL;

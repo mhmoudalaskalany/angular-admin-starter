@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { UntypedFormGroup } from '@angular/forms';
+import { FormGroup } from '@angular/forms';
 
 @Component({
   selector: 'Login',
@@ -8,7 +8,7 @@ import { UntypedFormGroup } from '@angular/forms';
 })
 export class LoginComponent implements OnInit {
 
-  @Input() form!: UntypedFormGroup;
+  @Input() form!: FormGroup;
   @Input() pageType!: string;
 
   constructor() { }
