@@ -3,9 +3,9 @@
   "version": "1.0.1",
   "scripts": {
     "ng": "ng",
-    "start": "ng serve --port=4800 -o",
-    "start:pwa": "ng build && http-server -o -p 4800 -c-1 dist/angular-admin-starter",
-    "start-secure": "ng serve --port=4800 --ssl --ssl-key ./certificate/localhost.key --ssl-cert ./certificate/localhost.crt -o",
+    "start": "ng serve --port=4300 -o",
+    "start:pwa": "ng build && http-server -o -p 4300 -c-1 dist/angular-admin-starter",
+    "start-secure": "ng serve --port=4300 --ssl --ssl-key ./certificate/localhost.key --ssl-cert ./certificate/localhost.crt -o",
     "build": "ng build --configuration production --base-href /pos/",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
