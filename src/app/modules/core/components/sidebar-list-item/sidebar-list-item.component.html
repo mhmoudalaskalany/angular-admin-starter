@@ -3,9 +3,9 @@
         <a class="w-100 d-flex align-items-center justify-content-between cursor-pointer each"
            [routerLink]="sidebarItem.children ? null : [sidebarItem.routerLinkName]" (click)="collapse(sidebarItem.children);"
            [ngClass]="{'active': isRouteActive(sidebarItem.routerLinkName)}" setRtl>
-            <div class="d-flex align-items-center w-max">
-                <i class="{{ sidebarItem.icon }} font-22 text-secondary" [title]="sidebarItem.label | translate" [ngClass]="{'m-inline-end-3': isSidebarOpened}"
-                   *ngIf="sidebarItem.icon">
+            <div class="d-flex align-items-center justify-content-center w-max">
+                <i class="{{ sidebarItem.icon }} font-20 text-secondary" [title]="sidebarItem.label | translate"
+                   [ngClass]="{'m-inline-end-3': isSidebarOpened}" *ngIf="sidebarItem.icon">
                 </i>
 
                 <span class="text-secondary w-max" [ngClass]="{'d-block': isSidebarOpened, 'd-none': !isSidebarOpened }">
@@ -13,8 +13,10 @@
                 </span>
             </div>
 
-            <svg [ngClass]="{'animate': showContent}" xmlns="http://www.w3.org/2000/svg" width="24" viewBox="0 0 20 20" fill="#e7cfb4" *ngIf="sidebarItem.children">
-                <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
+            <svg [ngClass]="{'animate': showContent}" xmlns="http://www.w3.org/2000/svg" width="24" viewBox="0 0 20 20" fill="#e7cfb4"
+                 *ngIf="sidebarItem.children">
+                <path fill-rule="evenodd"
+                      d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
                       clip-rule="evenodd" />
             </svg>
         </a>
@@ -24,7 +26,9 @@
                 <mat-list-item role="listitem" *ngFor="let child of sidebarItem.children" [secure]="child.permissions">
                     <a class="font-14 w-100 h-100 cursor-pointer" [routerLink]="[child.routerLinkName]">
                         <div class="w-max d-flex align-items-center each" routerLinkActive="active">
-                            <i class="{{ child.icon }} font-22 text-secondary m-inline-end-3" *ngIf="child.icon" [title]="child.label | translate"></i>
+                            <i class="{{ child.icon }} font-20 text-secondary child" [title]=" child.label | translate"
+                               [ngClass]="{'m-inline-end-3': isSidebarOpened}" *ngIf="child.icon"></i>
+
                             <span class="text-secondary" [ngClass]="{'d-block': isSidebarOpened, 'd-none': !isSidebarOpened }">
                                 {{ child.label | translate }}
                             </span>
