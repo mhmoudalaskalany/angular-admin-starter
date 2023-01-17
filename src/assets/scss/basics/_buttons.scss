@@ -4,7 +4,6 @@ button {
     outline: none !important;
   }
 
-  /* TODO(mdc-migration): The following rule targets internal classes of button that may no longer apply for the MDC version.*/
   .mat-mdc-button-focus-overlay {
     background: $white !important;
   }
@@ -121,7 +120,6 @@ button {
     border: 1.5px solid transparent !important;
   }
 
-  /* TODO(mdc-migration): The following rule targets internal classes of button that may no longer apply for the MDC version.*/
   .mat-mdc-button-wrapper {
     display: flex;
     width: 100%;

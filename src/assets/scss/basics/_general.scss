@@ -69,8 +69,8 @@ body {
     .mat-mdc-list {
       .mat-mdc-list-item {
         height: $menu-item-height  !important;
-        /* TODO(mdc-migration): The following rule targets internal classes of list that may no longer apply for the MDC version.*/
-        /* TODO(mdc-migration): The following rule targets internal classes of list that may no longer apply for the MDC version.*/
+        
+        
         .mat-mdc-list-item-content {
           .mat-mdc-menu-item {
             height: $menu-item-height  !important;
@@ -84,19 +84,15 @@ body {
 
 // mat-slider
 .mat-mdc-slider {
-  /* TODO(mdc-migration): The following rule targets internal classes of slider that may no longer apply for the MDC version.*/
-  /* TODO(mdc-migration): The following rule targets internal classes of slider that may no longer apply for the MDC version.*/
-  /* TODO(mdc-migration): The following rule targets internal classes of slider that may no longer apply for the MDC version.*/
+
   &:not(.mat-mdc-slider-disabled) {
     &.cdk-focused {
-      /* TODO(mdc-migration): The following rule targets internal classes of slider that may no longer apply for the MDC version.*/
-      /* TODO(mdc-migration): The following rule targets internal classes of slider that may no longer apply for the MDC version.*/
+
       .mat-mdc-slider-thumb-label {
         border-radius: 0 !important;
         transform: none;
         background-color: $white;
         box-shadow: 0 2px 10px 0 rgba(142, 154, 160, 0.22);
-        /* TODO(mdc-migration): The following rule targets internal classes of slider that may no longer apply for the MDC version.*/
         .mat-mdc-slider-thumb-label-text {
           transform: none;
           color: $primary;
@@ -106,18 +102,12 @@ body {
   }
 
   &.mat-accent {
-    /* TODO(mdc-migration): The following rule targets internal classes of slider that may no longer apply for the MDC version.*/
     .mat-mdc-slider-thumb-label {
       background-color: $primary;
     }
   }
-  /* TODO(mdc-migration): The following rule targets internal classes of slider that may no longer apply for the MDC version.*/
-  /* TODO(mdc-migration): The following rule targets internal classes of slider that may no longer apply for the MDC version.*/
-  /* TODO(mdc-migration): The following rule targets internal classes of slider that may no longer apply for the MDC version.*/
   .mat-mdc-slider-wrapper {
     height: 6px !important;
-    /* TODO(mdc-migration): The following rule targets internal classes of slider that may no longer apply for the MDC version.*/
-    /* TODO(mdc-migration): The following rule targets internal classes of slider that may no longer apply for the MDC version.*/
     .mat-mdc-slider-track-wrapper {
       border-radius: 2.5px;
       height: 6px !important;
@@ -125,17 +115,14 @@ body {
       * {
         height: 6px !important;
       }
-      /* TODO(mdc-migration): The following rule targets internal classes of slider that may no longer apply for the MDC version.*/
       .mat-mdc-slider-track-background {
         background-color: #f3f3f1 !important;
       }
-      /* TODO(mdc-migration): The following rule targets internal classes of slider that may no longer apply for the MDC version.*/
       .mat-mdc-slider-track-fill {
         background-color: $secondary  !important;
         transition: all .4s ease;
       }
     }
-    /* TODO(mdc-migration): The following rule targets internal classes of slider that may no longer apply for the MDC version.*/
     .mat-mdc-slider-thumb {
       border-radius: 2px;
       box-shadow: 0 4px 10px 0 rgba(12, 0, 51, 0.22);
@@ -147,17 +134,13 @@ body {
 // mat-slide-toggle
 .mat-mdc-slide-toggle {
   &.mat-checked {
-    /* TODO(mdc-migration): The following rule targets internal classes of slide-toggle that may no longer apply for the MDC version.*/
-    /* TODO(mdc-migration): The following rule targets internal classes of slide-toggle that may no longer apply for the MDC version.*/
     .mat-mdc-slide-toggle-bar {
       background-color: rgba($color: $primary, $alpha: .54);
-      /* TODO(mdc-migration): The following rule targets internal classes of slide-toggle that may no longer apply for the MDC version.*/
       .mat-mdc-slide-toggle-thumb {
         background: $primary;
       }
     }
   }
-  /* TODO(mdc-migration): The following rule targets internal classes of slide-toggle that may no longer apply for the MDC version.*/
   .mat-mdc-slide-toggle-content {
     font-family: $font-regular;
   }
@@ -245,7 +228,6 @@ body {
 
 // checkbox
 .mat-mdc-checkbox {
-  /* TODO(mdc-migration): The following rule targets internal classes of checkbox that may no longer apply for the MDC version.*/
   .mat-mdc-checkbox-layout {
     margin: 0;
   }
@@ -253,12 +235,9 @@ body {
   .mat-ripple-element {
     background-color: $error;
   }
-  /* TODO(mdc-migration): The following rule targets internal classes of checkbox that may no longer apply for the MDC version.*/
-  /* TODO(mdc-migration): The following rule targets internal classes of checkbox that may no longer apply for the MDC version.*/
   &.mat-mdc-checkbox-checked,
   &.mat-mdc-checkbox-indeterminate {
     &.mat-bg-error-light {
-      /* TODO(mdc-migration): The following rule targets internal classes of checkbox that may no longer apply for the MDC version.*/
       .mat-mdc-checkbox-background {
         background-color: $error;
       }

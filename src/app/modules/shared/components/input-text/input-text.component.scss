@@ -1,16 +1,16 @@
 ::ng-deep app-input-text {
     width: 100%;
-    /* TODO(mdc-migration): The following rule targets internal classes of form-field that may no longer apply for the MDC version. */
-    /* TODO(mdc-migration): The following rule targets internal classes of form-field that may no longer apply for the MDC version. */
+    
+    
     .mat-mdc-form-field-label-wrapper {
         top: -1.24375em;
-        /* TODO(mdc-migration): The following rule targets internal classes of form-field that may no longer apply for the MDC version. */
+        
         .mat-mdc-form-field-label {
             margin: 0;
             line-height: normal;
         }
     }
-    /* TODO(mdc-migration): The following rule targets internal classes of form-field that may no longer apply for the MDC version. */
+    
     .mat-mdc-form-field-appearance-legacy .mat-form-field-infix {
         padding: .6375em 0;
     }
