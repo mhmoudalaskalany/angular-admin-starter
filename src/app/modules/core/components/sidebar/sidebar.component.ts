@@ -49,25 +49,21 @@ export class SidebarComponent implements OnInit {
           label: 'USER_MANAGEMENT.USERS.TITLE',
           icon: 'bx bx-user',
           routerLinkName: '/user-management/users',
-          permissions: ['USER_MANAGEMENT'],
         },
         {
           label: 'USER_MANAGEMENT.ROLES.TITLE',
           icon: 'bx bx-wrench',
           routerLinkName: '/user-management/roles',
-          permissions: ['USER_MANAGEMENT'],
         },
         {
           label: 'USER_MANAGEMENT.PERMISSIONS.TITLE',
           icon: 'bx bxs-lock',
           routerLinkName: '/user-management/permissions',
-          permissions: ['USER_MANAGEMENT'],
         },
         {
           label: 'USER_MANAGEMENT.LOGINHISTORY.TITLE',
           icon: 'bx bxs-log-in-circle',
           routerLinkName: '/user-management/login-history',
-          permissions: ['USER_MANAGEMENT'],
         }
       ]
     },
@@ -75,7 +71,6 @@ export class SidebarComponent implements OnInit {
       label: 'REPORTS.TITLE',
       icon: 'bx bxs-report',
       routerLinkName: '/reports',
-      permissions: ['REPORTS'],
       children: [
         {
           label: 'REPORTS.HIGHEST_EARNING',
