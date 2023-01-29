@@ -12,30 +12,30 @@ export class PermissionsService extends HttpService {
   }
 
   getPermission(id: string) {
-    return this.get<Permission>({ APIName: `Get/${id}` });
+    return this.get<Permission>({ apiName: `Get/${id}` });
   }
 
   get permissions() {
-    return this.get<Permission[]>({ APIName: 'GetAll' });
+    return this.get<Permission[]>({ apiName: 'GetAll' });
   }
 
   add(body: Permission) {
-    return this.post<Permission>({ APIName: 'Add', body, showAlert: true });
+    return this.post<Permission, Permission>({ apiName: 'Add' }, body);
   }
 
   update(body: Permission) {
-    return this.put({ APIName: 'Update', body, showAlert: true });
+    return this.put({ apiName: 'Update' }, body);
   }
 
   remove(id: string) {
-    return this.delete({ APIName: `DeleteSoft/${id}`, showAlert: true });
+    return this.delete({ apiName: `DeleteSoft/` }, id);
   }
 
   assignPermissionToRole(body: any) {
-    return this.post<boolean>({ APIName: 'AssignPermissionsToRole', body, showAlert: true });
+    return this.post<boolean, boolean>({ apiName: 'AssignPermissionsToRole' }, body);
   }
 
   getRolePermissions(roleId: string) {
-    return this.get<Permission[]>({ APIName: `GetRolePermissions/${roleId}` });
+    return this.get<Permission[]>({ apiName: `GetRolePermissions/${roleId}` });
   }
 }

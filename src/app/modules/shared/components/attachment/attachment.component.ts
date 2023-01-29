@@ -401,7 +401,7 @@ export class AttachmentComponent implements OnInit {
    * @param file 
    */
   deleteFileFromServer(file: any): void {
-    this.Service.delete(file.fileId).subscribe((res: any) => {
+    this.Service.deleteAttachment(file.fileId).subscribe((res: any) => {
       console.log(res);
       this.deleteEvent.emit(file);
     });

@@ -1,5 +1,6 @@
 import { Injectable, Renderer2, RendererFactory2 } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
+
 import { BehaviorSubject } from 'rxjs';
 import { environment } from '../../../../../environments/environment';
 
@@ -16,7 +17,7 @@ export class TranslationService {
 
   currentLanguage$ = this.currentLanguage.asObservable();
 
-  constructor(private translate: TranslateService, private rendererFactory: RendererFactory2) {
+  constructor(public translate: TranslateService, private rendererFactory: RendererFactory2) {
     this.renderer = this.rendererFactory.createRenderer(null, null);
     this.initLanguage();
   }
@@ -47,7 +48,15 @@ export class TranslationService {
     this.translate.use(this.language);
     this.handleBasicLogic();
   }
+  checkLang(): boolean {
+    const currentLang = this.translate.currentLang;
 
+    if (currentLang === 'en') {
+      return true;
+    } else {
+      return false;
+    }
+  }
   private handleBasicLogic() {
     if (this.language === 'ar') {
       this.renderer.addClass(document.body, 'rtl');
@@ -59,4 +68,5 @@ export class TranslationService {
       this.currentLanguage.next(this.language);
     }
   }
+
 }

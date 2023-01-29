@@ -3,10 +3,9 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false,
-  HOST_API: 'https://databoat.app:444/pos/',
-  defaultLang: 'en',
-  currencyId: '0e0c30f7-71c0-4ca4-9fdd-08da27cff7d8'
+  state: 'development',
+  HOST_API: '',
+  defaultLang: 'ar'
 };
 
 /*

@@ -15,10 +15,10 @@ export class AttachmentService extends HttpService {
     const appCode = 'Pos';
     const APIName = `UploadToSanStorage?storageType=2&isPublic=${isPublic}&appCode=${appCode}`;
 
-    return this.post<Attachment[]>({ APIName, body });
+    return this.post<FormData, Attachment[]>({ apiName: APIName }, body);
   }
 
   deleteAttachment(fileId: string) {
-    return this.get<boolean>({ APIName: `Delete/${fileId}` });
+    return this.delete({ apiName: `Delete/` }, fileId);
   }
 }

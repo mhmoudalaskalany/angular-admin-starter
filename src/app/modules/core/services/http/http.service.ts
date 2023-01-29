@@ -1,88 +1,117 @@
+import { UrlConfig } from 'core/services/http/UrlConfig';
+import { Shell } from 'base/components/shell';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, map } from 'rxjs';
-import { environment } from '../../../../../environments/environment';
-import { API_Response } from '../../interfaces/response/response';
+import { ApResponse } from 'shared/interfaces/response/response';
 import { AlertService } from '../alert/alert.service';
-
-abstract class HttpServiceBaseService {
-  protected abstract get baseUrl(): string;
-}
-
-export declare interface HttpServiceBaseCRUD {
-  add(body: Partial<any>): Observable<any>;
-  update(body: Partial<any>): Observable<any>;
-  remove(id: string): Observable<any>;
-}
-
-interface URL_Config {
-  APIName: string,
-  body?: any,
-  params?: { [header: string]: string | string[]; },
-  showAlert?: boolean;
-}
-
-interface UpdateResponse {
-  data: null;
-  status: number;
-  message: string;
-  exception: null;
-}
+import { TranslationService } from '../translation/translation.service';
+import { HttpServiceBaseService } from 'base/services/http-service-base.service';
+import { ConfigService } from '../config/config.service';
+import { HttpStatus } from './HttpStatus';
 
 @Injectable({
   providedIn: 'root'
 })
 export abstract class HttpService extends HttpServiceBaseService {
 
-  private domainName = environment.HOST_API;
-  
-  constructor(private http: HttpClient, public alertService: AlertService) { super(); }
-  
-  get<T>(URL_Config: URL_Config) {
-    return this.http.get<API_Response<T>>(`${this.domainName}${this.baseUrl}${URL_Config.APIName}`, { params: URL_Config.params }).pipe(map(event => {
+  protected domainName: string;
+  get alertService(): AlertService { return Shell.Injector.get(AlertService); }
+  get configService(): ConfigService { return Shell.Injector.get(ConfigService); }
+  get localize(): TranslationService { return Shell.Injector.get(TranslationService); }
+  constructor(protected http: HttpClient) {
+    super();
+    this.domainName = this.configService.getAppUrl('HOST_API');
+  }
+
+  get<T>(URL_Config: UrlConfig): Observable<T> {
+    return this.http.get<ApResponse<T>>(`${this.domainName}${this.baseUrl}${URL_Config.apiName}`, { params: URL_Config.params }).pipe(map(event => {
       return event.data;
     }));
   }
 
-  post<T>(URL_Config: URL_Config) {
-    return this.http.post<API_Response<T>>(`${this.domainName}${this.baseUrl}${URL_Config.APIName}`, URL_Config.body, { params: URL_Config.params }).pipe(map(event => {
+  getAll<T>(URL_Config: UrlConfig): Observable<T[]> {
+    return this.http.get<ApResponse<T[]>>(`${this.domainName}${this.baseUrl}${URL_Config.apiName}`, { params: URL_Config.params }).pipe(map(event => {
+      return event.data;
+    }));
+  }
+
+  postFilter<T, D>(URL_Config: UrlConfig, body: T): Observable<D> {
+    return this.http.post<ApResponse<D>>(`${this.domainName}${this.baseUrl}${URL_Config.apiName}`, body, { params: URL_Config.params }).pipe(map(event => {
       URL_Config.showAlert ? this.alertHandling(event) : '';
       return event.data;
     }));
   }
 
-  put(URL_Config: URL_Config): Observable<UpdateResponse> {
-    return this.http.put<API_Response<UpdateResponse>>(`${this.domainName}${this.baseUrl}${URL_Config.APIName}`, URL_Config.body, { params: URL_Config.params }).pipe(map((event: any) => {
+  post<T, D>(URL_Config: UrlConfig, body: T): Observable<D> {
+    return this.http.post<ApResponse<D>>(`${this.domainName}${this.baseUrl}${URL_Config.apiName}`, body, { params: URL_Config.params }).pipe(map(event => {
+      URL_Config.showAlert ? this.alertHandling(event) : '';
+      return event.data;
+    }));
+  }
+
+  postRange<T, D>(URL_Config: UrlConfig, body: T): Observable<D> {
+    return this.http.post<ApResponse<D>>(`${this.domainName}${this.baseUrl}${URL_Config.apiName}`, body, { params: URL_Config.params }).pipe(map(event => {
+      URL_Config.showAlert ? this.alertHandling(event) : '';
+      return event.data;
+    }));
+  }
+
+  put<T, D>(URL_Config: UrlConfig, body: T): Observable<T> {
+    return this.http.put<ApResponse<D>>(`${this.domainName}${this.baseUrl}${URL_Config.apiName}`, body, { params: URL_Config.params }).pipe(map((event: any) => {
       this.alertHandling(event);
       return event.data;
     }));
   }
 
-  delete(URL_Config: URL_Config): Observable<boolean> {
-    return this.http.delete<API_Response<boolean>>(`${this.domainName}${this.baseUrl}${URL_Config.APIName}`, { body: URL_Config.body, params: URL_Config.params }).pipe(map((event: any) => {
+  delete(URL_Config: UrlConfig, id: any): Observable<boolean> {
+    return this.http.delete<ApResponse<boolean>>(`${this.domainName}${this.baseUrl}${URL_Config.apiName}`, { body: id, params: URL_Config.params }).pipe(map((event: any) => {
       this.alertHandling(event);
       return event.data;
     }));
   }
 
-  private alertHandling(event: API_Response<any>) {
+  private alertHandling(event: ApResponse<any>) {
     if (event.status) {
-      if (event.status.toString().startsWith('2')) {
-        this.alertService.success(event.message ? event.message : 'Successfully Done...');
+      if (!Number.isNaN(Number(event.status))) {
+        if (event.status.toString().startsWith('2')) {
+          this.alertService.success(event.message ? this.localize.translate.instant('Validation.' + event.message) : 'Successfully Done...');
+        } else {
+          this.alertService.error(event.message ? this.localize.translate.instant('Validation.' + event.message) : '!NOT HANDLED ERROR!');
+        }
       } else {
-        this.alertService.error(event.message ? event.message : '!NOT HANDLED ERROR!');
+        const status = event.status.toString();
+        switch (status) {
+          case HttpStatus.Created: {
+            this.alertService.success(event.message ? this.localize.translate.instant('Validation.' + event.message) : 'Successfully Done...');
+            break;
+          }
+          case HttpStatus.Accepted: {
+            this.alertService.success(event.message ? this.localize.translate.instant('Validation.' + event.message) : 'Successfully Done...');
+            break;
+          }
+          case HttpStatus.NoContent: {
+            this.alertService.success(event.message ? this.localize.translate.instant('Validation.' + event.message) : 'Successfully Done...');
+            break;
+          }
+          case HttpStatus.BadRequest: {
+            this.alertService.error(event.message ? this.localize.translate.instant('Validation.' + event.message) : '!NOT HANDLED ERROR!');
+            break;
+          }
+          case HttpStatus.InternalServerError: {
+            this.alertService.error(event.message ? this.localize.translate.instant('Validation.' + event.message) : this.localize.translate.instant('Validation.InternalServerError'));
+            break;
+          }
+          case HttpStatus.Ok: {
+            break;
+          }
+          default: {
+            this.alertService.error(event.message ? this.localize.translate.instant('Validation.' + event.message) : '!NOT HANDLED ERROR!');
+          }
+        }
+
       }
     }
   }
-
-  convertTokenJWT(token = localStorage.getItem('token') as string) {
-    if (token) {
-      let base64 = token.split('.')[1].replace(/-/g, '+').replace(/_/g, '/'),
-        jsonPayload = decodeURIComponent(atob(base64).split('').map((c) => {
-          return '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2);
-        }).join(''));
-
-      return JSON.parse(jsonPayload);
-    }
-  }
 }
+

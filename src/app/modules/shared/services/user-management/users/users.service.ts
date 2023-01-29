@@ -12,30 +12,30 @@ export class UsersService extends HttpService {
   }
 
   getUser(id: string) {
-    return this.get<User>({ APIName: `Get/${id}` });
+    return this.get<User>({ apiName: `Get/${id}` });
   }
 
   get users() {
-    return this.get<User[]>({ APIName: 'GetAll' });
+    return this.get<User[]>({ apiName: 'GetAll' });
   }
 
   add(body: User) {
-    return this.post<User>({ APIName: 'Add', body, showAlert: true });
+    return this.post<User, User>({ apiName: 'Add' }, body);
   }
 
   update(body: User) {
-    return this.put({ APIName: 'Update', body, showAlert: true });
+    return this.put({ apiName: 'Update', }, body);
   }
 
   remove(id: string) {
-    return this.delete({ APIName: `DeleteSoft/${id}`, showAlert: true });
+    return this.delete({ apiName: `DeleteSoft/` }, id);
   }
 
   getUserRoles(userId = localStorage.getItem('userId')) {
-    return this.get<Role[]>({ APIName: `GetUserRoles/${userId}` });
+    return this.get<Role[]>({ apiName: `GetUserRoles/${userId}` });
   }
 
   getUserPermissions() {
-    return this.get<Permission[]>({ APIName: `GetUserPermissions/${localStorage.getItem('userId')}` });
+    return this.get<Permission[]>({ apiName: `GetUserPermissions/${localStorage.getItem('userId')}` });
   }
 }

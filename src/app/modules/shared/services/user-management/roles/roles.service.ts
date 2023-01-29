@@ -11,22 +11,22 @@ export class RolesService extends HttpService {
   }
 
   getRole(id: string) {
-    return this.get<Role>({ APIName: `Get/${id}` });
+    return this.get<Role>({ apiName: `Get/${id}` });
   }
 
   get roles() {
-    return this.get<Role[]>({ APIName: 'GetAll' });
+    return this.get<Role[]>({ apiName: 'GetAll' });
   }
 
   add(body: Role) {
-    return this.post<Role>({ APIName: 'Add', body, showAlert: true });
+    return this.post<Role, Role>({ apiName: 'Add' }, body);
   }
 
   update(body: Role) {
-    return this.put({ APIName: 'Update', body, showAlert: true });
+    return this.put({ apiName: 'Update' }, body);
   }
 
   remove(id: string) {
-    return this.delete({ APIName: `DeleteSoft/${id}`, showAlert: true });
+    return this.delete({ apiName: `DeleteSoft/` }, id);
   }
 }

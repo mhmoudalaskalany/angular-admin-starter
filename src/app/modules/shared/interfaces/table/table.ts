@@ -1,23 +1,33 @@
-import { GetPagedBody } from "core/interfaces/get-paged/get-paged";
-
+import { GetPagedBody } from "../get-paged/get-paged";
 
 export interface TableOptions {
-    inputUrl: URL;
-    inputCols: ColumnsInterface[];
+    /* hold the urls fro get and delete */
+    inputUrl?: Url;
+    /* hold Columns Definitions */
+    inputCols?: ColumnsInterface[];
+    /* hold actions */
     inputActions?: ActionsInterface[];
+
     bodyOptions?: GetPagedBody<any> | any;
-    responsiveDisplayedProperties: string[];
+
+    responsiveDisplayedProperties?: string[];
+
     permissions?: Permission;
+
     route?: string;
-    app?: { appId: number; };
+
+    appId?: number;
+
+    includeAppId?: boolean;
 }
 
-interface ColumnsInterface {
-    field: string;
-    header: string;
+
+export interface ColumnsInterface {
+    field?: string;
+    header?: string;
     placeholder?: string;
     filter?: boolean;
-    filterMode: string;
+    filterMode?: string;
     filterColumnName?: string;
     sort?: boolean;
     sortCol?: string;
@@ -25,29 +35,35 @@ interface ColumnsInterface {
     dateFormat?: string;
 }
 
-interface ActionsInterface {
-    name: string;
-    icon: string;
-    color: string;
-    displayBasedOn?: string;
+export interface ActionsInterface {
+    name?: string;
+    icon?: string;
+    color?: string;
     permission?: string;
     isDelete?: boolean;
     isBlock?: boolean;
     isEdit?: boolean;
     isView?: boolean;
     route?: string;
+    allowAll?: boolean,
+    isCallBack?: boolean,
     call?: (row?: any) => any;
 }
 
-interface URL {
-    getAll: string;
-    getAllMethod: API_Methods;
+
+export interface Url {
+    getAll?: string;
+    getAllMethod?: API_Methods;
     delete?: string;
 }
 
-interface Permission {
+export interface Permission {
+    /* hold permissions */
     listOfPermissions: string[];
+    /* Allow All Users To Access */
+    allowAll?: boolean;
+    /* hold the component name */
     componentName: string;
 }
 
-type API_Methods = 'GET' | 'POST'
+export type API_Methods = 'GET' | 'POST'

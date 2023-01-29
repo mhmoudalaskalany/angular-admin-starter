@@ -21,10 +21,10 @@ import { DatepickerComponent } from './components/datepicker/datepicker.componen
 import { CheckboxComponent } from './components/checkbox/checkbox.component';
 import { AttachmentComponent } from './components/attachment/attachment.component';
 import { DeleteModalComponent } from './components/delete-modal/delete-modal.component';
-import { TableComponent } from './components/table/table.component';
 import { PaginatorComponent } from './components/paginator/paginator.component';
 import { BaseSharedModule } from './sub-modules/base-shared/base-shared.module';
 import { DeferredShoppersComponent } from './components/deferred-shoppers/deferred-shoppers.component';
+import { DataTableComponent } from './components/datatable/data-table.component';
 
 const COMPONENTS = [
   InputTextComponent,
@@ -33,7 +33,7 @@ const COMPONENTS = [
   CheckboxComponent,
   AttachmentComponent,
   DeleteModalComponent,
-  TableComponent,
+  DataTableComponent,
   DeferredShoppersComponent,
   PaginatorComponent, // unused...
 ];

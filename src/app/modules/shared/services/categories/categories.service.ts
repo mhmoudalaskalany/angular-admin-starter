@@ -13,26 +13,22 @@ export class CategoriesService extends HttpService {
   }
 
   getCategory(id: string) {
-    return this.get<Category>({ APIName: `Get/${id}` });
+    return this.get<Category>({ apiName: `Get/${id}` });
   }
 
   get categories() {
-    return this.get<Category[]>({ APIName: 'GetAll' });
-  }
-
-  getAll(body: { parentId: string | null }) {
-    return this.post<Category[]>({ APIName: 'GetAll', body });
+    return this.get<Category[]>({ apiName: 'GetAll' });
   }
 
   add(body: Category) {
-    return this.post<Category>({ APIName: 'Add', body, showAlert: true });
+    return this.post<Category, Category>({ apiName: 'Add' }, body);
   }
 
   update(body: Category) {
-    return this.put({ APIName: 'Update', body, showAlert: true });
+    return this.put({ apiName: 'Update' }, body);
   }
 
   remove(id: string) {
-    return this.delete({ APIName: `DeleteSoft/${id}`, showAlert: true });
+    return this.delete({ apiName: `DeleteSoft/` }, id);
   }
 }
