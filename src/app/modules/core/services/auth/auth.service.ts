@@ -24,4 +24,15 @@ export class AuthService {
       return value;
     }));
   }
+
+  convertTokenJWT(token = localStorage.getItem('token') as string) {
+    if (token) {
+      let base64 = token.split('.')[1].replace(/-/g, '+').replace(/_/g, '/'),
+        jsonPayload = decodeURIComponent(atob(base64).split('').map((c) => {
+          return '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2);
+        }).join(''));
+
+      return JSON.parse(jsonPayload);
+    }
+  }
 }
