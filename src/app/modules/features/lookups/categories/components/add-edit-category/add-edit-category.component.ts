@@ -3,10 +3,8 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { ActivatedRoute } from '@angular/router';
 
-import { combineLatest } from 'rxjs';
 import { Category, Shop } from 'shared/interfaces/lookups/lookups';
 import { CategoriesService } from 'shared/services/categories/categories.service';
-import { ShopsService } from 'shared/services/shops/shops.service';
 
 @Component({
   selector: 'app-add-edit-category',
@@ -23,7 +21,7 @@ export class AddEditCategoryComponent implements OnInit {
   shops: Shop[] = [];
 
   constructor(private dialogRef: MatDialogRef<AddEditCategoryComponent>, @Optional() @Inject(MAT_DIALOG_DATA) public data: { activatedRoute: ActivatedRoute; },
-    private fb: FormBuilder, private categoriesService: CategoriesService, private shopsService: ShopsService) { }
+    private fb: FormBuilder, private categoriesService: CategoriesService) { }
 
   ngOnInit(): void {
     this.pageTitle = this.data.activatedRoute.snapshot.firstChild?.data['pageTitle'];
@@ -50,14 +48,14 @@ export class AddEditCategoryComponent implements OnInit {
   }
 
   getLookups() {
-    combineLatest(this.categoriesService.categories, this.shopsService.shops).subscribe((lookups:any) => {
-      this.categories = lookups[0].filter((category:any) => this.lookupId ? ![category.id, category.parentId].includes(this.lookupId) : category);
-      this.shops = lookups[1];
+    this.categoriesService.categories.subscribe((lookups: any) => {
+      this.categories = lookups[0].filter((category: any) => this.lookupId ? ![category.id, category.parentId].includes(this.lookupId) : category);
+
     });
   }
 
   getLookup() {
-    this.categoriesService.getCategory(this.lookupId).subscribe((category:any) => this.lookupFormGroup.patchValue(category));
+    this.categoriesService.getCategory(this.lookupId).subscribe((category: any) => this.lookupFormGroup.patchValue(category));
   }
 
   submit() {

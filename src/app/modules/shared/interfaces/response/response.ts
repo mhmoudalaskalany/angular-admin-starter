@@ -7,7 +7,7 @@ enum HttpStatus {
     InternalServerError = 500
 }
 
-export interface ApResponse<T> {
+export interface ApiResponse<T> {
     data: T;
     message: string;
     status: HttpStatus;

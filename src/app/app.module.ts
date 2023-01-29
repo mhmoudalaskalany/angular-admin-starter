@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { APP_INITIALIZER, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
@@ -10,6 +10,14 @@ import { ErrorHandlingInterceptor } from './modules/core/interceptors/error/erro
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { ConfigService } from 'core/services/config/config.service';
+
+/* a head of compile functions */
+const initializerConfigFn = (appConfig: ConfigService) => {
+  return () => {
+    return appConfig.loadAppConfig();
+  };
+};
 
 @NgModule({
   declarations: [
@@ -36,6 +44,12 @@ import { AppComponent } from './app.component';
       provide: HTTP_INTERCEPTORS,
       useClass: ErrorHandlingInterceptor,
       multi: true
+    },
+    {
+      provide: APP_INITIALIZER,
+      useFactory: initializerConfigFn,
+      multi: true,
+      deps: [ConfigService],
     }
   ],
   bootstrap: [AppComponent]

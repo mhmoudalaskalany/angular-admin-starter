@@ -2,7 +2,7 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { TranslationService } from 'core/services/translation/translation.service';
 import { Subject, takeUntil } from 'rxjs';
-import { TableComponent } from 'shared/components/table/table.component';
+import { DataTableComponent } from 'shared/components/datatable/data-table.component';
 import { TableOptions } from 'shared/interfaces/table/table';
 
 @Component({
@@ -20,7 +20,7 @@ export class TransactionsReportsComponent implements OnInit {
   /* subscriber to unsubscribe when leaving the component */
   private destroy$: Subject<boolean> = new Subject<boolean>();
   
-  @ViewChild('tableComponent') tableComponent!: TableComponent;
+  @ViewChild('dataTableComponent') tableComponent!: DataTableComponent;
 
   constructor(private activatedRoute: ActivatedRoute, private translation: TranslationService) { }
 

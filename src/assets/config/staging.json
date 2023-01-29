@@ -1,0 +1,8 @@
+{
+    "HOST_API": "https://localhost:5030/api/",
+    "HUB_URL": "https://localhost:5030/",
+    "SIGNAL-R-INTERVALS": "10",
+    "SIGNAL-R-INTERVAL": "5",
+    "INTERVAL": "500000",
+    "AppCode": "TEMPLATE-SYSTEM"
+  }

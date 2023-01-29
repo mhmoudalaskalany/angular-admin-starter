@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Injector, OnInit } from '@angular/core';
 import { Title } from '@angular/platform-browser';
+import { Shell } from 'base/components/shell';
 import { Subject } from 'rxjs';
 import { TranslationService } from './modules/core/services/translation/translation.service';
 
@@ -13,7 +14,10 @@ export class AppComponent implements OnInit {
   show = false;
   private destroy$ = new Subject<boolean>();
 
-  constructor(private translateService: TranslationService, private titleService: Title) { }
+  constructor(private translateService: TranslationService, private titleService: Title,
+    private injector: Injector) {
+    Shell.Injector = this.injector;
+  }
 
   ngOnInit(): void {
     this.setTitle();

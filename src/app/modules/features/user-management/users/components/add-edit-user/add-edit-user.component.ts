@@ -4,7 +4,6 @@ import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { ActivatedRoute } from '@angular/router';
 import { combineLatest } from 'rxjs';
 import { Role, Shop, User } from 'shared/interfaces/lookups/lookups';
-import { ShopsService } from 'shared/services/shops/shops.service';
 import { RolesService } from 'shared/services/user-management/roles/roles.service';
 import { UsersService } from 'shared/services/user-management/users/users.service';
 
@@ -38,7 +37,7 @@ export class AddEditUserComponent implements OnInit {
   shops: Shop[] = [];
 
   constructor(private dialogRef: MatDialogRef<AddEditUserComponent>, @Optional() @Inject(MAT_DIALOG_DATA) public data: { activatedRoute: ActivatedRoute; },
-    private fb: FormBuilder, private usersService: UsersService, private roleService: RolesService, private shopsService: ShopsService) { }
+    private fb: FormBuilder, private usersService: UsersService, private roleService: RolesService) { }
 
   ngOnInit(): void {
     this.pageTitle = this.data.activatedRoute.snapshot.firstChild?.data['pageTitle'];
@@ -87,7 +86,6 @@ export class AddEditUserComponent implements OnInit {
 
   getLookups() {
     this.roleService.roles.subscribe((roles: any) => this.roles = roles);
-    this.shopsService.shops.subscribe((shops) => this.shops = shops);
   }
 
   submit() {

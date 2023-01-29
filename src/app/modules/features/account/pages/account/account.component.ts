@@ -94,8 +94,6 @@ export class AccountComponent implements OnInit {
     this.account.login(this.form.value).subscribe(user => {
       if (user) {
         localStorage.setItem('token', user.token);
-        localStorage.setItem('userId', this.account.convertTokenJWT().UserId);
-  
         if (this.activatedRoute.snapshot.paramMap.get('redirect')) {
           this.router.navigate([this.activatedRoute.snapshot.paramMap.get('redirect')]);
         } else {

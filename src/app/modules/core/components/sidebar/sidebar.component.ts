@@ -115,7 +115,6 @@ export class SidebarComponent implements OnInit {
 
   ngOnInit(): void {
     this.sidebarService.isSidebarOpened$.subscribe(isSidebarOpened => this.isSidebarOpened = isSidebarOpened);
-    this.user = this.http.convertTokenJWT();
   }
 
   /**
