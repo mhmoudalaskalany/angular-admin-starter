@@ -14,7 +14,7 @@ import { ExportExcelService } from 'shared/services/export-excel/export-excel.se
 })
 export class DataTableComponent implements OnInit, OnDestroy {
   // Inputs
-  @Input() tableOptions: TableOptions = {};
+  @Input() tableOptions!: TableOptions ;
   @Input() totalCount: number = 0;
   @Input() pageSize: number = 0;
   @Input() set data(value) {
