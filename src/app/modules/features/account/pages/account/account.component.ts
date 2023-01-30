@@ -18,9 +18,9 @@ export class AccountComponent implements OnInit {
   get localize(): TranslationService { return Shell.Injector.get(TranslationService); }
   get authService(): AuthService { return Shell.Injector.get(AuthService); }
   get fb(): FormBuilder { return Shell.Injector.get(FormBuilder); }
-  get activatedRoute(): ActivatedRoute { return Shell.Injector.get(ActivatedRoute); }
   get router(): Router { return Shell.Injector.get(Router); }
-  constructor() { }
+  constructor(private activatedRoute: ActivatedRoute) {
+  }
 
   ngOnInit(): void {
     this.pageType = this.activatedRoute.snapshot.data['type'];

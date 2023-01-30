@@ -1,36 +1,35 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { TranslationService } from 'core/services/translation/translation.service';
-import { Subject, takeUntil } from 'rxjs';
+import { BaseListComponent } from 'base/components/base-list-component';
+import { Shell } from 'base/components/shell';
+import { takeUntil } from 'rxjs';
 import { TableOptions } from 'shared/interfaces/table/table';
+import { CategoriesService } from 'shared/services/categories/categories.service';
 
 @Component({
   selector: 'app-categories',
   templateUrl: './categories.component.html',
   styleUrls: ['./categories.component.scss']
 })
-export class CategoriesComponent implements OnInit {
+export class CategoriesComponent extends BaseListComponent {
 
   isEnglish = false;
-  title = '';
   tableOptions!: TableOptions;
-
-  /* subscriber to unsubscribe when leaving the component */
-  private destroy$: Subject<boolean> = new Subject<boolean>();
-
-  constructor(private activatedRoute: ActivatedRoute, private translation: TranslationService) {
+  get service(): CategoriesService { return Shell.Injector.get(CategoriesService); }
+  constructor(activatedRoute: ActivatedRoute) {
+    super(activatedRoute);
   }
 
-  ngOnInit(): void {
-    this.title = this.activatedRoute.snapshot.data['title'];
-    this.translation.currentLanguage$.pipe(takeUntil(this.destroy$)).subscribe(() => this.initializeTableOptions());
+  override ngOnInit(): void {
+    this.localize.currentLanguage$.pipe(takeUntil(this.destroy$)).subscribe(() => this.initializeTableOptions());
+    super.ngOnInit();
   }
 
   initializeTableOptions() {
 
     this.tableOptions = {
       inputUrl: {
-        getAll: 'v1/categories/getAll',
+        getAll: 'v1/categories/getPaged',
         getAllMethod: 'GET',
         delete: 'v1/categories/deleteSoft',
       },
@@ -98,11 +97,4 @@ export class CategoriesComponent implements OnInit {
     ];
   }
 
-  /* when leaving the component */
-  ngOnDestroy() {
-    //Called once, before the instance is destroyed.
-    //Add 'implements OnDestroy' to the class.
-    this.destroy$.next(true);
-    this.destroy$.unsubscribe();
-  }
 }

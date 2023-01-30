@@ -31,10 +31,4 @@ export abstract class BaseComponent implements OnInit {
     this.title = this.activatedRoute.snapshot.data['title'];
     this.pageType = this.activatedRoute.snapshot.data['pageType'];
   }
-
-
-
-
-
-
 }

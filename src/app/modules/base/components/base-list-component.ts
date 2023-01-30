@@ -14,10 +14,10 @@ import { Shell } from './shell';
 @Directive()
 export abstract class BaseListComponent extends BaseComponent implements OnInit {
 
-  data: any[];
+  data: any[] = [];
   totalCount: number = 0;
   /* load data at first time */
-  private firstInit: boolean;
+  private firstInit: boolean = true;
   abstract tableOptions: TableOptions
   protected destroy$: Subject<boolean> = new Subject<boolean>();
   get dataTableService(): DataTableService { return Shell.Injector.get(DataTableService); }
@@ -69,14 +69,14 @@ export abstract class BaseListComponent extends BaseComponent implements OnInit 
 
   // load data from server
   loadDataFromServer(): void {
-    this.dataTableService.loadData(this.tableOptions.inputUrl.getAll).subscribe((res: any) => {
+    this.dataTableService.loadData(this.tableOptions.inputUrl?.getAll).subscribe((res: any) => {
       this.data = res.data.data;
       this.totalCount = res.data.totalCount;
     });
   }
   /* lazy load table data */
   /* note:  gets called on entering component */
-  loadLazyLoadedData(event?: LazyLoadEvent): void {
+  loadLazyLoadedData(event: LazyLoadEvent): void {
     this.resetOpt();
     this.setSortColumn(event);
     this.setPaging(event);
@@ -84,7 +84,7 @@ export abstract class BaseListComponent extends BaseComponent implements OnInit 
   }
 
   /* set SortColumn */
-  setSortColumn(event?: LazyLoadEvent): void {
+  setSortColumn(event: LazyLoadEvent): void {
     this.dataTableService.opt.orderByValue = [];
     this.dataTableService.opt.orderByValue.push({
       colId: event.sortField,
@@ -92,9 +92,9 @@ export abstract class BaseListComponent extends BaseComponent implements OnInit 
     });
   }
   /* set paging parameters*/
-  setPaging(event?: LazyLoadEvent): void {
+  setPaging(event: LazyLoadEvent): void {
     this.dataTableService.opt.pageSize = event.rows;
-    this.dataTableService.opt.pageNumber = event.first / event.rows + 1;
+    this.dataTableService.opt.pageNumber = event.first !== undefined && event.rows !== undefined ? event.first / event.rows + 1 : 1;
   }
 
 
@@ -163,7 +163,7 @@ export abstract class BaseListComponent extends BaseComponent implements OnInit 
 
   /* when leaving the component */
   ngOnDestroy() {
-    this.dataTableService.searchNew$.next(null);
+    this.dataTableService.searchNew$.next({});
     this.dataTableService.searchNew$.unsubscribe();
   }
   Redirect() {
