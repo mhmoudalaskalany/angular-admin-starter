@@ -1,6 +1,6 @@
 {
-    "HOST_API": "https://localhost:5030/api/",
-    "HUB_URL": "https://localhost:5030/",
+    "HOST_API": "https://localhost:5001/api/",
+    "HUB_URL": "https://localhost:5001/",
     "SIGNAL-R-INTERVALS": "10",
     "SIGNAL-R-INTERVAL": "5",
     "INTERVAL": "500000",
