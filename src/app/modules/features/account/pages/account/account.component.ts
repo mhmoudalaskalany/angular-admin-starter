@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
+import { Shell } from 'base/components/shell';
+import { AuthService } from 'core/services/auth/auth.service';
 import { TranslationService } from 'core/services/translation/translation.service';
-import { AccountService } from '../../services/account/account.service';
 
 @Component({
   selector: 'app-account',
@@ -14,9 +15,12 @@ export class AccountComponent implements OnInit {
   pageType = '';
   isEnglish = true;
   form!: FormGroup;
-
-  constructor(private translateService: TranslationService, private router: Router, private activatedRoute: ActivatedRoute, private fb: FormBuilder,
-    private account: AccountService) { }
+  get localize(): TranslationService { return Shell.Injector.get(TranslationService); }
+  get authService(): AuthService { return Shell.Injector.get(AuthService); }
+  get fb(): FormBuilder { return Shell.Injector.get(FormBuilder); }
+  get activatedRoute(): ActivatedRoute { return Shell.Injector.get(ActivatedRoute); }
+  get router(): Router { return Shell.Injector.get(Router); }
+  constructor() { }
 
   ngOnInit(): void {
     this.pageType = this.activatedRoute.snapshot.data['type'];
@@ -91,7 +95,7 @@ export class AccountComponent implements OnInit {
    * Login 
    */
   login() {
-    this.account.login(this.form.value).subscribe(user => {
+    this.authService.login(this.form.value).subscribe(user => {
       if (user) {
         localStorage.setItem('token', user.token);
         if (this.activatedRoute.snapshot.paramMap.get('redirect')) {
@@ -104,6 +108,6 @@ export class AccountComponent implements OnInit {
   }
 
   changeLanguage() {
-    this.translateService.changeLanguage();
+    this.localize.changeLanguage();
   }
 }

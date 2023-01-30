@@ -2,29 +2,45 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { BehaviorSubject } from 'rxjs/internal/BehaviorSubject';
-import { UsersService } from 'shared/services/user-management/users/users.service';
+
 import { Permission } from 'shared/interfaces/lookups/lookups';
+import { HttpService } from '../http/http.service';
+import { ApiResponse } from 'shared/interfaces/response/response';
 
 @Injectable({
   providedIn: 'root'
 })
-export class AuthService {
-
+export class AuthService extends HttpService {
+  protected get baseUrl(): string {
+    return 'v1/Accounts/';
+  }
   userPermissions: BehaviorSubject<Permission[] | any> = new BehaviorSubject(null);
 
-  constructor(private usersService: UsersService) { }
 
-  get userPermissions$(): Observable<Permission[]> {
-    if (this.userPermissions.value) {
-      return this.userPermissions.asObservable();
-    }
 
-    return this.usersService.getUserPermissions().pipe(map(value => {
-      this.userPermissions.next(value);
-      return value;
+  // get userPermissions$(): Observable<Permission[]> {
+  //   if (this.userPermissions.value) {
+  //     return this.userPermissions.asObservable();
+  //   }
+
+  //   return this.usersService.getUserPermissions().pipe(map(value => {
+  //     this.userPermissions.next(value);
+  //     return value;
+  //   }));
+  // }
+
+
+  login(body: any): Observable<any> {
+    return this.post<any, ApiResponse<boolean>>({ apiName: 'Login' }, body).pipe(map(result => {
+      if (result) {
+        this.alertService.success(this.localize.translate.instant('VALIDATION.LOGIN_SUCCESS'));
+      } else {
+        this.alertService.error(this.localize.translate.instant('VALIDATION.WRONG_USER_OR_PASSWORD'));
+      }
+
+      return result;
     }));
   }
-
   convertTokenJWT(token = localStorage.getItem('token') as string) {
     if (token) {
       let base64 = token.split('.')[1].replace(/-/g, '+').replace(/_/g, '/'),
