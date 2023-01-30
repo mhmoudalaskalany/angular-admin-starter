@@ -213,6 +213,14 @@
     "INVOICE_NUMBER": "Invoice Number",
     "INVOICE_IMAGE": "Invoice Image"
   },
+  "COMMON": {
+    "ENGLISH_NAME": "الاسم الانجليزى",
+    "ARABIC_NAME": "الاسم العربي",
+    "CREATED_DATE": "تاريخ الإنشاء",
+    "MODIFIED_DATE": "تاريخ التعديل",
+    "DESCRIPTION": "الوصف",
+    "CODE": "الرمز"
+  },
   "ACTIONS": {
     "TITLE": "Actions",
     "LOGIN": "Login",

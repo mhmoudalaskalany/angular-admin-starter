@@ -6,18 +6,8 @@
     "SIGNIN_SUBTITLE": "إبدأ جلستك",
     "SIGNUP": "حساب جديد"
   },
-  "DASHBOARD": {
+  "Dashboa": {
     "TITLE": "البيانات الرئيسية"
-  },
-  "PAYMENTS": {
-    "TITLE": "المدفوعات",
-    "TRANSACTION_STATUS": "حالة عملية الدفع",
-    "TOTAL_SOLD_PRODUCTS": "إجمالي المنتجات المُباعة",
-    "TOTAL_TRANSACTIONS": "إجمالي عمليات الدفع",
-    "EDIT": "تعديل الدفع",
-    "BILL": "تقرير الفاتورة",
-    "DEFERRED_SHOPPERS": "المتسوقون المؤجلون",
-    "SHOPPERS": "المتسوقون"
   },
   "ITEM_ANALYSIS": {
     "TITLE": "بيانات المنتجات",
@@ -181,11 +171,19 @@
     "VAT": "نسبة القيمة المضافة (%)",
     "VAT_AMOUNT": "قيمة القيمة المضافة",
     "DELIVERY": "إجمالي تكلفة التوصيل",
-    "LOADING_AND_UNLOADING":"إجمالي تكلفة التحميل والتفريغ",
+    "LOADING_AND_UNLOADING": "إجمالي تكلفة التحميل والتفريغ",
     "PROFIT_RATIO_PERCENTAGE": "مقدار نسبة الربح (%)",
     "DELIVERY_AMOUNT": "سعر التوصيل",
     "INVOICE_NUMBER": "رقم الفاتورة",
     "INVOICE_IMAGE": "صورة الفاتورة"
+  },
+  "COMMON": {
+    "ENGLISH_NAME": "الاسم الانجليزى",
+    "ARABIC_NAME": "الاسم العربي",
+    "CREATED_DATE": "تاريخ الإنشاء",
+    "MODIFIED_DATE": "تاريخ التعديل",
+    "DESCRIPTION": "الوصف",
+    "CODE": "الرمز"
   },
   "ACTIONS": {
     "TITLE": "الإجراءات",

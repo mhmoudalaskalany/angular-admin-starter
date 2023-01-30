@@ -38,7 +38,6 @@ export class AddEditCategoryComponent implements OnInit {
       nameEn: ['', Validators.required],
       nameAr: ['', Validators.required],
       code: ['', Validators.required],
-      shopId: [null, Validators.required],
       parentId: [null]
     });
 

@@ -18,7 +18,7 @@ export class CategoriesComponent implements OnInit {
   /* subscriber to unsubscribe when leaving the component */
   private destroy$: Subject<boolean> = new Subject<boolean>();
 
-  constructor(private activatedRoute: ActivatedRoute, private translation: TranslationService) { 
+  constructor(private activatedRoute: ActivatedRoute, private translation: TranslationService) {
   }
 
   ngOnInit(): void {
@@ -28,43 +28,52 @@ export class CategoriesComponent implements OnInit {
 
   initializeTableOptions() {
 
-    setTimeout(() => {
-      this.tableOptions = {
-        inputUrl: {
-          getAll: 'Categories/GetAll',
-          getAllMethod: 'GET',
-          delete: 'Categories/DeleteSoft',
-        },
-        inputCols: this.initializeTableColumns(),
-        inputActions: this.initializeTableActions(),
-        responsiveDisplayedProperties: ['nameEn', 'nameAr', 'description', 'createdDate']
-      };
-    });
+    this.tableOptions = {
+      inputUrl: {
+        getAll: 'v1/categories/getAll',
+        getAllMethod: 'GET',
+        delete: 'v1/categories/deleteSoft',
+      },
+      inputCols: this.initializeTableColumns(),
+      inputActions: this.initializeTableActions(),
+      permissions: {
+        componentName: 'TEMPLATE-CATEGORIES',
+        allowAll: true,
+        listOfPermissions: []
+      },
+      responsiveDisplayedProperties: ['nameEn', 'nameAr', 'description', 'createdDate']
+    };
   }
 
   initializeTableColumns(): TableOptions['inputCols'] {
     return [
       {
-        field: this.isEnglish ? 'nameEn' : 'nameAr',
-        header: 'FIELDS.NAME',
+        field: 'nameEn',
+        header: 'COMMON.ENGLISH_NAME',
+        filter: false,
+        filterMode: 'text',
+      },
+      {
+        field: 'nameEn',
+        header: 'COMMON.ARABIC_NAME',
         filter: false,
         filterMode: 'text',
       },
       {
         field: 'description',
-        header: 'FIELDS.DESCRIPTION',
+        header: 'COMMON.DESCRIPTION',
         filter: false,
         filterMode: 'text',
       },
       {
         field: 'createdDate',
-        header: 'FIELDS.CREATED_DATE',
+        header: 'COMMON.CREATED_DATE',
         filter: false,
         filterMode: 'date',
       },
       {
         field: 'modifiedDate',
-        header: 'FIELDS.MODIFIED_DATE',
+        header: 'COMMON.MODIFIED_DATE',
         filter: false,
         filterMode: 'date',
       }
