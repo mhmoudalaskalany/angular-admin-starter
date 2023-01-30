@@ -13,7 +13,7 @@ export class CategoriesComponent implements OnInit {
 
   isEnglish = false;
   title = '';
-  tableOptions!: TableOptions | undefined;
+  tableOptions!: TableOptions;
 
   /* subscriber to unsubscribe when leaving the component */
   private destroy$: Subject<boolean> = new Subject<boolean>();
@@ -27,7 +27,6 @@ export class CategoriesComponent implements OnInit {
   }
 
   initializeTableOptions() {
-    this.tableOptions = undefined;
 
     setTimeout(() => {
       this.tableOptions = {

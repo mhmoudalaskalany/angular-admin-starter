@@ -4,7 +4,7 @@ export interface TableOptions {
     /* hold the urls fro get and delete */
     inputUrl?: Url;
     /* hold Columns Definitions */
-    inputCols: ColumnsInterface[];
+    inputCols?: ColumnsInterface[];
     /* hold actions */
     inputActions?: ActionsInterface[];
 
