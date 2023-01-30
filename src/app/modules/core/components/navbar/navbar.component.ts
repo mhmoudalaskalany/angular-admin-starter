@@ -28,7 +28,6 @@ export class NavbarComponent implements OnInit {
 
   logOut() {
     localStorage.clear();
-    this.authService.userPermissions.next(null);
     this.router.navigate(['/']);
   }
 }

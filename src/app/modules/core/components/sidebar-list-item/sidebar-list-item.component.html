@@ -1,5 +1,5 @@
 <div class="collapse-wrapper font-14 w-100 h-100">
-    <div class="w-100" [ngClass]="{'h-max': sidebarItem.children}" [secure]="sidebarItem.permissions">
+    <div class="w-100" [ngClass]="{'h-max': sidebarItem.children}">
         <a class="w-100 d-flex align-items-center justify-content-between cursor-pointer each"
            [routerLink]="sidebarItem.children ? null : [sidebarItem.routerLinkName]" (click)="collapse(sidebarItem.children);"
            [ngClass]="{'active': isRouteActive(sidebarItem.routerLinkName)}" setRtl>
@@ -23,7 +23,7 @@
 
         <div class="w-100 nested-items" [ngClass]="{'showContent': showContent}" *ngIf="sidebarItem.children">
             <mat-list class="d-flex flex-column p-0" role="list">
-                <mat-list-item role="listitem" *ngFor="let child of sidebarItem.children" [secure]="child.permissions">
+                <mat-list-item role="listitem" *ngFor="let child of sidebarItem.children" >
                     <a class="font-14 w-100 h-100 cursor-pointer" [routerLink]="[child.routerLinkName]">
                         <div class="w-max d-flex align-items-center each" routerLinkActive="active">
                             <i class="{{ child.icon }} font-20 text-secondary child" [title]=" child.label | translate"

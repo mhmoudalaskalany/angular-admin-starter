@@ -14,16 +14,16 @@ export class SecureDirective {
   constructor(public authService: AuthService, private eltRef: ElementRef) { }
 
   ngOnInit() {
-    this.permissionsSubscription = this.authService.userPermissions$.subscribe((userPermissions: any) => {
-      const permissionsCodes = userPermissions.map((permission: any) => permission.code);
+    // this.permissionsSubscription = this.authService.userPermissions$.subscribe((userPermissions: any) => {
+    //   const permissionsCodes = userPermissions.map((permission: any) => permission.code);
 
-      if (userPermissions?.length) {
-        const allow = this.permissions ? this.permissions.some(x => permissionsCodes.includes(x)) : false;
-        //this.applyPermissions(allow);
-      } else {
-        //this.applyPermissions(false);
-      }
-    });
+    //   if (userPermissions?.length) {
+    //     const allow = this.permissions ? this.permissions.some(x => permissionsCodes.includes(x)) : false;
+    //     //this.applyPermissions(allow);
+    //   } else {
+    //     //this.applyPermissions(false);
+    //   }
+    // });
   }
 
   applyPermissions(allow: boolean) {

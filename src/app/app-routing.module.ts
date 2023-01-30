@@ -6,17 +6,17 @@ import { AuthGuard } from './modules/core/guards/auth/auth.guard';
 const routes: Routes = [
   {
     path: '',
-    redirectTo: 'dashboard',
+    redirectTo: 'account',
     pathMatch: 'full'
   },
   {
     path: 'account',
-    //canActivate: [AuthGuard],
+    canActivate: [AuthGuard],
     loadChildren: () => import('./modules/features/account/account.module').then(m => m.AccountModule)
   },
   {
     path: '',
-    //canActivate: [AuthGuard],
+    canActivate: [AuthGuard],
     component: LayoutComponent,
     children: [
       { path: '', redirectTo: 'dashboard', pathMatch: 'full' },
