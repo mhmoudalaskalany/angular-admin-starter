@@ -19,7 +19,6 @@ export abstract class BaseComponent implements OnInit {
   abstract get service(): HttpService;
   get alert(): AlertService { return Shell.Injector.get(AlertService); }
   get route(): Router { return Shell.Injector.get(Router); }
-
   get excel(): ExportExcelService { return Shell.Injector.get(ExportExcelService); }
   get localize(): TranslationService { return Shell.Injector.get(TranslationService); }
 
