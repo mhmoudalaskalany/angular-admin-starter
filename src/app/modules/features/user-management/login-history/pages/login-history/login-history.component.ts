@@ -32,13 +32,16 @@ export class LoginHistoryComponent implements OnInit {
 
     this.tableOptions = {
       inputUrl: {
-        getAll: 'LoginHistories/GetAll',
-        getAllMethod: 'GET'
+        endPoint: 'v1/loginHistories/getPaged',
+        method: 'GET'
       },
       permissions: {
         componentName: 'TEMPLATE-CATEGORIES',
         allowAll: true,
         listOfPermissions: []
+      },
+      bodyOptions: {
+        filter: {}
       },
       inputCols: this.initializeTableColumns(),
       inputActions: this.initializeTableActions(),

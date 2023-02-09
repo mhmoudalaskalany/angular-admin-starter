@@ -1,4 +1,3 @@
-
 import { Directive, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { LazyLoadEvent } from 'primeng/api';
@@ -8,68 +7,62 @@ import { DataTableService } from 'shared/services/table/datatable.service';
 import { BaseComponent } from './base-component';
 import { Shell } from './shell';
 
-
-
-
 @Directive()
 export abstract class BaseListComponent extends BaseComponent implements OnInit {
-
   data: any[] = [];
   totalCount: number = 0;
   /* load data at first time */
   private firstInit: boolean = true;
-  abstract tableOptions: TableOptions
+  abstract tableOptions: TableOptions;
   protected destroy$: Subject<boolean> = new Subject<boolean>();
-  get dataTableService(): DataTableService { return Shell.Injector.get(DataTableService); }
+  get dataTableService(): DataTableService {
+    return Shell.Injector.get(DataTableService);
+  }
 
   constructor(activatedRoute: ActivatedRoute) {
-    super(activatedRoute)
+    super(activatedRoute);
   }
 
   override ngOnInit(): void {
     super.ngOnInit();
+    this.loadDataFromServer();
   }
 
   /**
    * Handle Data Table Event (Sort , Pagination , Filter , Delete , Print)
-   * @param dataTableEvent 
+   * @param dataTableEvent
    */
   handleEvent(dataTableEvent: any): void {
-    if (dataTableEvent.eventType == 'lazyLoad') {
-      this.loadLazyLoadedData(dataTableEvent.data);
-    }
-    if (dataTableEvent.eventType == 'reset') {
-      this.resetOpt();
-    }
+    if (!this.firstInit) {
+      if (dataTableEvent.eventType == 'lazyLoad') {
+        this.loadLazyLoadedData(dataTableEvent.data);
+      }
+      if (dataTableEvent.eventType == 'reset') {
+        this.resetOpt();
+      }
 
-    if (dataTableEvent.eventType == 'filter') {
-      this.resetOpt();
-    }
+      if (dataTableEvent.eventType == 'filter') {
+        this.resetOpt();
+      }
 
-    if (dataTableEvent.eventType == 'delete') {
-      this.resetOpt();
-    }
-    if (dataTableEvent.eventType == 'export') {
-      this.export(dataTableEvent.data.columnNames, dataTableEvent.data.reportName);
+      if (dataTableEvent.eventType == 'delete') {
+        this.resetOpt();
+      }
+      if (dataTableEvent.eventType == 'export') {
+        this.export(dataTableEvent.data.columnNames, dataTableEvent.data.reportName);
+      }
     }
   }
 
   columnSearchInput(): void {
-    this.dataTableService.searchNew$
-      .pipe(
-        debounceTime(1000),
-        distinctUntilChanged(),
-        takeUntil(this.destroy$)
-      )
-      .subscribe(() => {
-        this.firstInit ? this.loadDataFromServer() : (this.firstInit = true);
-      });
-  };
-
+    this.dataTableService.searchNew$.pipe(debounceTime(1000), distinctUntilChanged(), takeUntil(this.destroy$)).subscribe(() => {
+      this.firstInit ? this.loadDataFromServer() : (this.firstInit = true);
+    });
+  }
 
   // load data from server
   loadDataFromServer(): void {
-    this.dataTableService.loadData(this.tableOptions.inputUrl?.getAll).subscribe((res: any) => {
+    this.dataTableService.loadData(this.tableOptions.inputUrl?.endPoint).subscribe((res: any) => {
       this.data = res.data.data;
       this.totalCount = res.data.totalCount;
     });
@@ -88,33 +81,28 @@ export abstract class BaseListComponent extends BaseComponent implements OnInit 
     this.dataTableService.opt.orderByValue = [];
     this.dataTableService.opt.orderByValue.push({
       colId: event.sortField,
-      sort: event.sortOrder === 1 ? 'asc' : 'desc',
+      sort: event.sortOrder === 1 ? 'asc' : 'desc'
     });
   }
   /* set paging parameters*/
-  setPaging(event: LazyLoadEvent): void {
-    this.dataTableService.opt.pageSize = event.rows;
-    this.dataTableService.opt.pageNumber = event.first !== undefined && event.rows !== undefined ? event.first / event.rows + 1 : 1;
+  setPaging(event?: LazyLoadEvent): void {
+    if (event) {
+      this.dataTableService.opt.pageSize = event.rows == 0 ? 10 : event.rows;
+      this.dataTableService.opt.pageNumber =
+        event.first !== undefined && event.rows !== undefined && event.rows != 0 ? event.first / event.rows + 1 : 1;
+    }
   }
-
 
   // Filter
   filter(value?: any, column?: any, filterColumnName?: string, dataType?: string): void {
     this.resetOpt();
     value = this.checkDataType(value, dataType);
-    if (
-      filterColumnName !== undefined &&
-      filterColumnName !== '' &&
-      filterColumnName !== null
-    ) {
-      this.dataTableService.searchNew$.next(
-        (this.dataTableService.opt.filter[filterColumnName] = value)
-      );
+    if (filterColumnName !== undefined && filterColumnName !== '' && filterColumnName !== null) {
+      this.dataTableService.searchNew$.next((this.dataTableService.opt.filter[filterColumnName] = value));
     } else {
       this.dataTableService.searchNew$.next((this.dataTableService.opt.filter[column] = value));
     }
   }
-
 
   checkDataType(value: any, dataType?: string): any {
     if (dataType === 'number') {
@@ -129,19 +117,16 @@ export abstract class BaseListComponent extends BaseComponent implements OnInit 
       pageNumber: 1,
       pageSize: 10,
       orderByValue: [{ colId: 'id', sort: 'asc' }],
-      filter: {},
+      filter: {}
     };
     this.dataTableService.opt.filter =
-      this.tableOptions.bodyOptions.filter !== null &&
-        this.tableOptions.bodyOptions.filter !== undefined
+      this.tableOptions.bodyOptions.filter !== null && this.tableOptions.bodyOptions.filter !== undefined
         ? this.tableOptions.bodyOptions.filter
         : this.dataTableService.opt.filter;
-    this.dataTableService.opt.filter.appId =
-      this.tableOptions.appId !== 0 ? this.tableOptions.appId : 0;
+    this.dataTableService.opt.filter.appId = this.tableOptions.appId !== 0 ? this.tableOptions.appId : 0;
   }
 
-
-  export(sheetDetails: { [k: string]: string; }, fileName: string) {
+  export(sheetDetails: { [k: string]: string }, fileName: string) {
     const sheetColumnsValues = Object.keys(sheetDetails);
 
     const newArray = this.data.map((eachData, index) => {
@@ -172,6 +157,4 @@ export abstract class BaseListComponent extends BaseComponent implements OnInit 
     const str = currentRoute.substring(0, index);
     this.route.navigate([str]);
   }
-
-
 }

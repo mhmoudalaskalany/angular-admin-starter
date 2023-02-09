@@ -12,7 +12,6 @@ import { CategoriesService } from 'shared/services/categories/categories.service
   styleUrls: ['./add-edit-category.component.scss']
 })
 export class AddEditCategoryComponent implements OnInit {
-
   pageTitle = '';
   pageType = '';
   lookupId = '';
@@ -20,8 +19,12 @@ export class AddEditCategoryComponent implements OnInit {
   categories: Category[] = [];
   shops: Shop[] = [];
 
-  constructor(private dialogRef: MatDialogRef<AddEditCategoryComponent>, @Optional() @Inject(MAT_DIALOG_DATA) public data: { activatedRoute: ActivatedRoute; },
-    private fb: FormBuilder, private categoriesService: CategoriesService) { }
+  constructor(
+    private dialogRef: MatDialogRef<AddEditCategoryComponent>,
+    @Optional() @Inject(MAT_DIALOG_DATA) public data: { activatedRoute: ActivatedRoute },
+    private fb: FormBuilder,
+    private categoriesService: CategoriesService
+  ) {}
 
   ngOnInit(): void {
     this.pageTitle = this.data.activatedRoute.snapshot.firstChild?.data['pageTitle'];
@@ -47,9 +50,8 @@ export class AddEditCategoryComponent implements OnInit {
   }
 
   getLookups() {
-    this.categoriesService.categories.subscribe((lookups: any) => {
-      this.categories = lookups[0].filter((category: any) => this.lookupId ? ![category.id, category.parentId].includes(this.lookupId) : category);
-
+    this.categoriesService.categories.subscribe((categories: any) => {
+      this.categories = categories;
     });
   }
 
@@ -59,6 +61,7 @@ export class AddEditCategoryComponent implements OnInit {
 
   submit() {
     if (this.pageType === 'add') this.categoriesService.add(this.lookupFormGroup.value).subscribe(() => this.dialogRef.close());
-    if (this.pageType === 'edit') this.categoriesService.update({ id: this.lookupId, ...this.lookupFormGroup.value }).subscribe(() => this.dialogRef.close());
+    if (this.pageType === 'edit')
+      this.categoriesService.update({ id: this.lookupId, ...this.lookupFormGroup.value }).subscribe(() => this.dialogRef.close());
   }
 }

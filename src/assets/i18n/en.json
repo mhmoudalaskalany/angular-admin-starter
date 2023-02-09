@@ -264,6 +264,8 @@
     "POINTS_DISCOUNT": "I want to apply the discount amount on this payment. "
   },
   "VALIDATION": {
+    "ARABIC_LETTERS": "Arabic Letters Only",
+    "ENGLISH_LETTERS": "English Letters Only",
     "LOGIN_SUCCESS": "Login Success",
     "INVALID_ENGLISH_NAME": "Name Should Be English Characters Only And More Than 3 And Less Than 100",
     "INVALID_ARABIC_NAME": "Name Should Be Arabic Characters Only And More Than 3 And Less Than 100",

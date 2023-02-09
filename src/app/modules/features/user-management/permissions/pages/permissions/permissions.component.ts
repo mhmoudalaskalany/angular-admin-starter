@@ -32,9 +32,9 @@ export class PermissionsComponent implements OnInit {
 
     this.tableOptions = {
       inputUrl: {
-        getAll: 'Permissions/GetPaged',
-        getAllMethod: 'POST',
-        delete: 'Permissions/DeleteSoft'
+        endPoint: 'v1/permissions/getPaged',
+        method: 'POST',
+        delete: 'v1/permissions/deleteSoft'
       },
       permissions: {
         componentName: 'TEMPLATE-CATEGORIES',
@@ -48,7 +48,7 @@ export class PermissionsComponent implements OnInit {
         pageNumber: 1,
         pageSize: 10,
         orderByValue: [{ colId: 'id', sort: 'asc' }],
-        filter: null
+        filter: {}
       }
     };
   }

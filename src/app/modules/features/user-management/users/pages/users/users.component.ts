@@ -32,14 +32,17 @@ export class UsersComponent implements OnInit {
 
     this.tableOptions = {
       inputUrl: {
-        getAll: 'Users/GetAll',
-        getAllMethod: 'GET',
-        delete: 'Users/DeleteSoft'
+        endPoint: 'v1/users/getPaged',
+        method: 'POST',
+        delete: 'v1/users/DeleteSoft'
       },
       permissions: {
         componentName: 'TEMPLATE-USERS',
         allowAll: true,
         listOfPermissions: []
+      },
+      bodyOptions: {
+        filter: {}
       },
       inputCols: this.initializeTableColumns(),
       inputActions: this.initializeTableActions(),

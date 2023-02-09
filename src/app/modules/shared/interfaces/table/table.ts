@@ -52,8 +52,8 @@ export interface ActionsInterface {
 
 
 export interface Url {
-    getAll?: string;
-    getAllMethod?: API_Methods;
+    endPoint?: string;
+    method?: API_Methods;
     delete?: string;
 }
 

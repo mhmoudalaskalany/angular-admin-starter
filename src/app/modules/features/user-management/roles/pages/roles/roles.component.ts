@@ -32,9 +32,9 @@ export class RolesComponent implements OnInit {
 
     this.tableOptions = {
       inputUrl: {
-        getAll: 'Roles/GetPaged',
-        getAllMethod: 'POST',
-        delete: 'Roles/DeleteSoft'
+        endPoint: 'v1/roles/getPaged',
+        method: 'POST',
+        delete: 'v1/roles/deleteSoft'
       },
       permissions: {
         componentName: 'TEMPLATE-CATEGORIES',
@@ -48,7 +48,7 @@ export class RolesComponent implements OnInit {
         pageNumber: 1,
         pageSize: 10,
         orderByValue: [{ colId: 'id', sort: 'asc' }],
-        filter: null
+        filter: {}
       }
     };
   }

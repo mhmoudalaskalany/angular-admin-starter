@@ -12,10 +12,11 @@ import { CategoriesService } from 'shared/services/categories/categories.service
   styleUrls: ['./categories.component.scss']
 })
 export class CategoriesComponent extends BaseListComponent {
-
   isEnglish = false;
   tableOptions!: TableOptions;
-  get service(): CategoriesService { return Shell.Injector.get(CategoriesService); }
+  get service(): CategoriesService {
+    return Shell.Injector.get(CategoriesService);
+  }
   constructor(activatedRoute: ActivatedRoute) {
     super(activatedRoute);
   }
@@ -26,12 +27,11 @@ export class CategoriesComponent extends BaseListComponent {
   }
 
   initializeTableOptions() {
-
     this.tableOptions = {
       inputUrl: {
-        getAll: 'v1/categories/getPaged',
-        getAllMethod: 'GET',
-        delete: 'v1/categories/deleteSoft',
+        endPoint: 'v1/categories/getPaged',
+        method: 'POST',
+        delete: 'v1/categories/deleteSoft'
       },
       inputCols: this.initializeTableColumns(),
       inputActions: this.initializeTableActions(),
@@ -39,6 +39,11 @@ export class CategoriesComponent extends BaseListComponent {
         componentName: 'TEMPLATE-CATEGORIES',
         allowAll: true,
         listOfPermissions: []
+      },
+      bodyOptions: {
+        filter: {},
+        pageNumber: 1,
+        pageSize: 10
       },
       responsiveDisplayedProperties: ['nameEn', 'nameAr', 'description', 'createdDate']
     };
@@ -50,31 +55,31 @@ export class CategoriesComponent extends BaseListComponent {
         field: 'nameEn',
         header: 'COMMON.ENGLISH_NAME',
         filter: false,
-        filterMode: 'text',
+        filterMode: 'text'
       },
       {
-        field: 'nameEn',
+        field: 'nameAr',
         header: 'COMMON.ARABIC_NAME',
         filter: false,
-        filterMode: 'text',
+        filterMode: 'text'
       },
       {
         field: 'description',
         header: 'COMMON.DESCRIPTION',
         filter: false,
-        filterMode: 'text',
+        filterMode: 'text'
       },
       {
         field: 'createdDate',
         header: 'COMMON.CREATED_DATE',
         filter: false,
-        filterMode: 'date',
+        filterMode: 'date'
       },
       {
         field: 'modifiedDate',
         header: 'COMMON.MODIFIED_DATE',
         filter: false,
-        filterMode: 'date',
+        filterMode: 'date'
       }
     ];
   }
@@ -96,5 +101,4 @@ export class CategoriesComponent extends BaseListComponent {
       }
     ];
   }
-
 }

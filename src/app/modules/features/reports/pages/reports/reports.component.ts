@@ -37,8 +37,8 @@ export class ReportsComponent implements OnInit {
     setTimeout(() => {
       this.tableOptions = {
         inputUrl: {
-          getAll: this.activatedRoute.snapshot.data['table'].getAllAPI,
-          getAllMethod: 'POST',
+          endPoint: this.activatedRoute.snapshot.data['table'].getAllAPI,
+          method: 'POST',
         },
         inputCols: this.initializeTableColumns(),
         inputActions: [],

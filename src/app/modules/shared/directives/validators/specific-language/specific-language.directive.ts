@@ -3,26 +3,27 @@ import { FormControl, AbstractControl, NG_VALIDATORS } from '@angular/forms';
 
 @Directive({
   selector: '[specificLanguage]',
-  providers: [
-    { provide: NG_VALIDATORS, useExisting: SpecificLanguageDirective, multi: true }
-  ]
+  providers: [{ provide: NG_VALIDATORS, useExisting: SpecificLanguageDirective, multi: true }]
 })
 export class SpecificLanguageDirective {
-
   @Input() specificLanguage = '';
 
-  constructor() { }
+  constructor() {}
 
   validate(control: FormControl) {
-    if (!control.value) { return null; }
+    if (!control.value) {
+      return null;
+    }
     return this.validateLanguageFactory(control);
   }
 
   validateLanguageFactory(control: AbstractControl): { [key: string]: boolean } | null {
     const isValid = this.validateLanguage(control.value, this.specificLanguage);
-    
-    if (isValid) { return null; } else {
-      return this.generateEroor(this.specificLanguage);
+
+    if (isValid) {
+      return null;
+    } else {
+      return this.generateError(this.specificLanguage);
     }
   }
 
@@ -43,13 +44,13 @@ export class SpecificLanguageDirective {
     return rgex.test(text);
   }
 
-  generateEroor(lang: string): { [key: string]: boolean } {
+  generateError(lang: string): { [key: string]: boolean } {
     let error;
 
     if (lang === 'ar') {
-      error = { arabicWord: true }
+      error = { ARABIC_LETTERS: true };
     } else {
-      error = { englishWord: true }
+      error = { ENGLISH_LETTERS: true };
     }
 
     return error;

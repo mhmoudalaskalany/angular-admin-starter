@@ -6,10 +6,9 @@ import { Subject, takeUntil } from 'rxjs';
   name: 'validationHandler'
 })
 export class ValidationHandlerPipe implements PipeTransform {
-
   private destroy$ = new Subject<any>();
 
-  constructor(private translate: TranslateService) { }
+  constructor(private translate: TranslateService) {}
 
   transform(value: any, customErrorMessage?: string): string {
     value = JSON.stringify(value);
@@ -17,7 +16,7 @@ export class ValidationHandlerPipe implements PipeTransform {
     let res = '';
     let customMessage = '';
     const pattern = /"(.*?)"/;
-    const matches = value.match(pattern).length === 0 ? (value.match(pattern)[0]).replace('"', '') : value.match(pattern)[1];
+    const matches = value.match(pattern).length === 0 ? value.match(pattern)[0].replace('"', '') : value.match(pattern)[1];
 
     if (matches === 'maxlength') {
       customMessage = JSON.parse(value).maxlength.requiredLength;
@@ -30,10 +29,12 @@ export class ValidationHandlerPipe implements PipeTransform {
     }
 
     const customTranslate = customErrorMessage && matches === 'required' ? `${matches}_${customErrorMessage}` : matches;
-
-    this.translate.get(`${customTranslate}_validation`).pipe(takeUntil(this.destroy$)).subscribe(translationWord => {
-      res = translationWord + (customMessage ? '(' + customMessage + ')' : '');
-    });
+    this.translate
+      .get(`VALIDATION.${customTranslate}`)
+      .pipe(takeUntil(this.destroy$))
+      .subscribe(translationWord => {
+        res = translationWord + (customMessage ? '(' + customMessage + ')' : '');
+      });
 
     return res;
   }

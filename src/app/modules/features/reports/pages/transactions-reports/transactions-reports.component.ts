@@ -11,7 +11,6 @@ import { TableOptions } from 'shared/interfaces/table/table';
   styleUrls: ['./transactions-reports.component.scss']
 })
 export class TransactionsReportsComponent implements OnInit {
-
   isEnglish = false;
   title = '';
   filter = null;
@@ -19,10 +18,10 @@ export class TransactionsReportsComponent implements OnInit {
 
   /* subscriber to unsubscribe when leaving the component */
   private destroy$: Subject<boolean> = new Subject<boolean>();
-  
+
   @ViewChild('dataTableComponent') tableComponent!: DataTableComponent;
 
-  constructor(private activatedRoute: ActivatedRoute, private translation: TranslationService) { }
+  constructor(private activatedRoute: ActivatedRoute, private translation: TranslationService) {}
 
   ngOnInit(): void {
     this.title = this.activatedRoute.snapshot.data['title'];
@@ -37,8 +36,8 @@ export class TransactionsReportsComponent implements OnInit {
     setTimeout(() => {
       this.tableOptions = {
         inputUrl: {
-          getAll: 'Transactions/GetTransactionReportDetails',
-          getAllMethod: 'POST',
+          endPoint: 'Transactions/GetTransactionReportDetails',
+          method: 'POST'
         },
         inputCols: this.initializeTableColumns(),
         inputActions: [],
@@ -47,7 +46,7 @@ export class TransactionsReportsComponent implements OnInit {
           pageNumber: 1,
           pageSize: 10,
           orderByValue: [{ colId: 'id', sort: 'asc' }],
-          filter: this.filter,
+          filter: this.filter
         }
       };
     });
@@ -65,29 +64,29 @@ export class TransactionsReportsComponent implements OnInit {
         field: 'quantitySold',
         header: 'PAYMENTS.TOTAL_SOLD_PRODUCTS',
         filter: false,
-        filterMode: 'text',
+        filterMode: 'text'
       },
       {
         field: 'totalTran',
         header: 'PAYMENTS.TOTAL_TRANSACTIONS',
         filter: false,
-        filterMode: 'text',
+        filterMode: 'text'
       },
       {
         field: 'totalEarned',
         header: 'FIELDS.TOTAL_AMOUNT',
         filter: false,
-        filterMode: 'text',
+        filterMode: 'text'
       }
     ];
   }
 
   export() {
     const sheetDetails = {
-      'tranDate': 'تاريخ المعاملة',
-      'quantitySold': 'إجمالي المنتجات المُباعة',
-      'totalTran': 'إجمالي عمليات الدفع',
-      'totalEarned': 'إجمالي الأرباح',
+      tranDate: 'تاريخ المعاملة',
+      quantitySold: 'إجمالي المنتجات المُباعة',
+      totalTran: 'إجمالي عمليات الدفع',
+      totalEarned: 'إجمالي الأرباح'
     };
 
     this.tableComponent.export(sheetDetails, `${this.activatedRoute.snapshot.routeConfig?.path}-products-report`);
