@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpService } from 'core/services/http/http.service';
-import { Category } from 'shared/interfaces/lookups/lookups';
+import { AddCategoryDto, CategoryDto, UpdateCategoryDto } from 'shared/interfaces/category/category';
 
 @Injectable({
   providedIn: 'root'
@@ -11,22 +11,22 @@ export class CategoriesService extends HttpService {
   }
 
   getCategory(id: string) {
-    return this.get<Category>({ apiName: `get/${id}` });
+    return this.get<CategoryDto>({ apiName: `Get/${id}` });
   }
 
   getEditCategory(id: string) {
-    return this.get<Category>({ apiName: `getEdit/${id}` });
+    return this.get<CategoryDto>({ apiName: `getEdit/${id}` });
   }
 
   get categories() {
-    return this.get<Category[]>({ apiName: 'getAll' });
+    return this.get<CategoryDto[]>({ apiName: 'getAll' });
   }
 
-  add(body: Category) {
-    return this.post<Category, Category>({ apiName: 'add', showAlert: true }, body);
+  add(body: AddCategoryDto) {
+    return this.post<AddCategoryDto, CategoryDto>({ apiName: 'add', showAlert: true }, body);
   }
 
-  update(body: Category) {
+  update(body: UpdateCategoryDto) {
     return this.put({ apiName: 'update', showAlert: true }, body);
   }
 
