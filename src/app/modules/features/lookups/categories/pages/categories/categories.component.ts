@@ -86,13 +86,15 @@ export class CategoriesComponent extends BaseListComponent {
         icon: 'bx bx-edit',
         color: 'text-middle',
         isEdit: true,
-        route: 'edit/'
+        route: 'edit/',
+        allowAll: true
       },
       {
         name: 'DELETE',
         icon: 'bx bx-trash',
         color: 'text-error',
-        isDelete: true
+        isDelete: true,
+        allowAll: true
       }
     ];
   }

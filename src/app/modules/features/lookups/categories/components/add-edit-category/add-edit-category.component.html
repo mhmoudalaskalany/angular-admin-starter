@@ -21,10 +21,6 @@
                 <app-input-text [formGroup]="lookupFormGroup" controlName="code" [label]="'FIELDS.CODE' | translate"></app-input-text>
             </div>
 
-            <div class="col-lg-6">
-                <app-input-text [formGroup]="lookupFormGroup" controlName="description" [label]="'FIELDS.DESCRIPTION' | translate"></app-input-text>
-            </div>
-
             <div class="col-lg-6 mt-4">
                 <app-dropdown [formGroup]="lookupFormGroup" [options]="categories" controlName="parentId" [placeholder]="'SETTINGS.CATEGORIES.TITLE' | translate">
                 </app-dropdown>

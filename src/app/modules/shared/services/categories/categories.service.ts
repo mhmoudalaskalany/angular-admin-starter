@@ -11,11 +11,11 @@ export class CategoriesService extends HttpService {
   }
 
   getCategory(id: string) {
-    return this.get<Category>({ apiName: `getById/${id}` });
+    return this.get<Category>({ apiName: `get/${id}` });
   }
 
   getEditCategory(id: string) {
-    return this.get<Category>({ apiName: `getEditById/${id}` });
+    return this.get<Category>({ apiName: `getEdit/${id}` });
   }
 
   get categories() {

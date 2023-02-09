@@ -37,7 +37,6 @@ export class AddEditCategoryComponent implements OnInit {
 
   initFormGroup() {
     this.lookupFormGroup = this.fb.group({
-      description: ['', Validators.required],
       nameEn: ['', Validators.required],
       nameAr: ['', Validators.required],
       code: ['', Validators.required],
@@ -56,7 +55,7 @@ export class AddEditCategoryComponent implements OnInit {
   }
 
   getLookup() {
-    this.categoriesService.getCategory(this.lookupId).subscribe((category: any) => this.lookupFormGroup.patchValue(category));
+    this.categoriesService.getEditCategory(this.lookupId).subscribe((category: any) => this.lookupFormGroup.patchValue(category));
   }
 
   submit() {

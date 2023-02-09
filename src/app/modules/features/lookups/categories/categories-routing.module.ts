@@ -16,7 +16,6 @@ const routes: Routes = [
           component: AddEditCategoryComponent,
           pageTitle: 'SETTINGS.CATEGORIES.ADD',
           pageType: 'add',
-          redirectTo: '/lookups/categories'
         },
         component: DialogComponent
       },

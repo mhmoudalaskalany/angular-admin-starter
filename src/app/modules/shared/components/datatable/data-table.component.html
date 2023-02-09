@@ -1,96 +1,115 @@
-<p-table #table *ngIf="tableOptions.inputCols" [columns]="tableOptions.inputCols" [value]="data" [sortField]="'id'"
-    [sortOrder]="1" [lazy]="true" [showCurrentPageReport]="true"
-    [currentPageReportTemplate]="'Showing {first} to {last} of {totalRecords} entries'" [paginator]="true"
-    [rowsPerPageOptions]=[5,10,15,20] [rows]="pageSize" [totalRecords]="totalCount"
-    (onLazyLoad)="loadLazyLoadedData($event)" styleClass="p-datatable-generic">
-    <ng-template pTemplate="header" let-columns>
-        <!-- Table Headers-->
-        <tr class="table-header">
-            <th *ngFor="let col of columns" [pSortableColumn]="col.field">
-                {{ col.header | translate }}
-                <p-sortIcon [field]="col.field"></p-sortIcon>
-            </th>
-            <!-- Show Action In Header Row-->
-            <th *ngIf="tableOptions.inputActions &&
-              permissions.listOfPermissions.indexOf('Permission.'+ permissions.componentName+ '.View') > -1
-           || permissions.allowAll" style="width: 10em;">
-                {{ 'ACTIONS.TITLE' | translate}}</th>
-        </tr>
-        <!-- Filter Controls-->
-        <tr class="table-search-controls">
-            <th *ngFor="let col of columns" [ngSwitch]="col.filterMode">
-                <ng-container *ngSwitchCase="'text'">
-                    <div class="form-group has-search">
-                        <input class="form-control search-box" type="text"
-                            (input)="filter($event, col.field , col.filterColumnName , col.dataType)"
-                            placeholder="{{ col.header | translate }}">
-                    </div>
-                </ng-container>
+<p-table
+  #table
+  *ngIf="tableOptions.inputCols"
+  [columns]="tableOptions.inputCols"
+  [value]="data"
+  [sortField]="'id'"
+  [sortOrder]="1"
+  [lazy]="true"
+  [showCurrentPageReport]="true"
+  [currentPageReportTemplate]="'Showing {first} to {last} of {totalRecords} entries'"
+  [paginator]="true"
+  [rowsPerPageOptions]="[5, 10, 15, 20]"
+  [rows]="pageSize"
+  [totalRecords]="totalCount"
+  (onLazyLoad)="loadLazyLoadedData($event)"
+  styleClass="p-datatable-generic">
+  <ng-template pTemplate="header" let-columns>
+    <!-- Table Headers-->
+    <tr class="table-header">
+      <th *ngFor="let col of columns" [pSortableColumn]="col.field">
+        {{ col.header | translate }}
+        <p-sortIcon [field]="col.field"></p-sortIcon>
+      </th>
+      <!-- Show Action In Header Row-->
+      <th
+        *ngIf="
+          (tableOptions.inputActions && permissions.listOfPermissions.indexOf('Permission.' + permissions.componentName + '.View') > -1) ||
+          permissions.allowAll
+        "
+        style="width: 10em">
+        {{ 'ACTIONS.TITLE' | translate }}
+      </th>
+    </tr>
+    <!-- Filter Controls-->
+    <tr class="table-search-controls">
+      <th *ngFor="let col of columns" [ngSwitch]="col.filterMode">
+        <ng-container *ngSwitchCase="'text'">
+          <div class="form-group has-search">
+            <input
+              class="form-control search-box"
+              type="text"
+              (input)="filter($event, col.field, col.filterColumnName, col.dataType)"
+              placeholder="{{ col.header | translate }}" />
+          </div>
+        </ng-container>
+      </th>
+      <!-- Show Action In Filter Controls Row-->
+      <th
+        *ngIf="
+          (tableOptions.inputActions && permissions.listOfPermissions.indexOf('Permission.' + permissions.componentName + '.View') > -1) ||
+          permissions.allowAll
+        "></th>
+    </tr>
+  </ng-template>
 
+  <ng-template pTemplate="body" let-row let-columns="columns">
+    <!-- Table Rows-->
+    <tr class="tr-body" [ngClass]="{ 'tr-body-background': getCellData(row, { field: 'isLate' }) }">
+      <!-- Display Data-->
+      <td *ngFor="let col of columns">
+        <ng-container [ngSwitch]="col.filterMode">
+          <span [ngClass]="{ cell: getCellData(row, { field: 'isLate' }) }" *ngSwitchCase="'text'">{{ getCellData(row, col) }}</span>
+          <span *ngSwitchCase="'date'">{{ getCellData(row, col) | date : 'dd/MM/yyyy' }}</span>
+          <span *ngSwitchCase="'none'">{{ getCellData(row, col) }}</span>
+        </ng-container>
+      </td>
+      <!-- Display Actions-->
+      <td
+        *ngIf="
+          (tableOptions.inputActions && permissions.listOfPermissions.indexOf('Permission.' + permissions.componentName + '.View') > -1) ||
+          permissions.allowAll
+        "
+        class="actions">
+        <span *ngFor="let action of tableOptions.inputActions">
+          <span
+            *ngIf="
+              (action.isEdit && permissions.listOfPermissions.indexOf('Permission.' + permissions.componentName + '.Edit') > -1) ||
+              (action.isEdit && action.allowAll)
+            ">
+            <a [routerLink]="action.route + row.id">
+              <i class="{{ action.icon }} icon {{ action.color }}" [title]="'ACTIONS.' + action.name | translate"></i>
+            </a>
+          </span>
+          <span
+            *ngIf="
+              (action.isDelete && permissions.listOfPermissions.indexOf('Permission.' + permissions.componentName + '.Delete') > -1) ||
+              (action.isDelete && action.allowAll)
+            ">
+            <i
+              class="{{ action.icon }} icon {{ action.color }}"
+              (click)="delete(row.id)"
+              [title]="'ACTIONS.' + action.name | translate"></i>
+          </span>
 
-            </th>
-            <!-- Show Action In Filter Controls Row-->
-            <th *ngIf="tableOptions.inputActions && permissions.listOfPermissions.indexOf('Permission.'+ permissions.componentName+ '.View') > -1
-             || permissions.allowAll">
-            </th>
-        </tr>
-    </ng-template>
+          <span
+            *ngIf="
+              (action.isView && permissions.listOfPermissions.indexOf('Permission.' + permissions.componentName + '.View') > -1) ||
+              (action.isView && action.allowAll)
+            ">
+            <a [routerLink]="action.route + row.id">
+              <i class="{{ action.icon }} icon {{ action.color }}" [title]="'ACTIONS.' + action.name | translate"></i>
+            </a>
+          </span>
 
-    <ng-template pTemplate="body" let-row let-columns="columns">
-        <!-- Table Rows-->
-        <tr class="tr-body" [ngClass]="{'tr-body-background' : getCellData(row , {field: 'isLate'})}">
-            <!-- Display Data-->
-            <td *ngFor="let col of columns">
-                <ng-container [ngSwitch]="col.filterMode">
-                    <span [ngClass]="{'cell' : getCellData(row , {field: 'isLate'})}" *ngSwitchCase="'text'">{{
-                        getCellData(row, col) }}</span>
-                    <span *ngSwitchCase="'date'">{{ getCellData(row, col) | date:'dd/MM/yyyy'}}</span>
-                    <span *ngSwitchCase="'none'">{{ getCellData(row, col) }}</span>
-                </ng-container>
-            </td>
-            <!-- Display Actions-->
-            <td *ngIf="tableOptions.inputActions && permissions.listOfPermissions.indexOf('Permission.'+ permissions.componentName+ '.View') > -1 || permissions.allowAll"
-                class="actions">
-                <span *ngFor="let action of tableOptions.inputActions">
-
-                    <span
-                        *ngIf="(action.isEdit && permissions.listOfPermissions.indexOf('Permission.'+ permissions.componentName+ '.Edit') > -1 )|| (action.isEdit && action.allowAll)">
-                        <a [routerLink]="currentRoute + row.id">
-                            <i class="{{ action.icon }} icon {{ action.color }}"
-                                [title]="'ACTIONS.'+ action.name | translate"></i>
-                        </a>
-                    </span>
-                    <span
-                        *ngIf="(action.isDelete && permissions.listOfPermissions.indexOf('Permission.'+ permissions.componentName + '.Delete') > -1 )|| (action.isDelete && action.allowAll)">
-                        <i class="{{ action.icon }} icon {{ action.color }}" (click)="delete(row.id)"
-                            [title]="'ACTIONS.' +action.name | translate"></i>
-                    </span>
-
-                    <span
-                        *ngIf="(action.isView && permissions.listOfPermissions.indexOf('Permission.'+ permissions.componentName + '.View') > -1) || (action.isView && action.allowAll)">
-                        <a *ngIf="action.route === null" [routerLink]="currentRoute + 'view/' + row.id">
-                            <i class="{{ action.icon }} icon {{ action.color }}"
-                                [title]="'ACTIONS.'+ action.name | translate"></i>
-                        </a>
-
-                        <a *ngIf="action.route !== null " [routerLink]="action.route + row.id">
-                            <i class="{{ action.icon }} icon {{ action.color }}"
-                                [title]="'ACTIONS.'+ action.name | translate"></i>
-                        </a>
-                    </span>
-
-                    <span *ngIf="action.isCallBack && permissions.listOfPermissions.indexOf(action.permission) > -1">
-                        <i class="{{ action.icon }} icon {{ action.color }}" (click)="action?.call(row)"
-                            [title]="'ACTIONS.' + action.name | translate"></i>
-                    </span>
-
-                    <span *ngIf="action.isCallBack && action.permission == null">
-                        <i class="{{ action.icon }} icon {{ action.color }}" (click)="action?.call(row)"
-                            [title]="'ACTIONS.' + action.name | translate"></i>
-                    </span>
-                </span>
-            </td>
-        </tr>
-    </ng-template>
-
+          <span *ngIf="action.isCallBack && (permissions.listOfPermissions.indexOf(action.permission) > -1 || action.allowAll)">
+            <i
+              class="{{ action.icon }} icon {{ action.color }}"
+              (click)="action?.call(row)"
+              [title]="'ACTIONS.' + action.name | translate"></i>
+          </span>
+        </span>
+      </td>
+    </tr>
+  </ng-template>
 </p-table>

@@ -20,7 +20,6 @@ export class DialogComponent implements OnInit {
     openDialog(data: Data): void {
         const dialogRef = this.dialog.open(data['component'], { autoFocus: false, panelClass: ['medium', 'p-0'], data: { activatedRoute: this.activatedRoute.parent } });
         dialogRef.afterClosed().pipe(takeUntil(this.destroy$)).subscribe(_ => {
-            debugger;
             this.router.navigate([data['redirectTo'] ? data['redirectTo'] : '..'], { relativeTo: this.activatedRoute });
         });
     }
