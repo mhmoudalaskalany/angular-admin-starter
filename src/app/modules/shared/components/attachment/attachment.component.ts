@@ -22,11 +22,30 @@ interface File {
   styleUrls: ['./attachment.component.scss']
 })
 export class AttachmentComponent implements OnInit {
-
   fileToUpload!: any;
   imageExtensions: string[] = ['png', 'jpg', 'jpeg', 'bmp', 'tiff', 'svg', 'gif'];
   videosExtensions: string[] = ['mp4', 'mov', 'webm', 'mkv', 'flv', 'avi', 'wmv'];
-  filesExtensions: string[] = ['pdf', 'powerpoint', 'word', 'excel', 'doc', 'docx', 'ppt', 'pptx', 'xls', 'xlsx', 'txt', 'zip', 'rar', 'crt', 'p7b', 'html', 'htm', 'rtf', 'msg'];
+  filesExtensions: string[] = [
+    'pdf',
+    'powerpoint',
+    'word',
+    'excel',
+    'doc',
+    'docx',
+    'ppt',
+    'pptx',
+    'xls',
+    'xlsx',
+    'txt',
+    'zip',
+    'rar',
+    'crt',
+    'p7b',
+    'html',
+    'htm',
+    'rtf',
+    'msg'
+  ];
   fileType!: string;
   acceptedTypes!: string;
   uploadedFiles: any[] = []; // insert all the files which the user choose.
@@ -34,7 +53,7 @@ export class AttachmentComponent implements OnInit {
   isHidden = false;
   isSuccess = false;
   isFailed!: boolean;
-  uploadedFile!: { type: string; maxSize: number; };
+  uploadedFile!: { type: string; maxSize: number };
   baseApiUrl!: string;
   downloadUrl!: string;
   oldFiles: any[] = [];
@@ -45,7 +64,7 @@ export class AttachmentComponent implements OnInit {
   @Input() formGroup!: FormGroup;
   @Input() controlName!: string;
   @Input() isMultiple = false;
-  @Input() allowedTypes!: { type: string; maxSize: number; }[];
+  @Input() allowedTypes!: { type: string; maxSize: number }[];
   @Input() maxFilesNumbers!: number;
   @Input() type: string = ''; // image | video | document | imageDocument | imageVideo | videoDocument'
   @Input() isPublic = false;
@@ -62,7 +81,7 @@ export class AttachmentComponent implements OnInit {
 
   @ViewChild('file') fileInput!: ElementRef;
 
-  constructor(private Service: AttachmentService) { }
+  constructor(private Service: AttachmentService) {}
 
   ngOnInit(): void {
     this.setAcceptedTypes();
@@ -76,21 +95,23 @@ export class AttachmentComponent implements OnInit {
       }
 
       if (this.formGroup.get(this.controlName)?.value?.length) {
-        this.formGroup.get(this.controlName)?.value.forEach((element: { name: string; fileSize: any; url: string; documentType: string; }) => {
-          let file = {
-            fileName: element.name,
-            size: null,
-            attachmentDisplaySize: this.convertSize({ size: element.fileSize }).attachmentDisplaySize,
-            url: element.url,
-            extension: element.documentType,
-            isSuccess: true,
-            isPublic: false,
-            fileId: '1',
-            fileUrl: ''
-          };
+        this.formGroup
+          .get(this.controlName)
+          ?.value.forEach((element: { name: string; fileSize: any; url: string; documentType: string }) => {
+            let file = {
+              fileName: element.name,
+              size: null,
+              attachmentDisplaySize: this.convertSize({ size: element.fileSize }).attachmentDisplaySize,
+              url: element.url,
+              extension: element.documentType,
+              isSuccess: true,
+              isPublic: false,
+              fileId: '1',
+              fileUrl: ''
+            };
 
-          this.selectedFiles.push(file);
-        });
+            this.selectedFiles.push(file);
+          });
       }
     }
   }
@@ -106,20 +127,21 @@ export class AttachmentComponent implements OnInit {
     } else if (this.type === 'imageVideo') {
       this.acceptedTypes = 'image/*, video/*';
     } else if (this.type === 'imageDocument') {
-      this.acceptedTypes = 'image/*, application/pdf, .doc, .docx, .ppt, .pptx, .xls, .xlsx, .txt, .rar, .zip, .crt, .p7b, .html, .htm, .rtf, .msg';
+      this.acceptedTypes =
+        'image/*, application/pdf, .doc, .docx, .ppt, .pptx, .xls, .xlsx, .txt, .rar, .zip, .crt, .p7b, .html, .htm, .rtf, .msg';
     } else if (this.type === 'videoDocument') {
-      this.acceptedTypes = 'video/*, application/pdf, .doc, .docx, .ppt, .pptx, .xls, .xlsx, .txt, .rar, .zip, .crt, .p7b, .html, .htm, .rtf, .msg';
+      this.acceptedTypes =
+        'video/*, application/pdf, .doc, .docx, .ppt, .pptx, .xls, .xlsx, .txt, .rar, .zip, .crt, .p7b, .html, .htm, .rtf, .msg';
     } else if (this.type === 'document') {
       this.acceptedTypes = 'application/pdf, .doc, .docx, .ppt, .pptx, .xls, .xlsx, .txt, .rar, .zip, .crt, .p7b, .html, .htm, .rtf, .msg';
-
     } else {
-      this.acceptedTypes = "*";
+      this.acceptedTypes = '*';
     }
   }
 
   /**
    * File Upload Event
-   * @param event 
+   * @param event
    */
   onUploadFile(event: any) {
     if (event.target) {
@@ -129,11 +151,12 @@ export class AttachmentComponent implements OnInit {
       this.uploadedFiles = event;
     }
 
-    if ((this.selectedFiles.length + this.uploadedFiles.length) <= this.maxFilesNumbers) {
+    if (this.selectedFiles.length + this.uploadedFiles.length <= this.maxFilesNumbers) {
       for (let file of this.uploadedFiles) {
         if (file.type.split('/').pop().toLowerCase() === 'svg+xml') {
           this.fileType = 'svg';
-        } else if (!file.type) { // if the type equal 'null' 
+        } else if (!file.type) {
+          // if the type equal 'null'
           if (file.name.split('.').pop().toLowerCase() === 'doc' || file.name.split('.').pop().toLowerCase() === 'docx') {
             this.fileType = 'word';
           } else if (file.name.split('.').pop().toLowerCase() === 'ppt' || file.name.split('.').pop().toLowerCase() === 'pptx') {
@@ -142,44 +165,39 @@ export class AttachmentComponent implements OnInit {
             this.fileType = 'excel';
           } else if (file.name.split('.').pop().toLowerCase() === 'rar') {
             this.fileType = 'rar';
-          }
-          else if (file.name.split('.').pop().toLowerCase() === 'msg') {
+          } else if (file.name.split('.').pop().toLowerCase() === 'msg') {
             this.fileType = 'msg';
           }
-        } else if (file.type.split('/').pop().toLowerCase() === 'vnd.openxmlformats-officedocument.wordprocessingml.document' ||
-          file.type.split('/').pop().toLowerCase() === 'msword') {
-
+        } else if (
+          file.type.split('/').pop().toLowerCase() === 'vnd.openxmlformats-officedocument.wordprocessingml.document' ||
+          file.type.split('/').pop().toLowerCase() === 'msword'
+        ) {
           this.fileType = 'word';
-        } else if (file.type.split('/').pop().toLowerCase() === 'vnd.openxmlformats-officedocument.presentationml.presentation' ||
-          file.type.split('/').pop().toLowerCase() === 'vnd.ms-powerpoint') {
-
+        } else if (
+          file.type.split('/').pop().toLowerCase() === 'vnd.openxmlformats-officedocument.presentationml.presentation' ||
+          file.type.split('/').pop().toLowerCase() === 'vnd.ms-powerpoint'
+        ) {
           this.fileType = 'powerpoint';
-        }
-        else if (file.type.split('/').pop().toLowerCase() === 'vnd.openxmlformats-officedocument.spreadsheetml.sheet' ||
-          file.type.split('/').pop().toLowerCase() === 'vnd.ms-excel') {
-
+        } else if (
+          file.type.split('/').pop().toLowerCase() === 'vnd.openxmlformats-officedocument.spreadsheetml.sheet' ||
+          file.type.split('/').pop().toLowerCase() === 'vnd.ms-excel'
+        ) {
           this.fileType = 'excel';
         } else if (file.type.split('/').pop().toLowerCase() === 'plain') {
           this.fileType = 'txt';
-        }
-        else if (file.type.split('/').pop().toLowerCase() === 'x-zip-compressed' || file.type.split('/').pop().toLowerCase() === 'gz') {
+        } else if (file.type.split('/').pop().toLowerCase() === 'x-zip-compressed' || file.type.split('/').pop().toLowerCase() === 'gz') {
           this.fileType = 'zip';
-        }
-        else if (file.type.split('/').pop().toLowerCase() === 'x-x509-ca-cert') {
+        } else if (file.type.split('/').pop().toLowerCase() === 'x-x509-ca-cert') {
           this.fileType = 'crt';
-        }
-        else if (file.type.split('/').pop().toLowerCase() === 'x-pkcs7-certificates') {
+        } else if (file.type.split('/').pop().toLowerCase() === 'x-pkcs7-certificates') {
           this.fileType = 'p7b';
         } else if (file.type.split('/').pop().toLowerCase() === 'jpeg') {
           this.fileType = 'jpg';
-        }
-        else if (file.type.split('/').pop().toLowerCase() === 'html') {
+        } else if (file.type.split('/').pop().toLowerCase() === 'html') {
           this.fileType = 'html';
-        }
-        else if (file.type.split('/').pop().toLowerCase() === 'htm') {
+        } else if (file.type.split('/').pop().toLowerCase() === 'htm') {
           this.fileType = 'htm';
-        }
-        else {
+        } else {
           this.fileType = file.type.split('/').pop().toLowerCase();
         }
         // console.log(file.type)
@@ -192,14 +210,14 @@ export class AttachmentComponent implements OnInit {
 
   /**
    * Handle File On Select
-   * @param file 
+   * @param file
    */
   fileHandling(file: any) {
     const fileType = this.allowedTypes.find(allowedType => allowedType.type === this.fileType);
-    this.uploadedFile = fileType as { type: string; maxSize: number; };
+    this.uploadedFile = fileType as { type: string; maxSize: number };
 
     if (fileType) {
-      if (file.size <= (fileType.maxSize * 1024 * 1024)) {
+      if (file.size <= fileType.maxSize * 1024 * 1024) {
         if (this.selectedFiles.find(selectedFile => selectedFile.fileName === file.name)) {
           this.setError('fileSelected');
         } else {
@@ -217,7 +235,6 @@ export class AttachmentComponent implements OnInit {
               content: ''
             };
           };
-
 
           reader.onloadend = () => {
             this.convertSize(finalFile);
@@ -247,22 +264,25 @@ export class AttachmentComponent implements OnInit {
 
   /**
    * Convert File Size
-   * @param finalFile 
+   * @param finalFile
    */
-  convertSize(finalFile: { size: any, attachmentDisplaySize?: any }) {
+  convertSize(finalFile: { size: any; attachmentDisplaySize?: any }) {
     const fileSize = +finalFile.size;
 
-    if (!fileSize.toString().includes('.') && fileSize > 1) { // in case the size with bytes
-      if (fileSize <= (1024 * 1024)) {
+    if (!fileSize.toString().includes('.') && fileSize > 1) {
+      // in case the size with bytes
+      if (fileSize <= 1024 * 1024) {
         finalFile['attachmentDisplaySize'] = (fileSize / Math.pow(1024, 1)).toFixed() + ' KB';
-      } else if (fileSize <= (1024 * 1024 * 1024)) {
+      } else if (fileSize <= 1024 * 1024 * 1024) {
         finalFile['attachmentDisplaySize'] = (fileSize / Math.pow(1024, 2)).toFixed(1) + ' MB';
       }
-    } else if (fileSize < 1) { // in case the size < 1 MB and the size returns from API - NOTE - if the size returns with MB
-      if ((fileSize * 1024) <= (1024 * 1024)) {
+    } else if (fileSize < 1) {
+      // in case the size < 1 MB and the size returns from API - NOTE - if the size returns with MB
+      if (fileSize * 1024 <= 1024 * 1024) {
         finalFile['attachmentDisplaySize'] = (fileSize * Math.pow(1024, 1)).toFixed() + ' KB';
       }
-    } else { // in case the size > 1 MB and the size returns from API - NOTE - if the size returns with MB
+    } else {
+      // in case the size > 1 MB and the size returns from API - NOTE - if the size returns with MB
       finalFile['attachmentDisplaySize'] = fileSize.toFixed(1) + ' MB';
     }
 
@@ -271,7 +291,7 @@ export class AttachmentComponent implements OnInit {
 
   /**
    * Set Error
-   * @param errorName 
+   * @param errorName
    */
   setError(errorName: string) {
     switch (errorName) {
@@ -312,10 +332,10 @@ export class AttachmentComponent implements OnInit {
   }
 
   /**
-   * Remove File From Viewing List 
+   * Remove File From Viewing List
    * Then Remove It From Api
-   * @param fileIndex 
-   * @param file 
+   * @param fileIndex
+   * @param file
    */
   removeFile(fileIndex: number, file: any) {
     const removedFile = this.oldFiles.find(x => x.fileName == file.fileName);
@@ -324,73 +344,75 @@ export class AttachmentComponent implements OnInit {
       this.formGroup.get(this.controlName)?.value.splice(fileIndex, 1);
     }
 
-    this.selectedFiles.length ? '' : this.isSuccess = false;
+    this.selectedFiles.length ? '' : (this.isSuccess = false);
     this.isHidden = false;
     this.selectedFiles.length ? '' : this.setError('required');
     this.deleteFileFromServer(removedFile);
-
   }
 
   /**
    * Save File To Server
-   * @param files 
+   * @param files
    */
   saveFile(files: File[]) {
-    this.callingAPI(files).subscribe((res: Attachment[]) => {
-      res.map(file => {
-        let selectedFile: any = this.selectedFiles.find(selectedFile => selectedFile.fileName === file.name);
-        let selectedIndex = this.selectedFiles.indexOf(selectedFile);
+    this.callingAPI(files).subscribe(
+      (res: Attachment[]) => {
+        res.map(file => {
+          let selectedFile: any = this.selectedFiles.find(selectedFile => selectedFile.fileName === file.name);
+          let selectedIndex = this.selectedFiles.indexOf(selectedFile);
 
-        let finalFile: any = {
-          fileName: file.name,
-          size: file.fileSize,
-          url: this.downloadUrl + file.id,
-          extension: file.documentType.toLowerCase(),
-          fileId: file.id,
-          fileUrl: this.downloadUrl,
-          isSuccess: true,
-          isPublic: this.isPublic,
-        };
+          let finalFile: any = {
+            fileName: file.name,
+            size: file.fileSize,
+            url: this.downloadUrl + file.id,
+            extension: file.documentType.toLowerCase(),
+            fileId: file.id,
+            fileUrl: this.downloadUrl,
+            isSuccess: true,
+            isPublic: this.isPublic
+          };
 
-        if (this.isCustom) {
-          finalFile['content'] = selectedFile['content'];
+          if (this.isCustom) {
+            finalFile['content'] = selectedFile['content'];
+          }
+
+          this.convertSize(finalFile);
+          this.oldFiles.push(finalFile);
+          this.selectedFiles[selectedIndex].isSuccess = true;
+          // this.selectedFiles.splice(selectedIndex, 1, finalFile);
+        });
+
+        if (this.maxFilesNumbers === 1 && this.saveUrl) {
+          this.formGroup.get(this.controlName)?.setValue(this.oldFiles[0].fileId);
+        } else {
+          this.formGroup.get(this.controlName)?.setValue(this.oldFiles);
         }
 
-        this.convertSize(finalFile);
-        this.oldFiles.push(finalFile);
-        this.selectedFiles[selectedIndex].isSuccess = true;
-        // this.selectedFiles.splice(selectedIndex, 1, finalFile);
-      });
+        this.formGroup.get(this.controlName)?.markAsDirty();
+        this.formGroup.get(this.controlName)?.setErrors(null);
 
-      if (this.maxFilesNumbers === 1 && this.saveUrl) {
-        this.formGroup.get(this.controlName)?.setValue(this.oldFiles[0].fileId);
-      } else {
-        this.formGroup.get(this.controlName)?.setValue(this.oldFiles);
+        this.uploadedFiles = [];
+        this.fileInput.nativeElement.value = '';
+        this.isFailed = false;
+        this.isSuccess = true;
+        this.uploadEvent.emit(res);
+      },
+      () => {
+        this.isFailed = true;
       }
-
-      this.formGroup.get(this.controlName)?.markAsDirty();
-      this.formGroup.get(this.controlName)?.setErrors(null);
-
-      this.uploadedFiles = [];
-      this.fileInput.nativeElement.value = '';
-      this.isFailed = false;
-      this.isSuccess = true;
-      this.uploadEvent.emit(res);
-    }, () => {
-      this.isFailed = true;
-    });
+    );
   }
 
   /**
    * Call Server Api
-   * @param files 
-   * @returns 
+   * @param files
+   * @returns
    */
   callingAPI(files: any[]): Observable<any> {
     let formData = new FormData();
 
     for (let index = 0; index < files.length; index++) {
-      formData.append("files", files[index], files[index].name);
+      formData.append('files', files[index], files[index].name);
     }
 
     return this.Service.upload(formData, this.isPublic);
@@ -398,7 +420,7 @@ export class AttachmentComponent implements OnInit {
 
   /**
    * Delete File From Server
-   * @param file 
+   * @param file
    */
   deleteFileFromServer(file: any): void {
     this.Service.deleteAttachment(file.fileId).subscribe((res: any) => {
