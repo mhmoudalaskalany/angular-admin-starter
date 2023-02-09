@@ -45,7 +45,7 @@ export class CategoriesComponent extends BaseListComponent {
         pageNumber: 1,
         pageSize: 10
       },
-      responsiveDisplayedProperties: ['nameEn', 'nameAr', 'description', 'createdDate']
+      responsiveDisplayedProperties: ['nameEn', 'nameAr', 'code', 'createdDate']
     };
   }
 
@@ -63,21 +63,16 @@ export class CategoriesComponent extends BaseListComponent {
         filter: false,
         filterMode: 'text'
       },
+
       {
-        field: 'description',
-        header: 'COMMON.DESCRIPTION',
+        field: 'code',
+        header: 'COMMON.CODE',
         filter: false,
         filterMode: 'text'
       },
       {
         field: 'createdDate',
         header: 'COMMON.CREATED_DATE',
-        filter: false,
-        filterMode: 'date'
-      },
-      {
-        field: 'modifiedDate',
-        header: 'COMMON.MODIFIED_DATE',
         filter: false,
         filterMode: 'date'
       }
