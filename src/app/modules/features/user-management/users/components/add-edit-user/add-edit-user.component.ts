@@ -13,22 +13,21 @@ import { UsersService } from 'shared/services/user-management/users/users.servic
   styleUrls: ['./add-edit-user.component.scss']
 })
 export class AddEditUserComponent implements OnInit {
-
   pageTitle = '';
   pageType = '';
   user!: User;
   userId = '';
   fileDetails: any[] = [
     {
-      type: "jpg",
+      type: 'jpg',
       maxSize: 5
     },
     {
-      type: "png",
+      type: 'png',
       maxSize: 5
     },
     {
-      type: "jpeg",
+      type: 'jpeg',
       maxSize: 5
     }
   ];
@@ -36,8 +35,13 @@ export class AddEditUserComponent implements OnInit {
   roles: Role[] = [];
   shops: Shop[] = [];
 
-  constructor(private dialogRef: MatDialogRef<AddEditUserComponent>, @Optional() @Inject(MAT_DIALOG_DATA) public data: { activatedRoute: ActivatedRoute; },
-    private fb: FormBuilder, private usersService: UsersService, private roleService: RolesService) { }
+  constructor(
+    private dialogRef: MatDialogRef<AddEditUserComponent>,
+    @Optional() @Inject(MAT_DIALOG_DATA) public data: { activatedRoute: ActivatedRoute },
+    private fb: FormBuilder,
+    private usersService: UsersService,
+    private roleService: RolesService
+  ) {}
 
   ngOnInit(): void {
     this.pageTitle = this.data.activatedRoute.snapshot.firstChild?.data['pageTitle'];
@@ -85,11 +89,12 @@ export class AddEditUserComponent implements OnInit {
   }
 
   getLookups() {
-    this.roleService.roles.subscribe((roles: any) => this.roles = roles);
+    this.roleService.roles.subscribe((roles: any) => (this.roles = roles));
   }
 
   submit() {
     if (this.pageType === 'add') this.usersService.add(this.userFormGroup.value).subscribe(() => this.dialogRef.close());
-    if (this.pageType === 'edit') this.usersService.update({ id: this.userId, ...this.userFormGroup.value }).subscribe(() => this.dialogRef.close());
+    if (this.pageType === 'edit')
+      this.usersService.update({ id: this.userId, ...this.userFormGroup.value }).subscribe(() => this.dialogRef.close());
   }
 }

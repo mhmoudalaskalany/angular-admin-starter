@@ -7,7 +7,7 @@ import { TableOptions } from 'shared/interfaces/table/table';
 @Component({
   selector: 'app-users',
   templateUrl: './users.component.html',
-  styleUrls: ['./users.component.scss'],
+  styleUrls: ['./users.component.scss']
 })
 export class UsersComponent implements OnInit {
   isEnglish = false;
@@ -18,18 +18,13 @@ export class UsersComponent implements OnInit {
   /* subscriber to unsubscribe when leaving the component */
   private destroy$: Subject<boolean> = new Subject<boolean>();
 
-  constructor(
-    private activatedRoute: ActivatedRoute,
-    private translation: TranslationService
-  ) {}
+  constructor(private activatedRoute: ActivatedRoute, private translation: TranslationService) {}
 
   ngOnInit(): void {
     this.title = this.activatedRoute.snapshot.data['title'];
     this.pageType = this.activatedRoute.snapshot.data['pageType'];
 
-    this.translation.currentLanguage$
-      .pipe(takeUntil(this.destroy$))
-      .subscribe(() => this.initializeTableOptions());
+    this.translation.currentLanguage$.pipe(takeUntil(this.destroy$)).subscribe(() => this.initializeTableOptions());
   }
 
   initializeTableOptions() {
@@ -39,21 +34,16 @@ export class UsersComponent implements OnInit {
       inputUrl: {
         getAll: 'Users/GetAll',
         getAllMethod: 'GET',
-        delete: 'Users/DeleteSoft',
+        delete: 'Users/DeleteSoft'
       },
       permissions: {
         componentName: 'TEMPLATE-USERS',
         allowAll: true,
-        listOfPermissions: [],
+        listOfPermissions: []
       },
       inputCols: this.initializeTableColumns(),
       inputActions: this.initializeTableActions(),
-      responsiveDisplayedProperties: [
-        'nameEn',
-        'nameAr',
-        'description',
-        'createdDate',
-      ],
+      responsiveDisplayedProperties: ['nameEn', 'nameAr', 'description', 'createdDate']
     };
   }
 
@@ -63,37 +53,37 @@ export class UsersComponent implements OnInit {
         field: 'name',
         header: 'FIELDS.NAME',
         filter: false,
-        filterMode: 'text',
+        filterMode: 'text'
       },
       {
         field: 'userName',
         header: 'FIELDS.USERNAME',
         filter: false,
-        filterMode: 'text',
+        filterMode: 'text'
       },
       {
         field: 'email',
         header: 'FIELDS.EMAIL',
         filter: false,
-        filterMode: 'text',
+        filterMode: 'text'
       },
       {
         field: 'phone',
         header: 'FIELDS.PHONE',
         filter: false,
-        filterMode: 'text',
+        filterMode: 'text'
       },
       {
         field: 'country',
         header: 'FIELDS.COUNTRY',
         filter: false,
-        filterMode: 'text',
+        filterMode: 'text'
       },
       {
         field: 'createdDate',
         header: 'FIELDS.CREATED_DATE',
         filter: false,
-        filterMode: 'date',
+        filterMode: 'date'
       },
       // {
       //   field: 'modifiedDate',
@@ -105,8 +95,8 @@ export class UsersComponent implements OnInit {
         field: 'imageUrl',
         header: 'FIELDS.PHOTO',
         filter: false,
-        filterMode: 'image',
-      },
+        filterMode: 'image'
+      }
     ];
   }
 
@@ -117,14 +107,14 @@ export class UsersComponent implements OnInit {
         icon: 'bx bx-edit',
         color: 'text-middle',
         isEdit: true,
-        route: 'edit/',
+        route: 'edit/'
       },
       {
         name: 'DELETE',
         icon: 'bx bx-trash',
         color: 'text-error',
-        isDelete: true,
-      },
+        isDelete: true
+      }
     ];
   }
 

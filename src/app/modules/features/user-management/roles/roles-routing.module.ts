@@ -22,7 +22,12 @@ const routes: Routes = [
           { path: '', redirectTo: '', pathMatch: 'full' },
           {
             path: ':id',
-            data: { component: AddEditRoleComponent, redirectTo: '/user-management/roles', pageTitle: 'USER_MANAGEMENT.ROLES.EDIT', pageType: 'edit' },
+            data: {
+              component: AddEditRoleComponent,
+              redirectTo: '/user-management/roles',
+              pageTitle: 'USER_MANAGEMENT.ROLES.EDIT',
+              pageType: 'edit'
+            },
             component: DialogComponent
           }
         ]
@@ -40,4 +45,4 @@ const routes: Routes = [
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule]
 })
-export class RolesRoutingModule { }
+export class RolesRoutingModule {}

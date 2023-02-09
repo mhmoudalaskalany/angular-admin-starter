@@ -8,18 +8,8 @@ import { AssignPermissionsToRoleComponent } from './components/assign-permission
 import { BaseSharedModule } from 'shared/sub-modules/base-shared/base-shared.module';
 import { SharedModule } from 'shared/shared.module';
 
-
 @NgModule({
-  declarations: [
-    RolesComponent,
-    AddEditRoleComponent,
-    AssignPermissionsToRoleComponent
-  ],
-  imports: [
-    CommonModule,
-    RolesRoutingModule,
-    SharedModule,
-    BaseSharedModule
-  ]
+  declarations: [RolesComponent, AddEditRoleComponent, AssignPermissionsToRoleComponent],
+  imports: [CommonModule, RolesRoutingModule, SharedModule, BaseSharedModule]
 })
-export class RolesModule { }
+export class RolesModule {}

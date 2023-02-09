@@ -7,7 +7,7 @@ import { TableOptions } from 'shared/interfaces/table/table';
 @Component({
   selector: 'app-roles',
   templateUrl: './roles.component.html',
-  styleUrls: ['./roles.component.scss'],
+  styleUrls: ['./roles.component.scss']
 })
 export class RolesComponent implements OnInit {
   isEnglish = false;
@@ -18,18 +18,13 @@ export class RolesComponent implements OnInit {
   /* subscriber to unsubscribe when leaving the component */
   private destroy$: Subject<boolean> = new Subject<boolean>();
 
-  constructor(
-    private activatedRoute: ActivatedRoute,
-    private translation: TranslationService
-  ) {}
+  constructor(private activatedRoute: ActivatedRoute, private translation: TranslationService) {}
 
   ngOnInit(): void {
     this.title = this.activatedRoute.snapshot.data['title'];
     this.pageType = this.activatedRoute.snapshot.data['pageType'];
 
-    this.translation.currentLanguage$
-      .pipe(takeUntil(this.destroy$))
-      .subscribe(() => this.initializeTableOptions());
+    this.translation.currentLanguage$.pipe(takeUntil(this.destroy$)).subscribe(() => this.initializeTableOptions());
   }
 
   initializeTableOptions() {
@@ -39,12 +34,12 @@ export class RolesComponent implements OnInit {
       inputUrl: {
         getAll: 'Roles/GetPaged',
         getAllMethod: 'POST',
-        delete: 'Roles/DeleteSoft',
+        delete: 'Roles/DeleteSoft'
       },
       permissions: {
         componentName: 'TEMPLATE-CATEGORIES',
         allowAll: true,
-        listOfPermissions: [],
+        listOfPermissions: []
       },
       inputCols: this.initializeTableColumns(),
       inputActions: this.initializeTableActions(),
@@ -53,8 +48,8 @@ export class RolesComponent implements OnInit {
         pageNumber: 1,
         pageSize: 10,
         orderByValue: [{ colId: 'id', sort: 'asc' }],
-        filter: null,
-      },
+        filter: null
+      }
     };
   }
 
@@ -64,26 +59,26 @@ export class RolesComponent implements OnInit {
         field: this.isEnglish ? 'nameEn' : 'nameAr',
         header: 'FIELDS.NAME',
         filter: false,
-        filterMode: 'text',
+        filterMode: 'text'
       },
       {
         field: 'code',
         header: 'FIELDS.CODE',
         filter: false,
-        filterMode: 'text',
+        filterMode: 'text'
       },
       {
         field: 'createdDate',
         header: 'FIELDS.CREATED_DATE',
         filter: false,
-        filterMode: 'date',
+        filterMode: 'date'
       },
       {
         field: 'modifiedDate',
         header: 'FIELDS.MODIFIED_DATE',
         filter: false,
-        filterMode: 'date',
-      },
+        filterMode: 'date'
+      }
     ];
   }
 
@@ -94,21 +89,21 @@ export class RolesComponent implements OnInit {
         icon: 'bx bx-edit',
         color: 'text-middle',
         isEdit: true,
-        route: 'edit/',
+        route: 'edit/'
       },
       {
         name: 'ASSIGN',
         icon: 'bx bxs-lock-alt',
         color: 'text-dark',
         isView: true,
-        route: 'assign-permissions-to-role/{id}',
+        route: 'assign-permissions-to-role/{id}'
       },
       {
         name: 'DELETE',
         icon: 'bx bx-trash',
         color: 'text-error',
-        isDelete: true,
-      },
+        isDelete: true
+      }
     ];
   }
 

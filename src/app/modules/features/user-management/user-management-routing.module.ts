@@ -19,11 +19,10 @@ const routes: Routes = [
     path: 'login-history',
     loadChildren: () => import('./login-history/login-history.module').then(m => m.LoginHistoryModule)
   }
-
 ];
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule]
 })
-export class UserManagementRoutingModule { }
+export class UserManagementRoutingModule {}

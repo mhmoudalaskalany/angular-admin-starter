@@ -1,72 +1,88 @@
 <div class="modal-container d-flex flex-column">
-    <div class="modal-header bg-header" mat-dialog-header>
-        <h1 class="m-0 font-24 regular text-primary" mat-dialog-title>{{ pageTitle | translate }}</h1>
-    </div>
+  <div class="modal-header bg-header" mat-dialog-header>
+    <h1 class="m-0 font-24 regular text-primary" mat-dialog-title>{{ pageTitle | translate }}</h1>
+  </div>
 
-    <div class="px-4 pt-2 pb-4 m-0 bg-light" mat-dialog-content>
-        <form method="post" class="row" [formGroup]="userFormGroup" *ngIf="(pageType === 'add' && userFormGroup) || user">
-            <div class="col-lg-6">
-                <app-input-text [formGroup]="userFormGroup" controlName="name" [label]="'FIELDS.NAME' | translate">
-                </app-input-text>
-            </div>
+  <div class="px-4 pt-2 pb-4 m-0 bg-light" mat-dialog-content>
+    <form method="post" class="row" [formGroup]="userFormGroup" *ngIf="(pageType === 'add' && userFormGroup) || user">
+      <div class="col-lg-6">
+        <app-input-text [formGroup]="userFormGroup" controlName="name" [label]="'FIELDS.NAME' | translate"> </app-input-text>
+      </div>
 
-            <div class="col-lg-6">
-                <app-input-text [formGroup]="userFormGroup" controlName="userName" [label]="'FIELDS.USERNAME' | translate"></app-input-text>
-            </div>
+      <div class="col-lg-6">
+        <app-input-text [formGroup]="userFormGroup" controlName="userName" [label]="'FIELDS.USERNAME' | translate"></app-input-text>
+      </div>
 
-            <div class="col-lg-6">
-                <app-input-text [formGroup]="userFormGroup" controlName="email" [label]="'FIELDS.EMAIL' | translate">
-                </app-input-text>
-            </div>
+      <div class="col-lg-6">
+        <app-input-text [formGroup]="userFormGroup" controlName="email" [label]="'FIELDS.EMAIL' | translate"> </app-input-text>
+      </div>
 
-            <div class="col-lg-6">
-                <app-input-text [formGroup]="userFormGroup" controlName="phone" [label]="'FIELDS.PHONE' | translate">
-                </app-input-text>
-            </div>
+      <div class="col-lg-6">
+        <app-input-text [formGroup]="userFormGroup" controlName="phone" [label]="'FIELDS.PHONE' | translate"> </app-input-text>
+      </div>
 
-            <div class="col-lg-6" *ngIf="pageType == 'add'">
-                <app-input-text [formGroup]="userFormGroup" controlName="password" [label]="'FIELDS.PASSWORD' | translate">
-                </app-input-text>
-            </div>
+      <div class="col-lg-6" *ngIf="pageType == 'add'">
+        <app-input-text [formGroup]="userFormGroup" controlName="password" [label]="'FIELDS.PASSWORD' | translate"> </app-input-text>
+      </div>
 
-            <div class="col-lg-6" *ngIf="pageType == 'add'">
-                <app-input-text [formGroup]="userFormGroup" controlName="confirmPassword" [label]="'FIELDS.CONFIRMPASSWORD' | translate">
-                </app-input-text>
+      <div class="col-lg-6" *ngIf="pageType == 'add'">
+        <app-input-text [formGroup]="userFormGroup" controlName="confirmPassword" [label]="'FIELDS.CONFIRMPASSWORD' | translate">
+        </app-input-text>
+      </div>
 
-            </div>
+      <div class="col-lg-6">
+        <app-input-text [formGroup]="userFormGroup" controlName="country" [label]="'FIELDS.COUNTRY' | translate"></app-input-text>
+      </div>
 
-            <div class="col-lg-6">
-                <app-input-text [formGroup]="userFormGroup" controlName="country" [label]="'FIELDS.COUNTRY' | translate"></app-input-text>
-            </div>
+      <div class="col-lg-6">
+        <app-input-text [formGroup]="userFormGroup" controlName="address" [label]="'FIELDS.ADDRESS' | translate"></app-input-text>
+      </div>
 
-            <div class="col-lg-6">
-                <app-input-text [formGroup]="userFormGroup" controlName="address" [label]="'FIELDS.ADDRESS' | translate"></app-input-text>
-            </div>
+      <div class="col-lg-6 my-3">
+        <app-dropdown
+          [formGroup]="userFormGroup"
+          [options]="roles"
+          controlName="roleIds"
+          [isMulti]="true"
+          [placeholder]="'FIELDS.ROLE' | translate">
+        </app-dropdown>
+      </div>
 
-            <div class="col-lg-6 my-3">
-                <app-dropdown [formGroup]="userFormGroup" [options]="roles" controlName="roleIds" [isMulti]="true" [placeholder]="'FIELDS.ROLE' | translate">
-                </app-dropdown>
-            </div>
+      <div class="col-lg-6 my-3">
+        <app-dropdown
+          [formGroup]="userFormGroup"
+          [options]="shops"
+          controlName="shopId"
+          [placeholder]="'FIELDS.SHOP' | translate"></app-dropdown>
+      </div>
 
-            <div class="col-lg-6 my-3">
-                <app-dropdown [formGroup]="userFormGroup" [options]="shops" controlName="shopId" [placeholder]="'FIELDS.SHOP' | translate"></app-dropdown>
-            </div>
+      <div class="col-12">
+        <app-attachment
+          [formGroup]="userFormGroup"
+          [controlName]="pageType === 'add' ? 'fileId' : 'userImage'"
+          [allowedTypes]="fileDetails"
+          [maxFilesNumbers]="1"
+          [saveUrl]="true"
+          [label]="'FIELDS.PHOTO' | translate"
+          [isPublic]="true"
+          [isEditMode]="pageType === 'edit'">
+        </app-attachment>
+      </div>
+    </form>
+  </div>
 
-            <div class="col-12">
-                <app-attachment [formGroup]="userFormGroup" [controlName]="pageType === 'add' ? 'fileId' : 'userImage'" [allowedTypes]="fileDetails"
-                                [maxFilesNumbers]="1" [saveUrl]="true" [label]="'FIELDS.PHOTO' | translate" [isPublic]="true" [isEditMode]="pageType === 'edit'">
-                </app-attachment>
-            </div>
-        </form>
-    </div>
+  <div class="modal-footer w-100 d-flex justify-content-end" mat-dialog-actions *ngIf="userFormGroup">
+    <button class="main-btn font-14 text-error px-4" type="button" mat-flat-button mat-dialog-close>
+      {{ 'ACTIONS.CANCEL' | translate }}
+    </button>
 
-    <div class="modal-footer w-100 d-flex justify-content-end" mat-dialog-actions *ngIf="userFormGroup">
-        <button class="main-btn font-14 text-error px-4" type="button" mat-flat-button mat-dialog-close>
-            {{ 'ACTIONS.CANCEL' | translate }}
-        </button>
-
-        <button class="main-btn main font-14 text-white px-4 m-inline-start-3" type="submit" (click)="submit()" [disabled]="userFormGroup.invalid" mat-flat-button>
-            {{ (pageType === 'add' ? 'ACTIONS.SUBMIT' : 'ACTIONS.SAVE') | translate }}
-        </button>
-    </div>
+    <button
+      class="main-btn main font-14 text-white px-4 m-inline-start-3"
+      type="submit"
+      (click)="submit()"
+      [disabled]="userFormGroup.invalid"
+      mat-flat-button>
+      {{ (pageType === 'add' ? 'ACTIONS.SUBMIT' : 'ACTIONS.SAVE') | translate }}
+    </button>
+  </div>
 </div>
