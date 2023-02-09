@@ -251,34 +251,25 @@
     "ACTION_MESSAGE": "هل أنت متأكد أنك تريد القيام بهذا الإجراء؟",
     "APPROVE_PRICE_CONFIRMATION": "تأكيد الموافقة على التسعيير"
   },
-  "Attachment": {
-    "Attachment": "المرفق",
-    "Attachments": "المرفقات",
-    "AttachmentName": "اسم المرفق",
-    "Browse": "اضافة مرفق",
-    "AttachmentSize": "حجم المرفق",
-    "AttachmentValidation": {
-      "MaximumFiles": "الحد الأقصى للملفات هو ",
-      "MaximumFile": "الحد الأقصى للملفات هو ",
-      "MaximumSize": "الحجم الأقصى للملف هو ",
-      "FileSelected": "لقد قمت بالفعل بتحميل هذا الملف من قبل",
-      "Required": "مطلوب ارفاق هذا الملف",
-      "AllowedTypes": "الأنواع المسموح بها هي ",
-      "AllowedType": "الأنواع المسموح بها هي",
-      "Mb": "ميجا بايت"
+  "ATTACHMENT": {
+    "ATTACHMENT": "المرفق",
+    "ATTACHMENTS": "المرفقات",
+    "ATTACHMENT_NAME": "اسم المرفق",
+    "BROWSE": "اضافة مرفق",
+    "ATTACHMENT_SIZE": "حجم المرفق",
+    "ATTACHMENT_VALIDATION": {
+      "MAXIMUM_FILES": "الحد الأقصى للملفات هو ",
+      "MAXIMUM_FILE": "الحد الأقصى للملفات هو ",
+      "MAXIMUM_SIZE": "الحجم الأقصى للملف هو ",
+      "FILE_SELECTED": "لقد قمت بالفعل بتحميل هذا الملف من قبل",
+      "REQUIRED": "مطلوب ارفاق هذا الملف",
+      "ALLOWED_TYPES": "الأنواع المسموح بها هي ",
+      "ALLOWED_TYPE": "الأنواع المسموح بها هي",
+      "MB": "ميجا بايت"
     },
-    "Failed": "فشل تحميل المرفق",
-    "Msg": "اسحب ملفك هنا، أو",
-    "SubMsg": "يدعم::",
-    "MaxFilesMsg": "العدد الأقصى للملفات المسموح برفعها: "
-  },
-  "required_validation": "هذا الحقل إجباري.",
-  "min_validation": "أقل قيمة ",
-  "max_validation": "أكبر قيمة ",
-  "minlength_validation": "الحد الأدنى ",
-  "maxlength_validation": "الحد الأقصى ",
-  "email_validation": "البريد الإلكترونى غير صحيح.",
-  "arabicWord_validation": "من فضلك إدخل حروف عربي.",
-  "englishWord_validation": "من فضلك إدخل حروف انجليزي.",
-  "confirmPassword_validation": "الرجاء إدخال نفس كلمة المرور."
+    "FAILED": "فشل تحميل المرفق",
+    "MSG": "اسحب ملفك هنا، أو",
+    "SUB_MSG": "يدعم::",
+    "MAX_FILES_MSG": "العدد الأقصى للملفات المسموح برفعها: "
+  }
 }

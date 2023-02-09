@@ -292,34 +292,25 @@
     "ACTION_MESSAGE": "Are you sure that you want to this action?",
     "APPROVE_PRICE_CONFIRMATION": "Approve Price Confirmation"
   },
-  "Attachment": {
-    "Attachment": "Attachment",
-    "Attachments": "Attachments",
-    "AttachmentName": "Attachment Name",
-    "Browse": "Add",
-    "AttachmentSize": "Attachment Size",
-    "AttachmentValidation": {
-      "MaximumFiles": "The maximum files are ",
-      "MaximumFile": "The maximum files is ",
-      "MaximumSize": "The maximum size of file is",
-      "FileSelected": "You already uploaded this file before",
-      "Required": "Attachment file is required",
-      "AllowedTypes": "The allowed types are ",
-      "AllowedType": "The allowed types is ",
-      "Mb": "MB"
+  "ATTACHMENT": {
+    "ATTACHMENT": "Attachment",
+    "ATTACHMENTS": "Attachments",
+    "ATTACHMENT_NAME": "Attachment Name",
+    "BROWSE": "Add",
+    "ATTACHMENT_SIZE": "Attachment Size",
+    "ATTACHMENT_VALIDATION": {
+      "MAXIMUM_FILES": "The maximum files are ",
+      "MAXIMUM_FILE": "The maximum files is ",
+      "MAXIMUM_SIZE": "The maximum size of file is",
+      "FILE_SELECTED": "You already uploaded this file before",
+      "REQUIRED": "Attachment file is required",
+      "ALLOWED_TYPES": "The allowed types are ",
+      "ALLOWED_TYPE": "The allowed types is ",
+      "MB": "MB"
     },
-    "Failed": "Failed to upload the attachment",
+    "FAILED": "Failed to upload the attachment",
     "Msg": "Drag your file here, or",
-    "SubMsg": "Supports:",
+    "SUB_MSG": "Supports:",
     "MaxFilesMsg": "Max number of files: "
-  },
-  "required_validation": "This field is required.",
-  "min_validation": "Min Value ",
-  "max_validation": "Max Value ",
-  "minlength_validation": "Min Length ",
-  "maxlength_validation": "Max Length ",
-  "email_validation": "Email isn't valid.",
-  "arabicWord_validation": "Please enter arabic characters.",
-  "englishWord_validation": "Please enter english characters.",
-  "confirmPassword_validation": "Please enter the same password."
+  }
 }

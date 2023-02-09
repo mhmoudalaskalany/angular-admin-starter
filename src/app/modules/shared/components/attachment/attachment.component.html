@@ -1,94 +1,109 @@
 <label class="text-middle mt-1" for="attachment">{{ label }} <span *ngIf="formGroup.get(controlName)?.hasError('required')">*</span></label>
 
 <div class="attachment" id="attachment" *ngIf="formGroup">
-    <div class="attachment__header mb-4" appDragdrop (onFileDropped)="onUploadFile($event)">
-        <div class="d-flex align-items-center mb-2">
-            <span class="failed DefaultParagraph" *ngIf="isFailed">{{'Attachment.Failed' | translate}}</span>
-        </div>
-
-        <div class="upload d-flex flex-column justify-content-center align-self-center" [ngClass]="{'disabled': isHidden}">
-            <div class="DefaultParagraph text-center">
-                <input type="button" class="fw-bold px-0" value="{{'Attachment.Browse' | translate }}"
-                       [disabled]="isHidden || maxFilesNumbers === selectedFiles.length" (click)="formGroup.get(controlName)?.enabled ? file.click() : ''" />
-            </div>
-
-            <div class="text-center">
-                <div class="SmallSubTitle">{{'Attachment.SubMsg' | translate}}
-                    <span *ngFor="let item of allowedTypes;let itemIndex=index">
-                        <span *ngIf="itemIndex < (allowedTypes.length - 2)">{{ item.type | uppercase }}, </span>
-                        <span *ngIf="itemIndex === (allowedTypes.length - 2)">{{ item.type | uppercase }}</span>
-                        <span *ngIf="itemIndex === (allowedTypes.length - 1)"> {{'AND' |translate}} {{ item.type | uppercase }}</span>
-                    </span>
-                </div>
-                <div class="SmallSubTitle">
-                    {{'Attachment.MaxFilesMsg'| translate}}{{ maxFilesNumbers}}
-                </div>
-            </div>
-        </div>
-
-        <input #file class="form-control textField d-none" type="file" [multiple]="isMultiple" [accept]="acceptedTypes" (change)="onUploadFile($event)" />
+  <div class="attachment__header mb-4" appDragdrop (onFileDropped)="onUploadFile($event)">
+    <div class="d-flex align-items-center mb-2">
+      <span class="failed DefaultParagraph" *ngIf="isFailed">{{ 'ATTACHMENT.FAILED' | translate }}</span>
     </div>
 
-    <div class="attachment__files-wrapper">
-        <div [ngClass]="{'mb-3': fileIndex < (selectedFiles.length - 1)}" *ngFor="let file of selectedFiles; let fileIndex = index">
-            <div class="attachment__file d-flex align-items-center justify-content-between" [ngClass]="{'bg-error':(isFailed)}">
-                <div class="file-details d-flex align-items-center">
-                    <i class='bx bxs-cloud-download text-gradient-success font-26' *ngIf="filesExtensions.includes(file.extension)"></i>
-                    <img [src]="file.url" *ngIf="imageExtensions.includes(file.extension)">
+    <div class="upload d-flex flex-column justify-content-center align-self-center" [ngClass]="{ disabled: isHidden }">
+      <div class="DefaultParagraph text-center">
+        <input
+          type="button"
+          class="fw-bold px-0"
+          value="{{ 'ATTACHMENT.BROWSE' | translate }}"
+          [disabled]="isHidden || maxFilesNumbers === selectedFiles.length"
+          (click)="formGroup.get(controlName)?.enabled ? file.click() : ''" />
+      </div>
 
-                    <span class="DefaultParagraph text-truncate mx-2 file-name" for="file">{{file.fileName}}</span>
-
-                    <span *ngIf="!isFailed && file.attachmentDisplaySize" class="CardSubTitle mx-3 file-size">
-                        ( {{ file.attachmentDisplaySize }} )
-                    </span>
-                </div>
-
-                <span class="d-flex align-items-center justify-content-center">
-                    <i class='bx bxs-trash-alt text-gradient-danger font-26 icons' *ngIf="!isFailed && file.isSuccess"
-                       (click)="file.isSuccess ? removeFile(fileIndex , file) :''"></i>
-
-                    <i class='bx bx-loader-alt spinner d-block font-24' *ngIf="!file.isSuccess"></i>
-
-                    <i class='bx bxs-cloud-upload text-primary font-26 icons' *ngIf="isFailed" (click)="saveFile(uploadedFiles)"></i>
-                </span>
-            </div>
+      <div class="text-center">
+        <div class="SmallSubTitle">
+          {{ 'ATTACHMENT.SUB_MSG' | translate }}
+          <span *ngFor="let item of allowedTypes; let itemIndex = index">
+            <span *ngIf="itemIndex < allowedTypes.length - 2">{{ item.type | uppercase }}, </span>
+            <span *ngIf="itemIndex === allowedTypes.length - 2">{{ item.type | uppercase }}</span>
+            <span *ngIf="itemIndex === allowedTypes.length - 1"> {{ 'AND' | translate }} {{ item.type | uppercase }}</span>
+          </span>
         </div>
-
-        <div class="invalid-feedback-wrapper" *ngIf="formGroup.get(controlName)?.dirty">
-            <div class="invalid-feedback m-0 d-block" *ngIf="formGroup.get(controlName)?.errors?.['maximumFiles']">
-                {{ maxFilesNumbers > 1 ?
-                    ('Attachment.AttachmentValidation.MaximumFiles' | translate) :
-                    ('Attachment.AttachmentValidation.MaximumFile' | translate) }}
-                {{ maxFilesNumbers }}
-            </div>
-
-            <div class="invalid-feedback m-0 d-block" *ngIf="formGroup.get(controlName)?.errors?.['fileSelected']">
-                {{ 'Attachment.AttachmentValidation.FileSelected' | translate }}
-            </div>
-
-            <div class="invalid-feedback m-0 d-block" *ngIf="formGroup.get(controlName)?.errors?.['maximumSize']">
-                {{ 'Attachment.AttachmentValidation.MaximumSize' | translate }} {{uploadedFile.maxSize}}
-                {{ 'Attachment.AttachmentValidation.Mb' | translate }}
-            </div>
-
-            <div class="invalid-feedback m-0 d-block" *ngIf="formGroup.get(controlName)?.errors?.['required']">
-                {{ 'Attachment.AttachmentValidation.Required' | translate }}
-            </div>
-
-            <div class="invalid-feedback m-0 d-block" *ngIf="formGroup.get(controlName)?.errors?.['allowedTypes']">
-                {{ allowedTypes.length > 1 ? 
-                    ('Attachment.AttachmentValidation.AllowedTypes' | translate) :
-                    ('Attachment.AttachmentValidation.AllowedType' | translate) }}
-
-                <span *ngFor="let item of allowedTypes;let itemIndex=index">
-                    <span *ngIf="itemIndex < (allowedTypes.length - 2)">{{ item.type | uppercase }}, </span>
-                    <span *ngIf="itemIndex === (allowedTypes.length - 2)">{{ item.type | uppercase }}</span>
-                    <span *ngIf="itemIndex === (allowedTypes.length - 1)">
-                        {{ 'AND' | translate }}
-                        {{ item.type | uppercase }}
-                    </span>
-                </span>
-            </div>
-        </div>
+        <div class="SmallSubTitle">{{ 'ATTACHMENT.MAX_FILES_MSG' | translate }}{{ maxFilesNumbers }}</div>
+      </div>
     </div>
+
+    <input
+      #file
+      class="form-control textField d-none"
+      type="file"
+      [multiple]="isMultiple"
+      [accept]="acceptedTypes"
+      (change)="onUploadFile($event)" />
+  </div>
+
+  <div class="attachment__files-wrapper">
+    <div [ngClass]="{ 'mb-3': fileIndex < selectedFiles.length - 1 }" *ngFor="let file of selectedFiles; let fileIndex = index">
+      <div class="attachment__file d-flex align-items-center justify-content-between" [ngClass]="{ 'bg-error': isFailed }">
+        <div class="file-details d-flex align-items-center">
+          <i class="bx bxs-cloud-download text-gradient-success font-26" *ngIf="filesExtensions.includes(file.extension)"></i>
+          <img [src]="file.url" *ngIf="imageExtensions.includes(file.extension)" />
+
+          <span class="DefaultParagraph text-truncate mx-2 file-name" for="file">{{ file.fileName }}</span>
+
+          <span *ngIf="!isFailed && file.attachmentDisplaySize" class="CardSubTitle mx-3 file-size">
+            ( {{ file.attachmentDisplaySize }} )
+          </span>
+        </div>
+
+        <span class="d-flex align-items-center justify-content-center">
+          <i
+            class="bx bxs-trash-alt text-gradient-danger font-26 icons"
+            *ngIf="!isFailed && file.isSuccess"
+            (click)="file.isSuccess ? removeFile(fileIndex, file) : ''"></i>
+
+          <i class="bx bx-loader-alt spinner d-block font-24" *ngIf="!file.isSuccess"></i>
+
+          <i class="bx bxs-cloud-upload text-primary font-26 icons" *ngIf="isFailed" (click)="saveFile(uploadedFiles)"></i>
+        </span>
+      </div>
+    </div>
+
+    <div class="invalid-feedback-wrapper" *ngIf="formGroup.get(controlName)?.dirty">
+      <div class="invalid-feedback m-0 d-block" *ngIf="formGroup.get(controlName)?.errors?.['maximumFiles']">
+        {{
+          maxFilesNumbers > 1
+            ? ('ATTACHMENT.ATTACHMENT_VALIDATION.MAXIMUM_FILES' | translate)
+            : ('ATTACHMENT.ATTACHMENT_VALIDATION.MAXIMUM_FILE' | translate)
+        }}
+        {{ maxFilesNumbers }}
+      </div>
+
+      <div class="invalid-feedback m-0 d-block" *ngIf="formGroup.get(controlName)?.errors?.['fileSelected']">
+        {{ 'ATTACHMENT.ATTACHMENT_VALIDATION.FILE_SELECTED' | translate }}
+      </div>
+
+      <div class="invalid-feedback m-0 d-block" *ngIf="formGroup.get(controlName)?.errors?.['maximumSize']">
+        {{ 'ATTACHMENT.ATTACHMENT_VALIDATION.MAXIMUM_SIZE' | translate }} {{ uploadedFile.maxSize }}
+        {{ 'ATTACHMENT.ATTACHMENT_VALIDATION.MB' | translate }}
+      </div>
+
+      <div class="invalid-feedback m-0 d-block" *ngIf="formGroup.get(controlName)?.errors?.['required']">
+        {{ 'ATTACHMENT.ATTACHMENT_VALIDATION.REQUIRED' | translate }}
+      </div>
+
+      <div class="invalid-feedback m-0 d-block" *ngIf="formGroup.get(controlName)?.errors?.['allowedTypes']">
+        {{
+          allowedTypes.length > 1
+            ? ('ATTACHMENT.ATTACHMENT_VALIDATION.ALLOWED_TYPES' | translate)
+            : ('ATTACHMENT.ATTACHMENT_VALIDATION.ALLOWED_TYPE' | translate)
+        }}
+
+        <span *ngFor="let item of allowedTypes; let itemIndex = index">
+          <span *ngIf="itemIndex < allowedTypes.length - 2">{{ item.type | uppercase }}, </span>
+          <span *ngIf="itemIndex === allowedTypes.length - 2">{{ item.type | uppercase }}</span>
+          <span *ngIf="itemIndex === allowedTypes.length - 1">
+            {{ 'AND' | translate }}
+            {{ item.type | uppercase }}
+          </span>
+        </span>
+      </div>
+    </div>
+  </div>
 </div>
