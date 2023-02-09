@@ -23,12 +23,6 @@ export class AuthGuard implements CanActivate {
       }
     } else {
       if (localStorage.getItem('token')) {
-        // if (localStorage.getItem('userId')) {
-        //   return this.authService.userPermissions$.pipe(map(permissions => {
-        //     return true;
-        //   }));
-        // }
-
         return true;
       } else {
         this.router.navigate(['/account', { redirect: state.url }]);
