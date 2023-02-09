@@ -10,16 +10,15 @@ import { TableOptions } from 'shared/interfaces/table/table';
   styleUrls: ['./permissions.component.scss']
 })
 export class PermissionsComponent implements OnInit {
-
   isEnglish = false;
   title = '';
   pageType = '';
   tableOptions!: TableOptions | undefined;
-  
+
   /* subscriber to unsubscribe when leaving the component */
   private destroy$: Subject<boolean> = new Subject<boolean>();
 
-  constructor(private activatedRoute: ActivatedRoute, private translation: TranslationService) { }
+  constructor(private activatedRoute: ActivatedRoute, private translation: TranslationService) {}
 
   ngOnInit(): void {
     this.title = this.activatedRoute.snapshot.data['title'];
@@ -31,24 +30,27 @@ export class PermissionsComponent implements OnInit {
   initializeTableOptions() {
     this.tableOptions = undefined;
 
-    setTimeout(() => {
-      this.tableOptions = {
-        inputUrl: {
-          getAll: 'Permissions/GetPaged',
-          getAllMethod: 'POST',
-          delete: 'Permissions/DeleteSoft',
-        },
-        inputCols: this.initializeTableColumns(),
-        inputActions: this.initializeTableActions(),
-        responsiveDisplayedProperties: ['nameEn', 'nameAr'],
-        bodyOptions: {
-          pageNumber: 1,
-          pageSize: 10,
-          orderByValue: [{ colId: 'id', sort: 'asc' }],
-          filter: null,
-        }
-      };
-    });
+    this.tableOptions = {
+      inputUrl: {
+        getAll: 'Permissions/GetPaged',
+        getAllMethod: 'POST',
+        delete: 'Permissions/DeleteSoft'
+      },
+      permissions: {
+        componentName: 'TEMPLATE-CATEGORIES',
+        allowAll: true,
+        listOfPermissions: []
+      },
+      inputCols: this.initializeTableColumns(),
+      inputActions: this.initializeTableActions(),
+      responsiveDisplayedProperties: ['nameEn', 'nameAr'],
+      bodyOptions: {
+        pageNumber: 1,
+        pageSize: 10,
+        orderByValue: [{ colId: 'id', sort: 'asc' }],
+        filter: null
+      }
+    };
   }
 
   initializeTableColumns(): TableOptions['inputCols'] {
@@ -57,13 +59,13 @@ export class PermissionsComponent implements OnInit {
         field: this.isEnglish ? 'nameEn' : 'nameAr',
         header: 'FIELDS.NAME',
         filter: false,
-        filterMode: 'text',
+        filterMode: 'text'
       },
       {
         field: 'code',
         header: 'FIELDS.CODE',
         filter: false,
-        filterMode: 'text',
+        filterMode: 'text'
       }
     ];
   }

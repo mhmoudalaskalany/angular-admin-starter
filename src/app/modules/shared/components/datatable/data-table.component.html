@@ -14,7 +14,7 @@
             <th *ngIf="tableOptions.inputActions &&
               permissions.listOfPermissions.indexOf('Permission.'+ permissions.componentName+ '.View') > -1
            || permissions.allowAll" style="width: 10em;">
-                {{ 'Actions.Title' | translate}}</th>
+                {{ 'ACTIONS.TITLE' | translate}}</th>
         </tr>
         <!-- Filter Controls-->
         <tr class="table-search-controls">
@@ -57,36 +57,36 @@
                         *ngIf="(action.isEdit && permissions.listOfPermissions.indexOf('Permission.'+ permissions.componentName+ '.Edit') > -1 )|| (action.isEdit && action.allowAll)">
                         <a [routerLink]="currentRoute + row.id">
                             <i class="{{ action.icon }} icon {{ action.color }}"
-                                [title]="'Action.'+ action.name | translate"></i>
+                                [title]="'ACTIONS.'+ action.name | translate"></i>
                         </a>
                     </span>
                     <span
                         *ngIf="(action.isDelete && permissions.listOfPermissions.indexOf('Permission.'+ permissions.componentName + '.Delete') > -1 )|| (action.isDelete && action.allowAll)">
                         <i class="{{ action.icon }} icon {{ action.color }}" (click)="delete(row.id)"
-                            [title]="'Actions.' +action.name | translate"></i>
+                            [title]="'ACTIONS.' +action.name | translate"></i>
                     </span>
 
                     <span
                         *ngIf="(action.isView && permissions.listOfPermissions.indexOf('Permission.'+ permissions.componentName + '.View') > -1) || (action.isView && action.allowAll)">
                         <a *ngIf="action.route === null" [routerLink]="currentRoute + 'view/' + row.id">
                             <i class="{{ action.icon }} icon {{ action.color }}"
-                                [title]="'Actions.'+ action.name | translate"></i>
+                                [title]="'ACTIONS.'+ action.name | translate"></i>
                         </a>
 
                         <a *ngIf="action.route !== null " [routerLink]="action.route + row.id">
                             <i class="{{ action.icon }} icon {{ action.color }}"
-                                [title]="'Actions.'+ action.name | translate"></i>
+                                [title]="'ACTIONS.'+ action.name | translate"></i>
                         </a>
                     </span>
 
                     <span *ngIf="action.isCallBack && permissions.listOfPermissions.indexOf(action.permission) > -1">
                         <i class="{{ action.icon }} icon {{ action.color }}" (click)="action?.call(row)"
-                            [title]="'Actions.' + action.name | translate"></i>
+                            [title]="'ACTIONS.' + action.name | translate"></i>
                     </span>
 
                     <span *ngIf="action.isCallBack && action.permission == null">
                         <i class="{{ action.icon }} icon {{ action.color }}" (click)="action?.call(row)"
-                            [title]="'Actions.' + action.name | translate"></i>
+                            [title]="'ACTIONS.' + action.name | translate"></i>
                     </span>
                 </span>
             </td>

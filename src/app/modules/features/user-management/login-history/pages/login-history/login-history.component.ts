@@ -10,16 +10,15 @@ import { TableOptions } from 'shared/interfaces/table/table';
   styleUrls: ['./login-history.component.scss']
 })
 export class LoginHistoryComponent implements OnInit {
-
   isEnglish = false;
   title = '';
   pageType = '';
   tableOptions!: TableOptions | undefined;
-  
+
   /* subscriber to unsubscribe when leaving the component */
   private destroy$: Subject<boolean> = new Subject<boolean>();
 
-  constructor(private activatedRoute: ActivatedRoute, private translation: TranslationService) { }
+  constructor(private activatedRoute: ActivatedRoute, private translation: TranslationService) {}
 
   ngOnInit(): void {
     this.title = this.activatedRoute.snapshot.data['title'];
@@ -31,17 +30,20 @@ export class LoginHistoryComponent implements OnInit {
   initializeTableOptions() {
     this.tableOptions = undefined;
 
-    setTimeout(() => {
-      this.tableOptions = {
-        inputUrl: {
-          getAll: 'LoginHistories/GetAll',
-          getAllMethod: 'GET',
-        },
-        inputCols: this.initializeTableColumns(),
-        inputActions: this.initializeTableActions(),
-        responsiveDisplayedProperties: ['nameEn', 'nameAr', 'createdDate']
-      };
-    });
+    this.tableOptions = {
+      inputUrl: {
+        getAll: 'LoginHistories/GetAll',
+        getAllMethod: 'GET'
+      },
+      permissions: {
+        componentName: 'TEMPLATE-CATEGORIES',
+        allowAll: true,
+        listOfPermissions: []
+      },
+      inputCols: this.initializeTableColumns(),
+      inputActions: this.initializeTableActions(),
+      responsiveDisplayedProperties: ['nameEn', 'nameAr', 'createdDate']
+    };
   }
 
   initializeTableColumns(): TableOptions['inputCols'] {
@@ -50,43 +52,43 @@ export class LoginHistoryComponent implements OnInit {
         field: 'username',
         header: 'FIELDS.USERNAME',
         filter: false,
-        filterMode: 'text',
+        filterMode: 'text'
       },
       {
         field: 'platform',
         header: 'FIELDS.PLATFORM',
         filter: false,
-        filterMode: 'text',
+        filterMode: 'text'
       },
       {
         field: 'createdDate',
         header: 'FIELDS.LOGINDATE',
         filter: false,
-        filterMode: 'date',
+        filterMode: 'date'
       },
       {
         field: 'ipAddress',
         header: 'FIELDS.IPADDRESS',
         filter: false,
-        filterMode: 'text',
+        filterMode: 'text'
       },
       {
         field: 'status',
         header: 'FIELDS.LOGINSTATUS',
         filter: false,
-        filterMode: 'text',
+        filterMode: 'text'
       },
       {
         field: 'authenticationType',
         header: 'FIELDS.AUTHENTICATIONTYPE',
         filter: false,
-        filterMode: 'text',
+        filterMode: 'text'
       },
       {
         field: 'reason',
         header: 'FIELDS.REASON',
         filter: false,
-        filterMode: 'text',
+        filterMode: 'text'
       }
     ];
   }
