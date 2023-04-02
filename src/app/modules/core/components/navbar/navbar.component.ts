@@ -10,24 +10,35 @@ import { TranslationService } from '../../services/translation/translation.servi
   styleUrls: ['./navbar.component.scss']
 })
 export class NavbarComponent implements OnInit {
-
   isEnglish = true;
+  lang = '';
+  user: any = {};
+  constructor(
+    public translateService: TranslationService,
+    private router: Router,
+    private sidebarService: SidebarToggleService,
+    private authService: AuthService
+  ) {}
 
-  constructor(public translateService: TranslationService, private router: Router, private sidebarService: SidebarToggleService,
-    private authService: AuthService) { }
+  ngOnInit(): void {
+    this.translateService.currentLanguage$.subscribe(lang => (this.lang = lang));
+    this.getUserData();
+  }
 
-  ngOnInit(): void { }
-
-  sidebarToggle() {
+  sidebarToggle = () => {
     this.sidebarService.toggle();
-  }
+  };
 
-  changeLanguage() {
+  changeLanguage = () => {
     this.translateService.changeLanguage();
-  }
+  };
 
-  logOut() {
+  getUserData = () => {
+    this.user = this.authService.convertTokenJWT();
+  };
+
+  logOut = () => {
     localStorage.clear();
     this.router.navigate(['/']);
-  }
+  };
 }
