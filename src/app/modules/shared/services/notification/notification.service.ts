@@ -79,7 +79,7 @@ export class NotificationService extends HttpService {
       const notification = JSON.parse(data);
       this.alertService.success(this.localize.isEnglish ? notification?.TitleEn : notification?.TitleAr);
       this.getCount();
-      this.getAll();
+      this.getAllNotifications();
     });
     this.connection.onreconnected(() => {
       this.getCount();
