@@ -31,7 +31,7 @@ export class NotificationService extends HttpService {
     const serverUrl = this.configService.getAppUrl('HUB_URL');
     const delays: number[] = this.getDelays();
     this.connection = new signalR.HubConnectionBuilder()
-      .withUrl(serverUrl + 'hubs/bookingnotification', {
+      .withUrl(serverUrl + 'hubs/realestatehub', {
         transport: signalR.HttpTransportType.WebSockets,
         accessTokenFactory: () => this.storageService.getToken()
       })
