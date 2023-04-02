@@ -23,7 +23,7 @@ export class StorageService {
   }
 
   getToken() {
-    return localStorage.getItem('token');
+    return localStorage.getItem('token') || '';
   }
   getTokenFromSessionStorage() {
     return sessionStorage.getItem('token');

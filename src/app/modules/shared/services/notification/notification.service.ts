@@ -9,7 +9,7 @@ import * as signalR from '@microsoft/signalr';
 })
 export class NotificationService extends HttpService {
   notification: any = {};
-  connection: signalR.HubConnection;
+  connection: signalR.HubConnection | null = null;
   connectionEstablished = new signalR.Subject<boolean>();
   notifications: any[] = [];
   notificationCounter = 0;
@@ -48,7 +48,7 @@ export class NotificationService extends HttpService {
   };
 
   getAllNotifications(): void {
-    this.get('GetAll').subscribe((res: any) => {
+    this.get({ apiName: 'GetAll' }).subscribe((res: any) => {
       this.notifications = [];
       this.notifications = res.data;
     });
@@ -62,34 +62,31 @@ export class NotificationService extends HttpService {
   }
 
   getCount(): void {
-    this.getReq('GetCount').subscribe((res: any) => {
+    this.get({ apiName: 'GetCount' }).subscribe((res: any) => {
       this.notificationCounter = res.data;
     });
   }
 
   setIsRead(notificationId: any): Observable<any> {
-    return this.getReq('SetIsRead/' + notificationId);
+    return this.get({ apiName: 'SetIsRead/' + notificationId });
   }
 
   /**
    * Private Methods
    */
   private AddListeners(): void {
-    this.connection.on('NewNotification', (data: any) => {
-      const notification = JSON.parse(data);
-      this.alertService.success(this.localize.isEnglish ? notification?.TitleEn : notification?.TitleAr);
-      this.getCount();
-      this.getAllNotifications();
-    });
-    this.connection.onreconnected(() => {
-      this.getCount();
-      this.getAllNotifications();
-    });
-    // this.connection.onclose(() => {
-    //   setTimeout(() => {
-    //     this.connect();
-    //   }, 60000);
-    // });
+    if (this.connection) {
+      this.connection.on('NewNotification', (data: any) => {
+        const notification = JSON.parse(data);
+        this.alertService.success(this.localize.isEnglish ? notification?.TitleEn : notification?.TitleAr);
+        this.getCount();
+        this.getAllNotifications();
+      });
+      this.connection.onreconnected(() => {
+        this.getCount();
+        this.getAllNotifications();
+      });
+    }
   }
 
   getDelays(): number[] {
