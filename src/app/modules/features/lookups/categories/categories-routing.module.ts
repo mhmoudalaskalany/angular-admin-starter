@@ -15,7 +15,7 @@ const routes: Routes = [
         data: {
           component: AddEditCategoryComponent,
           pageTitle: 'SETTINGS.CATEGORIES.ADD',
-          pageType: 'add',
+          pageType: 'add'
         },
         component: DialogComponent
       },

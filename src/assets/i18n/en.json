@@ -9,100 +9,51 @@
   "DASHBOARD": {
     "TITLE": "Dashboard"
   },
-  "SHOPPING": {
-    "TITLE": "Item Shopping",
-    "ITEMS": "Items",
-    "ADD": "Add Product",
-    "EDIT": "Edit Product",
-    "PRICING": "Product Pricing",
-    "PRODUCT_PRICE": "Product Price",
-    "DELIVERY": "Delivery Serive",
-    "LOADING_AND_UNLOADING": "Loading And Unloading Service",
-    "SERVICES_AMOUNT": "Product Services Amount",
-    "TOTAL_UNIT_PRICE": "Total Unit Price",
-    "PROFIT_RATIO": "Profit Ratio",
-    "PROFIT_RATIO_PER_UNIT": "Profit Ratio Per Unit",
-    "NET_AMOUNT": "Unit Price After Profit Ratio",
-    "FINAL_PRODUCT_PRICE": "Final Product Price",
-    "POS": "POS System",
-    "TOTAL_QUANTITY_PRICE": "Total Quantity Price",
-    "CART": "Shopping Cart",
-    "PRODUCTS": "Products",
-    "PAID_AMOUNT": "Paid Amount",
-    "SUB_TOTAL": "Sub Total",
-    "GRAND_TOTAL": "Grand Total",
-    "DUE_AMOUNT": "Due Amount",
-    "ADD_DAMAGED_PRODUCT": "Add Damaged Product",
-    "EDIT_DAMAGED_PRODUCT": "Edit Damaged Product"
-  },
-  "PAYMENTS": {
-    "TITLE": "Payments",
-    "TRANSACTION_STATUS": "Transaction Status",
-    "TOTAL_SOLD_PRODUCTS": "Total Sold Products",
-    "TOTAL_TRANSACTIONS": "Total Transactions",
-    "EDIT": "Edit Payment",
-    "BILL": "Bill Report",
-    "DEFERRED_SHOPPERS": "Deferred Shoppers",
-    "SHOPPERS": "Shoppers"
-  },
-  "ITEM_ANALYSIS": {
-    "TITLE": "Item Analysis",
-    "LIST_OF_ITEMS": "List of Items",
-    "OUT_OF_STOCK": "Out of Stock",
-    "LOW_IN_STOCK": "Low in Stock",
-    "DAMAGED_ITEMS": "Damaged Items",
-    "ITEMS_HISTORY": "Items History",
-    "ITEMS_BARCODES": "Items Barcodes",
-    "ARCHIVE_INVOICES": "Archive Invoices"
-  },
-  "ARCHIVE_INVOICES": {
-    "ADD_INVOICE": "Add Invoice",
-    "EDIT_INVOICE": "Edit Invoice"
+  "SAMPLES": {
+    "TITLE": "Samples",
+    "ADD": "Add Sample",
+    "EDIT": "Edit Sample",
+    "SAMPLE": "Sample"
   },
   "SETTINGS": {
     "TITLE": "Settings",
     "CATEGORIES": {
       "TITLE": "Categories",
       "ADD": "Add Category",
-      "EDIT": "Edit Category"
+      "EDIT": "Edit Category",
+      "CATEGORY": "Category"
     },
-    "CURRENCIES": {
-      "TITLE": "Currencies",
-      "ADD": "Add Currency",
-      "EDIT": "Edit Currency",
-      "CURRENCY": "Currency"
+    "ACTIONS": {
+      "TITLE": "Actions",
+      "ADD": "Add Action",
+      "EDIT": "Edit Action",
+      "ACTION": "Action",
+      "ACTION-TAKER": "Action Taker",
+      "ACTION-DATE": "Action Date"
     },
-    "PAYMENTTYPES": {
-      "TITLE": "Payment Types",
-      "ADD": "Add Payment Type",
-      "EDIT": "Edit Payment Type",
-      "PAYMENT_TYPE": "Payment Type"
+    "STATUSES": {
+      "TITLE": "Statuses",
+      "ADD": "Add Status",
+      "EDIT": "Edit Status",
+      "STATUS": "Status"
     },
-    "SUPPLIERS": {
-      "TITLE": "Suppliers",
-      "ADD": "Add Supplier",
-      "EDIT": "Edit Supplier"
+    "COUNTRIES": {
+      "TITLE": "Countries",
+      "ADD": "Add Country",
+      "EDIT": "Edit Country",
+      "COUNTRY": "Country"
     },
-    "UNITOFMEASURES": {
-      "TITLE": "Unit Of Measures",
-      "ADD": "Add Unit Of Measures",
-      "EDIT": "Edit Unit Of Measures"
+    "CITIES": {
+      "TITLE": "Cities",
+      "ADD": "Add City",
+      "EDIT": "Edit City",
+      "CITY": "City"
     },
-    "WAREHOUSES": {
-      "TITLE": "Warehouses",
-      "ADD": "Add Warehouse",
-      "EDIT": "Edit Warehouse"
-    },
-    "SHOPS": {
-      "TITLE": "Shops",
-      "ADD": "Add Shop",
-      "EDIT": "Edit Shop"
-    },
-    "CUSTOMERS": {
-      "TITLE": "Customers",
-      "ADD": "Add Customer",
-      "EDIT": "Edit Customer",
-      "CUSTOMER": "Customer"
+    "DISTRICTS": {
+      "TITLE": "Districts",
+      "ADD": "Add District",
+      "EDIT": "Edit District",
+      "DISTRICT": "District"
     }
   },
   "USER_MANAGEMENT": {
@@ -128,14 +79,7 @@
     }
   },
   "REPORTS": {
-    "TITLE": "Report Analysis",
-    "HIGHEST_EARNING": "Highest Earning",
-    "LOWEST_EARNING": "Lowest Earning",
-    "HIGH_IN_DEMAND": "High In Demand",
-    "LOW_IN_DEMAND": "Low In Demand",
-    "TRANSACTIONS_BY_YEAR": "Transactions By Year",
-    "TRANSACTIONS_BY_MONTH": "Transactions By Month",
-    "TRANSACTIONS_BY_DAY": "Transactions By Day"
+    "TITLE": "Report Analysis"
   },
   "TABLE": {},
   "FIELDS": {
@@ -152,22 +96,8 @@
     "PASSWORD": "Password",
     "CONFIRM_PASSWORD": "Confirm Password",
     "MESSAGE": "Message",
-    "UNIT_PRICE": "Unit Price",
-    "SELL_PRICE": "Sell Price",
     "QUANTITY": "Quantity",
-    "DAMAGE_REASON": "Damage Reason",
-    "TOTAL_DAMAGED_PRODUCTS": "Total Damaged Products",
-    "TOTAL_STOCK": "Total Stock",
-    "PRODUCT": "Product Name",
     "CATEGORY": "Category",
-    "SUPPLIER": "Supplier",
-    "WAREHOUSE": "Warehouse",
-    "WAREHOUSE_VALUE": "Products Count in the Warehouse",
-    "SHOP": "Shop",
-    "MEASURE": "Measure",
-    "MEASURE_VALUE": "Measure Value",
-    "SKU": "SKU",
-    "MANUFATURE_DATE": "Manufature Date",
     "CREATED_DATE": "Created Date",
     "MODIFIED_DATE": "Modified Date",
     "EXPIRATION_DATE": "Expiration Date",
@@ -176,50 +106,24 @@
     "PHOTO": "Photo",
     "DESCRIPTION": "Description",
     "COUNTRY": "Country",
-    "SYMBOL": "Symbol",
-    "CONTACTPERSONS": "Contact Persons",
-    "CONTACT_PERSON_NAME": "Contact Person Name",
-    "CONTACT_PERSON_POSITION": "Contact Person Position",
-    "CONTACT_PERSON_PHONE_NUMBER": "Contact Person Phone Number",
-    "CONTACT_PERSON_VISIT_TIMES": "Contact Person Visit Times",
     "PHONE": "Phone",
     "ADDRESS": "Address",
-    "BILLINGADDRESS": "Billing Address",
-    "BARCODE": "Barcode",
-    "PLATFORM": "Platform",
-    "IPADDRESS": "IP Address",
-    "LOGINSTATUS": "Login Status",
+    "IP_ADDRESS": "IP Address",
+    "LOGIN_STATUS": "Login Status",
     "REASON": "Reason",
-    "LOGINDATE": "Login Date",
-    "AUTHENTICATIONTYPE": "Authentication Type",
+    "LOGIN_DATE": "Login Date",
+    "AUTHENTICATION_TYPE": "Authentication Type",
     "CONFIRMPASSWORD": "Confirm Password",
     "ROLE": "Role",
-    "AMOUNT": "Amount",
-    "TOTAL_AMOUNT": "Total Amount",
-    "NET_AMOUNT": "Net Amount",
-    "REFERENCE_NO": "Reference No",
-    "TOTAL": "Total",
-    "COMMON_CHARGE": "Common Charge",
-    "DISCOUNT": "Discount (%)",
-    "DISCOUNT_AMOUNT": "Discount Amount",
-    "TAX": "Tax (%)",
-    "TAX_AMOUNT": "Tax Amount",
-    "VAT": "Vat (%)",
-    "VAT_AMOUNT": "Vat Amount",
-    "DELIVERY": "Total Delivery Cost",
-    "LOADING_AND_UNLOADING": "Total Loading And Unloading Cost",
-    "PROFIT_RATIO_PERCENTAGE": "Profit Ratio Percentage (%)",
-    "DELIVERY_AMOUNT": "Delivery Amount",
-    "INVOICE_NUMBER": "Invoice Number",
-    "INVOICE_IMAGE": "Invoice Image"
+    "TOTAL": "Total"
   },
   "COMMON": {
-    "ENGLISH_NAME": "الاسم الانجليزى",
-    "ARABIC_NAME": "الاسم العربي",
-    "CREATED_DATE": "تاريخ الإنشاء",
-    "MODIFIED_DATE": "تاريخ التعديل",
-    "DESCRIPTION": "الوصف",
-    "CODE": "الرمز"
+    "ENGLISH_NAME": "English Name",
+    "ARABIC_NAME": "Arabic Name",
+    "CREATED_DATE": "Created Date",
+    "MODIFIED_DATE": "Modified Date",
+    "DESCRIPTION": "Description",
+    "CODE": "Code"
   },
   "ACTIONS": {
     "TITLE": "Actions",
@@ -257,12 +161,6 @@
   "EMPTY": {
     "NO_ITEMS": "There's no options"
   },
-  "TITLES": {
-    "HOLD_PAYMENT": "You must choose a customer first."
-  },
-  "ALERT": {
-    "POINTS_DISCOUNT": "I want to apply the discount amount on this payment. "
-  },
   "VALIDATION": {
     "ARABIC_LETTERS": "Arabic Letters Only",
     "ENGLISH_LETTERS": "English Letters Only",
@@ -291,8 +189,7 @@
     "INVALID_OTP": "Invalid Or Expired Otp",
     "PHONE_EXIST": "Phone Number  Already Exist",
     "EMAIL_EXIST": "Email Already Exist",
-    "ACTION_MESSAGE": "Are you sure that you want to this action?",
-    "APPROVE_PRICE_CONFIRMATION": "Approve Price Confirmation"
+    "ACTION_MESSAGE": "Are you sure that you want to this action?"
   },
   "ATTACHMENT": {
     "ATTACHMENT": "Attachment",

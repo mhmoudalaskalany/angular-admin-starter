@@ -4,7 +4,7 @@ import { NgSelectComponent } from '@ng-select/ng-select';
 import { TranslationService } from 'core/services/translation/translation.service';
 import { Subscription, of, delay, Subject, takeUntil } from 'rxjs';
 
-interface dropdown {
+export interface dropdown {
   id: string | null;
   nameEn: string;
   nameAr: string;

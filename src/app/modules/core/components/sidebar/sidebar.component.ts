@@ -7,7 +7,7 @@ interface SidebarDefault {
   routerLinkName: string;
   icon?: string;
   svgIcon?: string;
-  permissions?: string[],
+  permissions?: string[];
 }
 interface Sidebar extends SidebarDefault {
   children?: SidebarDefault[];
@@ -19,14 +19,25 @@ interface Sidebar extends SidebarDefault {
   styleUrls: ['./sidebar.component.scss']
 })
 export class SidebarComponent implements OnInit {
-
   user: any;
   isSidebarOpened = false;
   sidebarItems: Sidebar[] = [
     {
       label: 'DASHBOARD.TITLE',
       icon: 'bx bxs-dashboard',
-      routerLinkName: '/dashboard',
+      routerLinkName: '/dashboard'
+    },
+    {
+      label: 'SAMPLES.SAMPLES_MANAGEMENT',
+      icon: 'bx bxs-user-badge',
+      routerLinkName: '/samples-management',
+      children: [
+        {
+          label: 'SAMPLES.TITLE',
+          icon: 'bx bxs-user-plus',
+          routerLinkName: '/samples-management/samples'
+        }
+      ]
     },
     {
       label: 'SETTINGS.TITLE',
@@ -36,7 +47,7 @@ export class SidebarComponent implements OnInit {
         {
           label: 'SETTINGS.CATEGORIES.TITLE',
           icon: 'bx bx-category',
-          routerLinkName: '/lookups/categories',
+          routerLinkName: '/lookups/categories'
         }
       ]
     },
@@ -48,22 +59,22 @@ export class SidebarComponent implements OnInit {
         {
           label: 'USER_MANAGEMENT.USERS.TITLE',
           icon: 'bx bx-user',
-          routerLinkName: '/user-management/users',
+          routerLinkName: '/user-management/users'
         },
         {
           label: 'USER_MANAGEMENT.ROLES.TITLE',
           icon: 'bx bx-wrench',
-          routerLinkName: '/user-management/roles',
+          routerLinkName: '/user-management/roles'
         },
         {
           label: 'USER_MANAGEMENT.PERMISSIONS.TITLE',
           icon: 'bx bxs-lock',
-          routerLinkName: '/user-management/permissions',
+          routerLinkName: '/user-management/permissions'
         },
         {
           label: 'USER_MANAGEMENT.LOGINHISTORY.TITLE',
           icon: 'bx bxs-log-in-circle',
-          routerLinkName: '/user-management/login-history',
+          routerLinkName: '/user-management/login-history'
         }
       ]
     },
@@ -75,46 +86,46 @@ export class SidebarComponent implements OnInit {
         {
           label: 'REPORTS.HIGHEST_EARNING',
           icon: 'bx bx-line-chart',
-          routerLinkName: '/reports/highest-earning',
+          routerLinkName: '/reports/highest-earning'
         },
         {
           label: 'REPORTS.LOWEST_EARNING',
           icon: 'bx bx-line-chart-down',
-          routerLinkName: '/reports/lowest-earning',
+          routerLinkName: '/reports/lowest-earning'
         },
         {
           label: 'REPORTS.HIGH_IN_DEMAND',
           icon: 'bx bx-coin-stack',
-          routerLinkName: '/reports/high-in-demand',
+          routerLinkName: '/reports/high-in-demand'
         },
         {
           label: 'REPORTS.LOW_IN_DEMAND',
           icon: 'bx bx-coin',
-          routerLinkName: '/reports/low-in-demand',
+          routerLinkName: '/reports/low-in-demand'
         },
         {
           label: 'REPORTS.TRANSACTIONS_BY_YEAR',
           icon: 'bx bx-dollar',
-          routerLinkName: '/reports/transactions-by-year',
+          routerLinkName: '/reports/transactions-by-year'
         },
         {
           label: 'REPORTS.TRANSACTIONS_BY_MONTH',
           icon: 'bx bx-dollar',
-          routerLinkName: '/reports/transactions-by-month',
+          routerLinkName: '/reports/transactions-by-month'
         },
         {
           label: 'REPORTS.TRANSACTIONS_BY_DAY',
           icon: 'bx bx-dollar',
-          routerLinkName: '/reports/transactions-by-day',
+          routerLinkName: '/reports/transactions-by-day'
         }
       ]
     }
   ];
 
-  constructor(private sidebarService: SidebarToggleService, private http: HttpService) { }
+  constructor(private sidebarService: SidebarToggleService, private http: HttpService) {}
 
   ngOnInit(): void {
-    this.sidebarService.isSidebarOpened$.subscribe(isSidebarOpened => this.isSidebarOpened = isSidebarOpened);
+    this.sidebarService.isSidebarOpened$.subscribe(isSidebarOpened => (this.isSidebarOpened = isSidebarOpened));
   }
 
   /**

@@ -29,13 +29,22 @@ const routes: Routes = [
         loadChildren: () => import('./modules/features/lookups/lookups.module').then(m => m.LookupsModule)
       },
       {
+        path: 'samples-management',
+        children: [
+          {
+            path: 'samples',
+            loadChildren: () => import('./modules/features/sample/samples.module').then(m => m.SamplesModule)
+          }
+        ]
+      },
+      {
         path: 'user-management',
         loadChildren: () => import('./modules/features/user-management/user-management.module').then(m => m.UserManagement)
       },
       {
         path: 'reports',
         loadChildren: () => import('./modules/features/reports/reports.module').then(m => m.ReportsModule)
-      },
+      }
     ]
   },
   { path: 'error', loadChildren: () => import('./modules/features/error/error.module').then(m => m.ErrorModule) },
@@ -46,4 +55,4 @@ const routes: Routes = [
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule]
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}

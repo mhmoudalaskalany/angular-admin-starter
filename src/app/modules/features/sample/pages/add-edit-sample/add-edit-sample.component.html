@@ -1,0 +1,48 @@
+<div class="page-wrapper">
+  <div class="mb-3">
+    <h1 class="m-0 font-24 regular text-primary">{{ pageTitle | translate }}</h1>
+  </div>
+
+  <mat-card class="px-4 pt-2 pb-4 m-0">
+    <form method="post" class="row" [formGroup]="form" *ngIf="(model || pageType !== 'edit') && form">
+      <div class="col-md-6">
+        <app-datepicker [formGroup]="form" controlName="startDate" dateType="utc" [label]="'FIELDS.START_DATE' | translate">
+        </app-datepicker>
+      </div>
+      <div class="col-md-6">
+        <app-datepicker [formGroup]="form" controlName="endDate" dateType="utc" [label]="'FIELDS.END_DATE' | translate"> </app-datepicker>
+      </div>
+
+      <div class="col-md-6">
+        <app-input-text [formGroup]="form" controlName="test" [label]="'FIELDS.RENT_AMOUNT' | translate"> </app-input-text>
+      </div>
+
+      <div class="col-md-6">
+        <app-attachment
+          [formGroup]="form"
+          [label]="'ATTACHMENT.ATTACHMENT'"
+          controlName="attachments"
+          [isPublic]="true"
+          [allowedTypes]="fileDetails"
+          [maxFilesNumbers]="5"
+          [isEditMode]="pageType === 'edit'">
+        </app-attachment>
+      </div>
+    </form>
+  </mat-card>
+
+  <div class="w-100 d-flex justify-content-center mt-3" *ngIf="form">
+    <button mat-flat-button class="main-btn font-14 text-error px-4" type="button" (click)="redirect()">
+      {{ 'ACTIONS.CANCEL' | translate }}
+    </button>
+
+    <button
+      class="main-btn main font-14 text-white px-4 m-inline-start-3"
+      type="submit"
+      (click)="submit()"
+      [disabled]="form.invalid"
+      mat-flat-button>
+      {{ (pageType === 'add' ? 'ACTIONS.SUBMIT' : 'ACTIONS.SAVE') | translate }}
+    </button>
+  </div>
+</div>

@@ -9,64 +9,51 @@
   "DASHBOARD": {
     "TITLE": "البيانات الرئيسية"
   },
-  "ITEM_ANALYSIS": {
-    "TITLE": "بيانات المنتجات",
-    "LIST_OF_ITEMS": "قائمة المنتجات",
-    "OUT_OF_STOCK": "المنتهي من المخزن",
-    "LOW_IN_STOCK": "المنخفض في المخزن",
-    "DAMAGED_ITEMS": "المنتجات التالفة",
-    "ITEMS_HISTORY": "تاريخ المنتجات",
-    "ITEMS_BARCODES": "باركود المنتجات",
-    "ARCHIVE_INVOICES": "أرشفة الفواتير"
-  },
-  "ARCHIVE_INVOICES": {
-    "ADD_INVOICE": "إضافة فاتورة",
-    "EDIT_INVOICE": "تعديل فاتورة"
+  "SAMPLES": {
+    "TITLE": "عينات",
+    "ADD": "اضافة عينة",
+    "EDIT": "تعديل عينة",
+    "SAMPLE": "عينة"
   },
   "SETTINGS": {
     "TITLE": "الإعدادات",
     "CATEGORIES": {
       "TITLE": "الفئات",
       "ADD": "إضافة فئة",
-      "EDIT": "تعديل فئة"
+      "EDIT": "تعديل فئة",
+      "CATEGORY": "تصنيف"
     },
-    "CURRENCIES": {
-      "TITLE": "العملات",
-      "ADD": "إضافة عملة",
-      "EDIT": "تعديل عملة",
-      "CURRENCY": "العملة"
+    "ACTIONS": {
+      "TITLE": "إجراءات",
+      "ADD": "إضافة إجراء",
+      "EDIT": "إجراء خيار",
+      "ACTION": "الإجراء",
+      "ACTION-TAKER": "متخذ الإجراء",
+      "ACTION-DATE": "تاريخ الإجراء"
     },
-    "PAYMENTTYPES": {
-      "TITLE": "طرق الدفع",
-      "ADD": "إضافة طريقة الدفع",
-      "EDIT": "تعديل طريقة الدفع",
-      "PAYMENT_TYPE": "طريقة الدفع"
+    "STATUSES": {
+      "TITLE": "الحالات",
+      "ADD": "إضافة حالة",
+      "EDIT": "تعديل حالة",
+      "STATUS": "الحالة"
     },
-    "SUPPLIERS": {
-      "TITLE": "الموردين",
-      "ADD": "إضافة مورد",
-      "EDIT": "تعديل مورد"
+    "COUNTRIES": {
+      "TITLE": "الدول",
+      "ADD": "اضافة دولة",
+      "EDIT": "تعديل دولة",
+      "COUNTRY": "دولة"
     },
-    "UNITOFMEASURES": {
-      "TITLE": "وحدات القياس",
-      "ADD": "إضافة وحدة قياس",
-      "EDIT": "تعديل وحدة قياس"
+    "CITIES": {
+      "TITLE": "المدن",
+      "ADD": "اضافة مدينة",
+      "EDIT": "تعديل مدينة",
+      "CITY": "مدينة"
     },
-    "WAREHOUSES": {
-      "TITLE": "المخازن",
-      "ADD": "إضافة مخزن",
-      "EDIT": "تعديل مخزن"
-    },
-    "SHOPS": {
-      "TITLE": "المتاجر",
-      "ADD": "إضافة متجر",
-      "EDIT": "تعديل متجر"
-    },
-    "CUSTOMERS": {
-      "TITLE": "العملاء",
-      "ADD": "إضافة عميل",
-      "EDIT": "تعديل عميل",
-      "CUSTOMER": "العميل"
+    "DISTRICTS": {
+      "TITLE": "الأحياء",
+      "ADD": "اضافة حى",
+      "EDIT": "تعديل حى",
+      "DISTRICT": "حى"
     }
   },
   "USER_MANAGEMENT": {
@@ -92,14 +79,7 @@
     }
   },
   "REPORTS": {
-    "TITLE": "بيانات التقارير",
-    "HIGHEST_EARNING": "أعلى ربحاً",
-    "LOWEST_EARNING": "أقل ربحاً",
-    "HIGH_IN_DEMAND": "الأكثر طلباً",
-    "LOW_IN_DEMAND": "الأقل طلباً",
-    "TRANSACTIONS_BY_YEAR": "تقرير المدفوعات سنوياً",
-    "TRANSACTIONS_BY_MONTH": "تقرير المدفوعات شهرياً",
-    "TRANSACTIONS_BY_DAY": "تقرير المدفوعات يومياً"
+    "TITLE": "بيانات التقارير"
   },
   "TABLE": {},
   "FIELDS": {
@@ -109,29 +89,12 @@
     "EN": " (بالإنجليزية)",
     "AR": " (بالعربية)",
     "FULL_NAME": "الإسم بالكامل",
-    "COMPANY_NAME": "إسم الشركة",
-    "COMPANY_EMAIL": "البريد الإلكترونى للشركة",
-    "COMPANY_ADDRESS": "عنوان الشركة",
     "USERNAME": "اسم المستخدم",
     "PASSWORD": "كلمة المرور",
     "CONFIRM_PASSWORD": "تأكيد كلمة المرور",
     "MESSAGE": "الرسالة",
-    "UNIT_PRICE": "سعر الوحدة",
-    "SELL_PRICE": "سعر البيع",
     "QUANTITY": "الكمية",
-    "DAMAGE_REASON": "سبب التلف",
-    "TOTAL_DAMAGED_PRODUCTS": "إجمالي المنتجات التالفة",
-    "TOTAL_STOCK": "إجمالي المخزون",
-    "PRODUCT": "إسم المنتج",
     "CATEGORY": "التصنيف",
-    "SUPPLIER": "المورد",
-    "WAREHOUSE": "المخزن",
-    "WAREHOUSE_VALUE": "عدد المنتجات في المخزن",
-    "SHOP": "المتجر",
-    "MEASURE": "المعيار",
-    "MEASURE_VALUE": "مقدار المعيار",
-    "SKU": "SKU",
-    "MANUFATURE_DATE": "تاريخ التصنيع",
     "CREATED_DATE": "تاريخ الإنشاء",
     "MODIFIED_DATE": "تاريخ التعديل",
     "EXPIRATION_DATE": "تاريخ إنتهاء الصلاحية",
@@ -140,42 +103,14 @@
     "PHOTO": "الصورة",
     "DESCRIPTION": "الوصف",
     "COUNTRY": "البلد",
-    "SYMBOL": "الرمز",
-    "CONTACTPERSONS": "مناديب التواصل",
-    "CONTACT_PERSON_NAME": "إسم مندوب التواصل",
-    "CONTACT_PERSON_POSITION": "منصب مندوب التواصل",
-    "CONTACT_PERSON_PHONE_NUMBER": "رقم جوال مندوب التواصل",
-    "CONTACT_PERSON_VISIT_TIMES": "مواعيد زيارة مندوب التواصل",
     "PHONE": "الهاتف",
     "ADDRESS": "العنوان",
-    "BILLINGADDRESS": "عنوان الدفع",
-    "BARCODE": "الباركود",
-    "PLATFORM": "المنصة",
-    "IPADDRESS": "العنوان الالكترونى",
-    "LOGINSTATUS": "حالة الدخول",
     "REASON": "السبب",
-    "LOGINDATE": "تاريخ الدخول",
-    "AUTHENTICATIONTYPE": "نوع الدخول",
+    "LOGIN_DATE": "تاريخ الدخول",
+    "AUTHENTICATION_TYPE": "نوع الدخول",
     "CONFIRMPASSWORD": "تأكيد كلمة المرور",
     "ROLE": "الوظيفة",
-    "AMOUNT": "المبلغ",
-    "TOTAL_AMOUNT": "إجمالي المبلغ",
-    "NET_AMOUNT": "إجمالي صافي المبلغ",
-    "REFERENCE_NO": "رقم المرجع",
-    "TOTAL": "المجموع",
-    "COMMON_CHARGE": "مبالغ إضافية",
-    "DISCOUNT": "نسبة الخصم (%)",
-    "DISCOUNT_AMOUNT": "قيمة الخصم",
-    "TAX": "نسبة الضرائب (%)",
-    "TAX_AMOUNT": "قيمة الضرائب",
-    "VAT": "نسبة القيمة المضافة (%)",
-    "VAT_AMOUNT": "قيمة القيمة المضافة",
-    "DELIVERY": "إجمالي تكلفة التوصيل",
-    "LOADING_AND_UNLOADING": "إجمالي تكلفة التحميل والتفريغ",
-    "PROFIT_RATIO_PERCENTAGE": "مقدار نسبة الربح (%)",
-    "DELIVERY_AMOUNT": "سعر التوصيل",
-    "INVOICE_NUMBER": "رقم الفاتورة",
-    "INVOICE_IMAGE": "صورة الفاتورة"
+    "TOTAL": "المجموع"
   },
   "COMMON": {
     "ENGLISH_NAME": "الاسم الانجليزى",
@@ -216,16 +151,10 @@
   "EMPTY": {
     "NO_ITEMS": "لا يوجد خيارات"
   },
-  "TITLES": {
-    "HOLD_PAYMENT": "يجب إختيار زبون أولاً."
-  },
-  "ALERT": {
-    "POINTS_DISCOUNT": "أريد تطبيق مبلغ الخصم على هذه الدفعة. "
-  },
   "VALIDATION": {
-    "ARABIC_LETTERS":"مسموح فقط أحرف الغة العربية",
-    "ENGLISH_LETTERS":"مسموح فقط أحرف اللغة الانجليزية",
-    "LOGIN_SUCCESS":"تم تسجيل الدخول بنجاح",
+    "ARABIC_LETTERS": "مسموح فقط أحرف الغة العربية",
+    "ENGLISH_LETTERS": "مسموح فقط أحرف اللغة الانجليزية",
+    "LOGIN_SUCCESS": "تم تسجيل الدخول بنجاح",
     "INVALID_ENGLISH_NAME": "يجب ان تكون الاحرف انجليزية فقط واكثر من 3 واقل من 100",
     "INVALID_ARABIC_NAME": "يجب ان تكون الاحرف العربية فقط واكثر من 3 واقل من 100",
     "USERNAME_TAKEN": "اسم المستخدم هذا مستخدم بالفعل",
@@ -250,8 +179,7 @@
     "INVALID_OTP": "الرقم المتغير غير صحيح او منتهى",
     "PHONE_EXIST": "رقم الهاتف مسجل من قبل",
     "EMAIL_EXIST": "البريد الالكترونى موجود من قبل",
-    "ACTION_MESSAGE": "هل أنت متأكد أنك تريد القيام بهذا الإجراء؟",
-    "APPROVE_PRICE_CONFIRMATION": "تأكيد الموافقة على التسعيير"
+    "ACTION_MESSAGE": "هل أنت متأكد أنك تريد القيام بهذا الإجراء؟"
   },
   "ATTACHMENT": {
     "ATTACHMENT": "المرفق",
