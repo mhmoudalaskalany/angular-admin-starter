@@ -82,43 +82,7 @@ export class SidebarComponent implements OnInit {
       label: 'REPORTS.TITLE',
       icon: 'bx bxs-report',
       routerLinkName: '/reports',
-      children: [
-        {
-          label: 'REPORTS.HIGHEST_EARNING',
-          icon: 'bx bx-line-chart',
-          routerLinkName: '/reports/highest-earning'
-        },
-        {
-          label: 'REPORTS.LOWEST_EARNING',
-          icon: 'bx bx-line-chart-down',
-          routerLinkName: '/reports/lowest-earning'
-        },
-        {
-          label: 'REPORTS.HIGH_IN_DEMAND',
-          icon: 'bx bx-coin-stack',
-          routerLinkName: '/reports/high-in-demand'
-        },
-        {
-          label: 'REPORTS.LOW_IN_DEMAND',
-          icon: 'bx bx-coin',
-          routerLinkName: '/reports/low-in-demand'
-        },
-        {
-          label: 'REPORTS.TRANSACTIONS_BY_YEAR',
-          icon: 'bx bx-dollar',
-          routerLinkName: '/reports/transactions-by-year'
-        },
-        {
-          label: 'REPORTS.TRANSACTIONS_BY_MONTH',
-          icon: 'bx bx-dollar',
-          routerLinkName: '/reports/transactions-by-month'
-        },
-        {
-          label: 'REPORTS.TRANSACTIONS_BY_DAY',
-          icon: 'bx bx-dollar',
-          routerLinkName: '/reports/transactions-by-day'
-        }
-      ]
+      children: []
     }
   ];
 

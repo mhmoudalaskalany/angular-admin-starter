@@ -45,6 +45,7 @@ export class AddEditSampleComponent implements OnInit {
   constructor(public activatedRoute: ActivatedRoute) {}
 
   ngOnInit(): void {
+    debugger;
     this.pageTitle = this.activatedRoute.snapshot.data['pageTitle'];
     this.pageType = this.activatedRoute.snapshot.data['pageType'];
     this.id = this.activatedRoute.snapshot.paramMap.get('id') as string;
@@ -59,6 +60,7 @@ export class AddEditSampleComponent implements OnInit {
   initFormGroup() {
     this.form = this.fb.group({
       test: ['', Validators.required],
+      date: [''],
       attachments: ['']
     });
   }

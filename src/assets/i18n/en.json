@@ -10,6 +10,7 @@
     "TITLE": "Dashboard"
   },
   "SAMPLES": {
+    "SAMPLES_MANAGEMENT": "Samples Management",
     "TITLE": "Samples",
     "ADD": "Add Sample",
     "EDIT": "Edit Sample",
@@ -61,10 +62,11 @@
     }
   },
   "REPORTS": {
-    "TITLE": "Report Analysis"
+    "TITLE": "Report"
   },
   "TABLE": {},
   "FIELDS": {
+    "TEST": "Test",
     "EMAIL": "Email",
     "MOBILE": "Mobile Number",
     "NAME": "Name",
@@ -128,7 +130,7 @@
     "SEARCH": "Search",
     "PRINT": "Print",
     "DOWNLOAD": "Download",
-    "GENERATE": "Generate",
+    "GENERATE": "Generate"
   },
   "ERROR": {
     "404": "PAGE NOT FOUND",

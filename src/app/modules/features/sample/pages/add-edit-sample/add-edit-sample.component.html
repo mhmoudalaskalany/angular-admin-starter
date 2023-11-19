@@ -6,15 +6,11 @@
   <mat-card class="px-4 pt-2 pb-4 m-0">
     <form method="post" class="row" [formGroup]="form" *ngIf="(model || pageType !== 'edit') && form">
       <div class="col-md-6">
-        <app-datepicker [formGroup]="form" controlName="startDate" dateType="utc" [label]="'FIELDS.START_DATE' | translate">
-        </app-datepicker>
-      </div>
-      <div class="col-md-6">
-        <app-datepicker [formGroup]="form" controlName="endDate" dateType="utc" [label]="'FIELDS.END_DATE' | translate"> </app-datepicker>
+        <app-datepicker [formGroup]="form" controlName="date" dateType="utc" [label]="'FIELDS.START_DATE' | translate"> </app-datepicker>
       </div>
 
       <div class="col-md-6">
-        <app-input-text [formGroup]="form" controlName="test" [label]="'FIELDS.RENT_AMOUNT' | translate"> </app-input-text>
+        <app-input-text [formGroup]="form" controlName="test" [label]="'FIELDS.TEST' | translate"> </app-input-text>
       </div>
 
       <div class="col-md-6">
