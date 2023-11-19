@@ -1,5 +1,5 @@
 {
-  "Title": "Title",
+  "TITLE": "Title",
   "ACCOUNT": {
     "LOGOUT": "Sign Out",
     "SIGNIN": "Sign-in",
@@ -36,24 +36,6 @@
       "ADD": "Add Status",
       "EDIT": "Edit Status",
       "STATUS": "Status"
-    },
-    "COUNTRIES": {
-      "TITLE": "Countries",
-      "ADD": "Add Country",
-      "EDIT": "Edit Country",
-      "COUNTRY": "Country"
-    },
-    "CITIES": {
-      "TITLE": "Cities",
-      "ADD": "Add City",
-      "EDIT": "Edit City",
-      "CITY": "City"
-    },
-    "DISTRICTS": {
-      "TITLE": "Districts",
-      "ADD": "Add District",
-      "EDIT": "Edit District",
-      "DISTRICT": "District"
     }
   },
   "USER_MANAGEMENT": {
@@ -100,7 +82,6 @@
     "CATEGORY": "Category",
     "CREATED_DATE": "Created Date",
     "MODIFIED_DATE": "Modified Date",
-    "EXPIRATION_DATE": "Expiration Date",
     "CODE": "Code",
     "NOTE": "Note",
     "PHOTO": "Photo",
@@ -146,13 +127,8 @@
     "EXPORT_EXCEL": "Export Excel",
     "SEARCH": "Search",
     "PRINT": "Print",
-    "CHECKOUT": "Checkout",
-    "ADD_TO_CART": "Add to Cart",
     "DOWNLOAD": "Download",
     "GENERATE": "Generate",
-    "PRODUCT_PRICING": "Product Pricing",
-    "HOLD_PAYMENT": "Hold Payment",
-    "APPROVE_PRICE": "Approve Price"
   },
   "ERROR": {
     "404": "PAGE NOT FOUND",

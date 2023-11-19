@@ -1,5 +1,5 @@
 {
-  "Title": "Title",
+  "TITLE": "Title",
   "ACCOUNT": {
     "LOGOUT": "تسجيل الخروج",
     "SIGNIN": "تسجيل الدخول",
@@ -36,24 +36,6 @@
       "ADD": "إضافة حالة",
       "EDIT": "تعديل حالة",
       "STATUS": "الحالة"
-    },
-    "COUNTRIES": {
-      "TITLE": "الدول",
-      "ADD": "اضافة دولة",
-      "EDIT": "تعديل دولة",
-      "COUNTRY": "دولة"
-    },
-    "CITIES": {
-      "TITLE": "المدن",
-      "ADD": "اضافة مدينة",
-      "EDIT": "تعديل مدينة",
-      "CITY": "مدينة"
-    },
-    "DISTRICTS": {
-      "TITLE": "الأحياء",
-      "ADD": "اضافة حى",
-      "EDIT": "تعديل حى",
-      "DISTRICT": "حى"
     }
   },
   "USER_MANAGEMENT": {
