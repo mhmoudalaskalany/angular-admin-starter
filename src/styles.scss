@@ -3,9 +3,9 @@ html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 
 /* Importing Bootstrap SCSS file. */
-@import 'node_modules/bootstrap/scss/bootstrap';
+@import '/node_modules/bootstrap/scss/bootstrap';
 /* Importing ngx-toastr file. */
-@import "node_modules/ngx-toastr/toastr";
+@import "/node_modules/ngx-toastr/toastr";
 /* Importing ng-select file. */
 @import "~@ng-select/ng-select/themes/material.theme.css";
 

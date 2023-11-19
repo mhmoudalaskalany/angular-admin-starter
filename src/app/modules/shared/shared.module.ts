@@ -5,9 +5,7 @@ import { CommonModule } from '@angular/common';
 // NgSelect Module
 import { NgSelectModule } from '@ng-select/ng-select';
 // ngApexCharts Module
-import { NgApexchartsModule } from "ng-apexcharts";
-// NG-Bootstrap - Pagination
-import { NgbPaginationModule } from '@ng-bootstrap/ng-bootstrap';
+import { NgApexchartsModule } from 'ng-apexcharts';
 // TableModule
 import { TableModule } from 'primeng/table';
 
@@ -21,7 +19,6 @@ import { DatepickerComponent } from './components/datepicker/datepicker.componen
 import { CheckboxComponent } from './components/checkbox/checkbox.component';
 import { AttachmentComponent } from './components/attachment/attachment.component';
 import { DeleteModalComponent } from './components/delete-modal/delete-modal.component';
-import { PaginatorComponent } from './components/paginator/paginator.component';
 import { BaseSharedModule } from './sub-modules/base-shared/base-shared.module';
 import { DeferredShoppersComponent } from './components/deferred-shoppers/deferred-shoppers.component';
 import { DataTableComponent } from './components/datatable/data-table.component';
@@ -34,8 +31,7 @@ const COMPONENTS = [
   AttachmentComponent,
   DeleteModalComponent,
   DataTableComponent,
-  DeferredShoppersComponent,
-  PaginatorComponent, // unused...
+  DeferredShoppersComponent
 ];
 
 @NgModule({
@@ -44,20 +40,12 @@ const COMPONENTS = [
     ...COMPONENTS,
 
     // Pipes
-    ValidationHandlerPipe,
+    ValidationHandlerPipe
   ],
-  imports: [
-    CommonModule,
-    BaseSharedModule,
-
-    NgSelectModule,
-    NgbPaginationModule,
-    NgApexchartsModule,
-    TableModule,
-  ],
+  imports: [CommonModule, BaseSharedModule, NgSelectModule, NgApexchartsModule, TableModule],
   exports: [
     // Components
     ...COMPONENTS
   ]
 })
-export class SharedModule { }
+export class SharedModule {}
