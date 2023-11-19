@@ -26,7 +26,6 @@
     "@angular/router": "^16.2.12",
     "@angular/service-worker": "^16.2.12",
     "@microsoft/signalr": "^7.0.4",
-    "@ng-bootstrap/ng-bootstrap": "^14.0.1",
     "@ng-select/ng-select": "^10.0.3",
     "@ngx-translate/core": "^14.0.0",
     "@ngx-translate/http-loader": "^7.0.0",
